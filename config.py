@@ -16,6 +16,9 @@ class DS(object):
     # UPI QR Code Pic
     UPI_QR_CODE = os.environ.get("UPI_QR_CODE", "https://graph.org/file/7b782be88a32be378790f.jpg")
 
+    # markdown Image
+    MARKDOWN_PIC = os.environ.get("MARKDOWN_PIC", "https://graph.org/file/007534f9b5f183ab02d01.jpg")
+    
     # wes response configuration
     BOT_UPTIME = time.time()
     PORT = int(os.environ.get("PORT", "8080"))

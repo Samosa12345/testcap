@@ -85,9 +85,9 @@ class BTN(object):
 async def cb_handler(bot, query):
     if query.data == "start":
         await Client.edit_message_media(
-            query.message.chat.id, 
-            query.message.id, 
-            InputMediaPhoto(DS.START_PIC)
+            chat_id=query.message.chat.id, 
+            message_id=query.message.id, 
+            media=InputMediaPhoto(media=DS.START_PIC)
         )
         await query.message.edit_text(
             text=TXT.START,
@@ -96,9 +96,9 @@ async def cb_handler(bot, query):
         )            
     elif query.data == "donate":
         await Client.edit_message_media(
-            query.message.chat.id, 
-            query.message.id, 
-            InputMediaPhoto(DS.UPI_QR_CODE)
+            chat_id=query.message.chat.id, 
+            message_id=query.message.id, 
+            media=InputMediaPhoto(media=DS.UPI_QR_CODE)
         )
         await query.message.edit_text(
             text=TXT.DONATE,
@@ -108,9 +108,9 @@ async def cb_handler(bot, query):
 
     elif query.data == "markdowns":
         await Client.edit_message_media(
-            query.message.chat.id, 
-            query.message.id, 
-            InputMediaPhoto(DS.START_PIC)
+            chat_id=query.message.chat.id, 
+            message_id=query.message.id, 
+            media=InputMediaPhoto(media=DS.START_PIC)
         )
         await query.message.edit_text(
             text=TXT.MARKDOWN,
@@ -119,9 +119,9 @@ async def cb_handler(bot, query):
         )
     elif query.data == "about":
         await Client.edit_message_media(
-            query.message.chat.id, 
-            query.message.id, 
-            InputMediaPhoto(DS.START_PIC)
+            chat_id=query.message.chat.id, 
+            message_id=query.message.id, 
+            media=InputMediaPhoto(media=DS.START_PIC)
         )
         await query.message.edit_text(
             text=TXT.ABOUT,
@@ -130,9 +130,9 @@ async def cb_handler(bot, query):
         )  
     elif query.data == "help":
         await Client.edit_message_media(
-            query.message.chat.id, 
-            query.message.id, 
-            InputMediaPhoto(DS.START_PIC)
+            chat_id=query.message.chat.id, 
+            message_id=query.message.id, 
+            media=InputMediaPhoto(media=DS.START_PIC)
         )
         await query.message.edit_text(
             text=TXT.HELP,

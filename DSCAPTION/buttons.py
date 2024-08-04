@@ -140,6 +140,6 @@ async def cb_handler(bot, query):
             parse_mode=enums.ParseMode.HTML
         )           
     else:
-        await message.message.delete()
+        await query.message.delete()
 
 # ===================== [🔺 END OF BUTTON CODES 🔺] ===================== #

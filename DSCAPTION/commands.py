@@ -63,7 +63,7 @@ async def help_cmd(bot, message):
 
 EMOJI4 = "😎"
 
-@Client.on_message(filters.private & filters.command(["about"]))
+@Client.on_message(filters.command(["about"]) & filters.private)
 async def about(bot, message):
     await message.react(emoji=EMOJI4, big=True)
     is_joined = await checkSub(bot, message)
@@ -72,8 +72,8 @@ async def about(bot, message):
         photo=DS.START_PIC,
         caption=TXT.ABOUT,
         parse_mode=enums.ParseMode.HTML,
-        reply_markup=BTN.ABOUT_BTN,
-        disable_web_page_preview=True 
+        reply_markup=BTN.ABOUT_BTN
+      #  disable_web_page_preview=True 
     )
 
 

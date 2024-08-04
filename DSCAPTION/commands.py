@@ -104,7 +104,7 @@ async def privacy(bot, message):
     # await message.reply_photo(
     await message.reply_text(
         # photo=DS.START_IMG,
-        text=TXT.HELP,
+        text=TXT.PRIVACY,
         # parse_mode=enums.ParseMode.HTML,
         reply_markup=BTN.PRIVACY_BTN
     )

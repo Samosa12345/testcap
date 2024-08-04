@@ -59,7 +59,6 @@ Eg:- `/setcap
 ➣ 🗣️Lᴀɴɢᴜᴀɢᴇ : Pʏᴛʜᴏɴ3
 ➣ 📚Lɪʙʀᴀʀʏ : Pʏʀᴏɢʀᴀᴍ
 ➣ 👨🏻‍💻Cʀᴇᴅɪᴛꜱ : @THE_DS_OFFICIAL & @Biisal</blockquote> 
-
 ⍟────[ @Public_Caption_Bot ]────⍟</b>"""
 
 
@@ -101,9 +100,9 @@ Eg:- `/setcap
 As you already know, this Advance Caption bot service is a free 
 service. To run such a service, there are server expenses involved, I 
 would really appreciate some  donation which will really help the 
-service to be alive. Any amount is fine (10, 20, 30, 50, 100...) as long as 
-you think the service deserves it. You can donate through UPI ID or 
-Scan this QRCode.</b>
+service to be alive. Any amount is fine (10, 20, 30, 50, 100...) as long 
+as you think the service deserves it. You can donate through UPI ID 
+or Scan this QRCode.</b>
 
 <i><b>Thanks in advance, your contributions really matters.</b></i>
 """
@@ -113,34 +112,34 @@ Scan this QRCode.</b>
 
     PRIVACY = """<b><u>Privacy Policy for Public Caption Bot</u></b>
 
-Last updated: 15-05-2024
+Last updated: 15-0-2024
 
 Thank you for using Public Caption Bot! This Privacy Policy 
 describes how your personal information is collected, used, 
 and shared when you use this bot.
 
-<b><u>Information We Collect</u></b>
+<blockquote><b><u>Information We Collect</u></b></blockquote>
 
 Public Caption Bot does not collect any personal information 
 from its users.
 
-<b><u><u>How We Use Your Information</u></b>
+<blockquote><b><u><u>How We Use Your Information</u></b></blockquote>
 
 Since we do not collect any personal information, we do not use, 
 store, or share any information about you.
 
-<b><u>Sharing Your Information</u></b>
+<blockquote><b><u>Sharing Your Information</u></b></blockquote>
 
 We do not share any personal information because we do not collect 
 any personal information.
 
-<b><u>Changes to This Privacy Policy</u></b>
+<blockquote><b><u>Changes to This Privacy Policy</u></b></blockquote>
 
 We may update this Privacy Policy from time to time in order to 
 reflect, for example, changes to our practices or for other 
 operational, legal, or regulatory reasons.
 
-<b><u>Contact</u></b>
+<blockquote><b><u>Contact</u></b></blockquote>
 
 If you have any questions or suggestions about our Privacy Policy, 
 Then Contact My Developer (see /start).</b>
@@ -152,7 +151,7 @@ Then Contact My Developer (see /start).</b>
 
     BOTLIST = """<blockquote>🔥 <u>𝐒𝐢𝐥𝐞𝐧𝐭 𝐏𝐮𝐛𝐥𝐢𝐜 𝐁𝐨𝐭 𝐋𝐢𝐬𝐭</u> 🔥</blockquote>
 
-1.  <blockquote><b>Public File Store Bot</b> ⚡
+<blockquote>1. <b>Public File Store Bot</b> ⚡
     👉🏻 @PublicFileStore01_Bot</blockquote>
     
     You Can Save Your Files, Videos, Photos etc On Bot,
@@ -184,7 +183,7 @@ Then Contact My Developer (see /start).</b>
     This is an advance and Multifunctional caption bot !
     caption with file_name & post_caption & file_size Supported
 
-<blockquote>6. <b>Public Instagram Downloader Bot</b> ⚡
+<blockquote>6. <b>Public Instagram Downloader Bot</b> ⚡</blockquote>
     👉🏻 Bot is Under maintaince
     
 <blockquote>7. <b>Public Spotify Music Downloader Bot</b></blockquote>

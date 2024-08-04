@@ -24,7 +24,7 @@ async def checkSub(bot, message):
         invite_link = await bot.export_chat_invite_link(Config.FORCE_SUB)
         join_button = InlineKeyboardMarkup([[
             InlineKeyboardButton('🤖 Join Channel 🤖', url=invite_link),
-            InlineKeyboardButton('🔃 Refresh 🔃', url='https://t.me/{temp.U_NAME}?start=True')
+            InlineKeyboardButton('🔃 Refresh 🔃', url=f'https://t.me/{temp.U_NAME}?start=True')
             ]])
         await message.reply_text("**Please Join My Updates Channel to use this Bot!**\n\n**Due to Overload, Only Channel Subscribers can use this Bot!**", reply_markup=join_button)
         return False

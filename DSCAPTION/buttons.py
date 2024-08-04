@@ -57,7 +57,7 @@ class BTN(object):
     
     DONATE_BTN = InlineKeyboardMarkup(
         [[
-            InlineKeyboardButton("Donate Via UPI ID", url=f"")
+            InlineKeyboardButton("Donate Via UPI ID", url=f"https://t.me/THE_DS_OFFICIAL")
         ],[
             InlineKeyboardButton("🏠 HOME", callback_data = "start"), 
             InlineKeyboardButton("CLOSE 🔐", callback_data = "close")

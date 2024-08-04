@@ -32,7 +32,7 @@ EMOJI2 = "😘"
 
 @Client.on_message(filters.command("start") & filters.private)
 async def start_cmd(bot, message):
-    # await message.react(emoji=EMOJI2, big=True)
+    await message.react(emoji=EMOJI2, big=True)
     user_id = int(message.from_user.id)
     await insert(user_id)
     is_joined = await checkSub(bot, message)
@@ -47,13 +47,13 @@ async def start_cmd(bot, message):
 
 EMOJI3 = "😉"
 
-@Client.on_message(filters.private & filters.command(["help"]))
-async def help(bot, message):
+@Client.on_message(filters.command(["help"]) & filters.private)
+async def help_cmd(bot, message):
     await message.react(emoji=EMOJI3, big=True)
     is_joined = await checkSub(bot, message)
     if not is_joined: return
     await message.reply_photo(
-        photo=DS.START_IMG,
+        photo=DS.START_PIC,
         caption=TXT.HELP,
         parse_mode=enums.ParseMode.HTML,
         reply_markup=BTN.HELP_BTN

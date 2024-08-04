@@ -73,7 +73,8 @@ async def about(bot, message):
         # photo=DS.START_IMG,
         text=TXT.ABOUT,
         parse_mode=enums.ParseMode.HTML,
-        reply_markup=BTN.ABOUT_BTN
+        reply_markup=BTN.ABOUT_BTN,
+        disable_web_page_preview=True 
     )
 
 

@@ -69,7 +69,7 @@ async def about(bot, message):
     is_joined = await checkSub(bot, message)
     if not is_joined: return
     await message.reply_photo(
-        photo=DS.START_IMG,
+        photo=DS.START_PIC,
         caption=TXT.ABOUT,
         parse_mode=enums.ParseMode.HTML,
         reply_markup=BTN.ABOUT_BTN,

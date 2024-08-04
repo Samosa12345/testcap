@@ -72,7 +72,6 @@ class BTN(object):
 
     BOTLIST_BTN = InlineKeyboardMarkup(
         [[
-            InlineKeyboardButton("🏠 HOME", callback_data = "start"), 
             InlineKeyboardButton("CLOSE 🔐", callback_data = "close")
         ]]
     ) 

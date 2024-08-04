@@ -87,7 +87,7 @@ async def cb_handler(bot, query):
         await Client.edit_message_media(
             query.message.chat.id, 
             query.message.id, 
-            InputMediaPhoto=DS.START_PIC
+            InputMediaPhoto(DS.START_PIC)
         )
         await query.message.edit_text(
             text=TXT.START,
@@ -98,7 +98,7 @@ async def cb_handler(bot, query):
         await Client.edit_message_media(
             query.message.chat.id, 
             query.message.id, 
-            InputMediaPhoto=DS.UPI_QR_CODE
+            InputMediaPhoto(DS.UPI_QR_CODE)
         )
         await query.message.edit_text(
             text=TXT.DONATE,
@@ -110,7 +110,7 @@ async def cb_handler(bot, query):
         await Client.edit_message_media(
             query.message.chat.id, 
             query.message.id, 
-            InputMediaPhoto=DS.START_PIC
+            InputMediaPhoto(DS.START_PIC)
         )
         await query.message.edit_text(
             text=TXT.MARKDOWN,
@@ -121,7 +121,7 @@ async def cb_handler(bot, query):
         await Client.edit_message_media(
             query.message.chat.id, 
             query.message.id, 
-            InputMediaPhoto=DS.START_PIC
+            InputMediaPhoto(DS.START_PIC)
         )
         await query.message.edit_text(
             text=TXT.ABOUT,
@@ -132,7 +132,7 @@ async def cb_handler(bot, query):
         await Client.edit_message_media(
             query.message.chat.id, 
             query.message.id, 
-            InputMediaPhoto=DS.START_PIC
+            InputMediaPhoto(DS.START_PIC)
         )
         await query.message.edit_text(
             text=TXT.HELP,

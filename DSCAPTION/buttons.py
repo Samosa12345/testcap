@@ -82,7 +82,7 @@ class BTN(object):
 
 
 @Client.on_callback_query()
-async def cb_handler(client: Client, query: CallbackQuery:
+async def cb_handler(client: Client, query: CallbackQuery):
     if query.data == "start":
         await Client.edit_message_media(
             chat_id=query.message.chat.id, 

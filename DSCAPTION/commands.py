@@ -18,9 +18,9 @@ from translation import TXT
 
 EMOJI1 = "🤔"
 
-# @Client.on_message(filters.private & filters.incoming)
+@Client.on_message(filters.private & filters.incoming)
 async def capBot(bot, message):
-    # await message.react(emoji=EMOJI1, big=True)
+    await message.react(emoji=EMOJI1, big=True)
     is_joined = await checkSub(bot, message)
     if not is_joined: return
     await message.reply_text("use /start command to get started.")
@@ -68,10 +68,9 @@ async def about(bot, message):
     await message.react(emoji=EMOJI4, big=True)
     is_joined = await checkSub(bot, message)
     if not is_joined: return
-    # await message.reply_photo(
-    await message.reply_text(
-        # photo=DS.START_IMG,
-        text=TXT.ABOUT,
+    await message.reply_photo(
+        photo=DS.START_IMG,
+        caption=TXT.ABOUT,
         parse_mode=enums.ParseMode.HTML,
         reply_markup=BTN.ABOUT_BTN,
         disable_web_page_preview=True 

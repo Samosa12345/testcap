@@ -7,7 +7,7 @@ from pyrogram import Client, filters, enums
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from pyrogram.errors import UserNotParticipant
 from config import DS as Config
-
+from .button import temp
 
 # ===================== [ Force Sub Def ] ===================== #
 

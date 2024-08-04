@@ -17,7 +17,7 @@ class BTN(object):
 
     START_BTN = InlineKeyboardMarkup(
         [[
-            InlineKeyboardButton("➕ Aᴅᴅ Mᴇ Tᴏ Yᴏᴜʀ Cʜᴀɴɴᴇʟ ➕", url=f"https://t.me/{temp.U_NAME}?startchannel=True") #botstart
+            InlineKeyboardButton("➕ Aᴅᴅ Mᴇ Tᴏ Yᴏᴜʀ Cʜᴀɴɴᴇʟ ➕", url=f"https://t.me/Public_Caption_Bot?startchannel=True") #botstart
         ],[
             InlineKeyboardButton("❗ Help ", callback_data="help"),
             InlineKeyboardButton("Aʙᴏᴜᴛ 🕵🏻", callback_data="about")
@@ -41,7 +41,7 @@ class BTN(object):
 
     ABOUT_BTN = InlineKeyboardMarkup(
         [[
-            InlineKeyboardButton("HOW TO USE ME❓", callback_data = "help")
+            InlineKeyboardButton("HOW TO USE ME❓", callback_data="help")
         ],[
             InlineKeyboardButton("🏠 HOME", callback_data = "start"), 
             InlineKeyboardButton("CLOSE 🔒", callback_data = "close")

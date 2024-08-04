@@ -3,7 +3,7 @@
 # ===================== [ importing Requirements ] ===================== #
 import os
 from translation import TXT
-from pyrogram import enums, Client, query
+from pyrogram import enums, Client
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
 from config import DS
 

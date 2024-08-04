@@ -84,7 +84,7 @@ class BTN(object):
 @Client.on_callback_query()
 async def cb_handler(client: Client, query: CallbackQuery):
     if query.data == "start":
-        await Client.edit_message_media(
+        await client.edit_message_media(
             chat_id=query.message.chat.id, 
             message_id=query.message.id, 
             media=InputMediaPhoto(media=DS.START_PIC)
@@ -95,7 +95,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             parse_mode=enums.ParseMode.HTML
         )            
     elif query.data == "donate":
-        await Client.edit_message_media(
+        await client.edit_message_media(
             chat_id=query.message.chat.id, 
             message_id=query.message.id, 
             media=InputMediaPhoto(media=DS.UPI_QR_CODE)
@@ -107,7 +107,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
 
     elif query.data == "markdowns":
-        await Client.edit_message_media(
+        await client.edit_message_media(
             chat_id=query.message.chat.id, 
             message_id=query.message.id, 
             media=InputMediaPhoto(media=DS.START_PIC)
@@ -118,7 +118,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             parse_mode=enums.ParseMode.HTML
         )
     elif query.data == "about":
-        await Client.edit_message_media(
+        await client.edit_message_media(
             chat_id=query.message.chat.id, 
             message_id=query.message.id, 
             media=InputMediaPhoto(media=DS.START_PIC)
@@ -129,7 +129,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             parse_mode=enums.ParseMode.HTML
         )  
     elif query.data == "help":
-        await Client.edit_message_media(
+        await client.edit_message_media(
             chat_id=query.message.chat.id, 
             message_id=query.message.id, 
             media=InputMediaPhoto(media=DS.START_PIC)

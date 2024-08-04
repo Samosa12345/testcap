@@ -15,7 +15,7 @@ I ᴀᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ ᴇᴅɪᴛ ᴄᴀᴘᴛɪᴏɴꜱ ғᴏʀ
 
 <blockquote>ᴜꜱᴇ /setcap ᴛᴏ ꜱᴇᴛ ᴄᴀᴘᴛɪᴏɴ\nUꜱᴇ /delcap Tᴏ ᴅᴇʟᴇᴛᴇ ᴄᴀᴘᴛɪᴏɴ ᴀɴᴅ ꜱᴇᴛ ᴄᴀᴘᴛɪᴏɴ ᴛᴏ ᴅᴇғᴀᴜʟᴛ.</blockquote>
 
-Nᴏᴛᴇ: Aʟʟ ᴄᴏᴍᴍᴀɴᴅꜱ ᴡᴏʀᴋꜱ ᴏɴ ᴄʜᴀɴɴᴇʟꜱ ᴏɴʟʏ ⚠</b>"""
+Nᴏᴛᴇ: Cᴀᴘᴛɪᴏɴ ᴄᴏᴍᴍᴀɴᴅꜱ ᴡᴏʀᴋꜱ ᴏɴ ᴄʜᴀɴɴᴇʟꜱ ᴏɴʟʏ ⚠</b>"""
 
 # ===================== [ HELP TEXT ] ===================== # 
 
@@ -108,11 +108,11 @@ or Scan this QRCode.</b>
 # ===================== [ PRIVACY TEXT ] ===================== #
 
 
-    PRIVACY = """<b><u>Privacy Policy for Public Caption Bot</u></b>
+    PRIVACY = """<blockquote><b><u>Privacy Policy for Public Caption Bot</u></b></blockquote>
 
-Last updated: 15-0-2024
+Last updated: 15-08-2024
 
-Thank you for using Public Caption Bot! This Privacy Policy 
+Thank you for using Public Caption Bot ! This Privacy Policy 
 describes how your personal information is collected, used, 
 and shared when you use this bot.
 

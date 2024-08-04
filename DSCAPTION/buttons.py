@@ -4,7 +4,7 @@
 import os
 from translation import TXT
 from pyrogram import enums, Client
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery, InputMediaPhoto
 from config import DS
 
 # ===================== [ BUTTON CODES ] ===================== #

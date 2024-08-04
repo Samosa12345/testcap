@@ -20,7 +20,7 @@ class BTN(object):
             InlineKeyboardButton("➕ Aᴅᴅ Mᴇ Tᴏ Yᴏᴜʀ Cʜᴀɴɴᴇʟ ➕", url=f"https://t.me/{temp.U_NAME}?startchannel=True") #botstart
         ],[
             InlineKeyboardButton("❗ Help ", callback_data="help"),
-            InlineKeyboardButton("Aʙᴏᴜᴛ 🕵️", callback_data="about")
+            InlineKeyboardButton("Aʙᴏᴜᴛ 🕵🏻", callback_data="about")
         ],[
             InlineKeyboardButton("✨ Mᴀʀᴋᴅᴏᴡɴꜱ ", callback_data="markdowns"),
             InlineKeyboardButton("Dᴏɴᴀᴛᴇ 🤞🏻", callback_data="donate")

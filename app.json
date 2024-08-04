@@ -1,0 +1,50 @@
+{
+    "name": "DS-AutoCaptionBot",
+    "description": "Telegram Channel Auto Caption Bot ",
+    "logo": "https://telegra.ph/file/c5952790fa8235f499749.jpg",
+    "keywords": ["AutoCaptionBot", "Mongo DB"],    
+    "repository": "https://github.com/Sanchit/DS_AutoCaptionBot",
+    "env": {
+        "API_ID": {
+            "description": "Your APP ID From my.telegram.org ",
+            "value": ""
+        },
+        "API_HASH": {
+            "description": "Your API Hash From my.telegram.org ",
+            "value": ""
+        },
+        
+        "FORCE_SUB": {
+            "description": "Your force sub channel id",
+            "value": "",
+            "required": true 
+        },
+        "BOT_TOKEN": {
+            "description": "Your Bot Token From @BotFather",
+            "value": ""
+        },
+        "ADMIN": {
+            "description":"Add Your User ID multiple is use space to split"
+        },
+        
+        "DB_URL": {
+            "description": "Your Mongo DB URL Obtained From mongodb.com",
+            "value": ""
+        },
+        "DB_NAME":{ 
+            "description":"Your Mongo DB Database Name ",
+            "value": "SnowPro_Users",
+            "required": false
+        },
+        "START_PIC": {
+            "description": "Start Command Picture (Put Telegraph Link)",
+            "value": "",
+            "required": false
+        }
+    },
+    "buildpacks": [
+        {
+            "url": "heroku/python"
+        }
+    ]
+}

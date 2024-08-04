@@ -48,7 +48,7 @@ Eg:- <code>/setcap
 
 # ===================== [ ABOUT TEXT ] ===================== #
 
-    ABOUT = """<b>⍟────[ 𝐀𝐛𝐨𝐮𝐭 𝐌𝐞 ]────⍟
+    ABOUT = """<b>⍟────[ 🔘 𝐀𝐛𝐨𝐮𝐭 𝐌𝐞 🔘 ]────⍟
 
 <blockquote>➣ 📃ʙᴏᴛ : <a href='https://t.me/Public_Caption_Bot'>Pᴜʙʟɪᴄ Aᴜᴛᴏ Cᴀᴘᴛɪᴏɴ</a>
 ➣ 👦Dᴇᴠᴇʟᴏᴘᴇʀ : <a href='https://t.me/THE_DS_OFFICIAL'>ՏIᒪᗴᑎT ᘜᕼOՏT ⚡️</a>
@@ -63,31 +63,32 @@ Eg:- <code>/setcap
 # ===================== [ MARKDOWN TEXT ] ===================== #
 
 
-    MARKDOWN ="""🔰 <u>𝐀𝐛𝐨𝐮𝐭 𝐌𝐚𝐫𝐤𝐝𝐨𝐰𝐧𝐬</u> 🔰
-
-💡 <b>Bold text</b>
-  <code>**{file_name}**</code> 𝐨𝐫 <code><b>{file_name}</b></code>
-
-💡 <b>Italic text</b>
-  <code>__{post_caption}__</code> 𝐨𝐫 <code><i>{post_caption}</i></code>
-
-💡 <b>Code text</b>
-  <code>`{file_size}`</code> 𝐨𝐫 <code><code>{file_size}</code></code>  
-
-💡 <b>Quote Text</b>
-  <code> > {file_name}</code> 𝐨𝐫 <code><blockquote>{file_size}</blockquote></code>  
-
-💡 <b>Underline Text</b>
-  <code><u>{post_caption}</u></code>
-
-💡 <b>Strike Text</b>
-  <code>~~{file_size}~~</code> 𝐨𝐫 <code><s>{file_size}</s></code>
-
-💡 <b>Spoiler Text</b>
-  <code>||{file_name}||</code> 𝐨𝐫 <code><spoiler>{file_name}</spoiler></code>
-
-💡 <b>Hyperlink text</b>
-  <code>[{post_caption}](https://t.me/Public_Caption_Bot)</code>""" 
+    MARKDOWN ="""<b>╔════❰ 🔰 <u>𝐀𝐛𝐨𝐮𝐭 𝐌𝐚𝐫𝐤𝐝𝐨𝐰𝐧𝐬</u> 🔰 ❱════➣
+║
+║ <i>𝐁𝐨𝐥𝐝 𝐓𝐞𝐱𝐭</i>
+║ 👉🏻 <code>**{file_name}**</code>   
+║
+║ <i>𝐈𝐭𝐚𝐥𝐢𝐜 𝐓𝐞𝐱𝐭</i>
+║ 👉🏻 <code>__{post_caption}__</code>   
+║
+║ <i>𝐂𝐨𝐝𝐞 𝐓𝐞𝐱𝐭</i>
+║ 👉🏻 <code>`{file_size}`</code>   
+║
+║ <i>𝐐𝐮𝐨𝐭𝐞 𝐓𝐞𝐱𝐭</i>
+║ 👉🏻 <code> > {file_name}</code>   
+║
+║ <i>𝐒𝐭𝐫𝐢𝐤𝐞 𝐓𝐞𝐱𝐭</i>
+║ 👉🏻 <code>~~{file_size}~~</code>   
+║
+║ <i>𝐒𝐩𝐨𝐢𝐥𝐞𝐫 𝐓𝐞𝐱𝐭</i>
+║ 👉🏻 <code>||{file_name}||</code>   
+║
+║ <i>𝐔𝐧𝐝𝐞𝐫𝐥𝐢𝐧𝐞 𝐓𝐞𝐱𝐭</i>
+║ 👉🏻 <code><u>{post_caption}</u></code>
+║  
+║ <i>𝐇𝐲𝐩𝐞𝐫𝐥𝐢𝐧𝐤 𝐓𝐞𝐱𝐭</i>
+║ 👉🏻 <code>[{post_caption}](https://t.me/Public_Caption_Bot)</code>
+╚════════════════════════════════➣""" 
     
 
 # ===================== [ DONATE TEXT ] ===================== #
@@ -95,12 +96,7 @@ Eg:- <code>/setcap
 
     DONATE = """<b>Hello Dear 👋🏻,
 
-As you already know, this Advance Caption bot service is a free 
-service. To run such a service, there are server expenses involved, I 
-would really appreciate some  donation which will really help the 
-service to be alive. Any amount is fine (10, 20, 30, 50, 100...) as long 
-as you think the service deserves it. You can donate through UPI ID 
-or Scan this QRCode.</b>
+As you already know, this Advance Caption bot service is a free service. To run such a service, there are server expenses involved, I would really appreciate some  donation which will really help the service to be alive. Any amount is fine (10, 20, 30, 50, 100...) as long as you think the service deserves it. You can donate through UPI ID or Scan this QRCode.</b>
 
 <i><b>Thanks in advance, your contributions really matters.</b></i>
 """
@@ -108,40 +104,31 @@ or Scan this QRCode.</b>
 # ===================== [ PRIVACY TEXT ] ===================== #
 
 
-    PRIVACY = """<blockquote><b><u>Privacy Policy for Public Caption Bot</u></b></blockquote>
+    PRIVACY = """<blockquote><b><u>Privacy Policy for Public Caption Bot ✨</u></b></blockquote>
 
 Last updated: 15-08-2024
 
-Thank you for using Public Caption Bot ! This Privacy Policy 
-describes how your personal information is collected, used, 
-and shared when you use this bot.
+Thank you for using Public Caption Bot ! This Privacy Policy describes how your personal information is collected, used, and shared when you use this bot.
 
 <blockquote><b><u>Information We Collect</u></b></blockquote>
 
-Public Caption Bot does not collect any personal information 
-from its users.
+Public Caption Bot does not collect any personal information from its users.
 
 <blockquote><b><u><u>How We Use Your Information</u></b></blockquote>
 
-Since we do not collect any personal information, we do not use, 
-store, or share any information about you.
+Since we do not collect any personal information, we do not use, store, or share any information about you.
 
 <blockquote><b><u>Sharing Your Information</u></b></blockquote>
 
-We do not share any personal information because we do not collect 
-any personal information.
+We do not share any personal information because we do not collect any personal information.
 
 <blockquote><b><u>Changes to This Privacy Policy</u></b></blockquote>
 
-We may update this Privacy Policy from time to time in order to 
-reflect, for example, changes to our practices or for other 
-operational, legal, or regulatory reasons.
+We may update this Privacy Policy from time to time in order to reflect, for example, changes to our practices or for other operational, legal, or regulatory reasons.
 
 <blockquote><b><u>Contact</u></b></blockquote>
 
-If you have any questions or suggestions about our Privacy Policy, 
-Then Contact My Developer (see /start).</b>
-"""
+If you have any questions or suggestions about our Privacy Policy, Then Contact My Developer (see /start).</b>"""
 
 
 # ===================== [ BOT LIST TEXT ] ===================== #
@@ -152,34 +139,28 @@ Then Contact My Developer (see /start).</b>
 <blockquote>1. <b>Public File Store Bot</b> ⚡
     👉🏻 @PublicFileStore01_Bot</blockquote>
     
-    You Can Save Your Files, Videos, Photos etc On Bot,
-    and get anywhere, anytime when you want !
+    You Can Save Your Files, Videos, Photos etc
+    On Bot, and get anywhere, anytime when you want !
 
 <blockquote>2. <b>Public File To Link / Stream Bot</b> ⚡
     👉🏻 @PublicFileToLink01Bot</blockquote>
 
-    You Can Generate Fast Download link & Stream Link 
-    Stream Videos On Internet (Without Downloading)
-    Group Support Added !
+    You Can Generate Fast Download link & Stream Link! Also Stream Videos On Internet (Without Downloading) and having Group Support!
 
 <blockquote>3. <b>Public Auto Reaction Bot</b> ⚡
     👉🏻 @SILENT_REACT_BOT</blockquote>
 
-    This Bot Will Give Reaction On Your Message !
-    Support In Group & Channel Both ! 
+    This Bot Will Give Reaction On Your Message !, Support In Group & Channel Both ! 
 
 <blockquote>4. <b>Public Caption Bot Beta</b> ⚡
     👉🏻 @PublicCaption_Bot</blockquote>
 
-    This bot is Beta Version Of Advance Caption Bot !
-    Easy To Use !
-    This Bot have Simple UI & Caption System  
+    This bot is Beta Version Of Advance Caption Bot ! Easy To Use & Very Simple UI & Caption System  
 
 <blockquote>5. <b>Advance Public Caption Bot</b> ⚡
     👉🏻 @Public_Caption_Bot</blockquote>
 
-    This is an advance and Multifunctional caption bot !
-    caption with file_name & post_caption & file_size Supported
+    This is an advance and Multifunctional caption bot ! it have caption with file_name & post_caption & file_size Supported
 
 <blockquote>6. <b>Public Instagram Downloader Bot</b> ⚡</blockquote>
     👉🏻 Bot is Under maintaince
@@ -187,5 +168,16 @@ Then Contact My Developer (see /start).</b>
 <blockquote>7. <b>Public Spotify Music Downloader Bot</b></blockquote>
     👉🏻 Bot is Under maintaince"""
 
+    SAMPLE = """𝐨𝐫   <code><b>{file_name}</b></code>
 
+    𝐨𝐫   <code><i>{post_caption}</i></code>
+
+    𝐨𝐫   <code><code>{file_size}</code></code>  
+
+    𝐨𝐫   <code><blockquote>{file_size}</blockquote></code>  
+
+    𝐨𝐫   <code><s>{file_size}</s></code>
+
+    𝐨𝐫   <code><spoiler>{file_name}</spoiler></code>
+    """
 # ===================== [😎 END OF translation.py 😎] ===================== #

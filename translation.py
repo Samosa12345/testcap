@@ -63,32 +63,32 @@ Eg:- <code>/setcap
 # ===================== [ MARKDOWN TEXT ] ===================== #
 
 
-    MARKDOWN ="""<b>╔════❰ 🔰 <u>𝐀𝐛𝐨𝐮𝐭 𝐌𝐚𝐫𝐤𝐝𝐨𝐰𝐧𝐬</u> 🔰 ❱════➣
+    MARKDOWN ="""<b>╔═❰ 🔰 <u>𝐀𝐛𝐨𝐮𝐭 𝐌𝐚𝐫𝐤𝐝𝐨𝐰𝐧𝐬</u> 🔰 ❱══➣
 ║
-║ <i>𝐁𝐨𝐥𝐝 𝐓𝐞𝐱𝐭</i>
-║ 👉🏻 <code>**{file_name}**</code>   
+║   <i>𝐁𝐨𝐥𝐝 𝐓𝐞𝐱𝐭</i>
+║   👉🏻  <code>**{file_name}**</code>   
 ║
-║ <i>𝐈𝐭𝐚𝐥𝐢𝐜 𝐓𝐞𝐱𝐭</i>
-║ 👉🏻 <code>__{post_caption}__</code>   
-║
-║ <i>𝐂𝐨𝐝𝐞 𝐓𝐞𝐱𝐭</i>
-║ 👉🏻 <code>`{file_size}`</code>   
-║
-║ <i>𝐐𝐮𝐨𝐭𝐞 𝐓𝐞𝐱𝐭</i>
-║ 👉🏻 <code> > {file_name}</code>   
-║
-║ <i>𝐒𝐭𝐫𝐢𝐤𝐞 𝐓𝐞𝐱𝐭</i>
-║ 👉🏻 <code>~~{file_size}~~</code>   
-║
-║ <i>𝐒𝐩𝐨𝐢𝐥𝐞𝐫 𝐓𝐞𝐱𝐭</i>
-║ 👉🏻 <code>||{file_name}||</code>   
-║
-║ <i>𝐔𝐧𝐝𝐞𝐫𝐥𝐢𝐧𝐞 𝐓𝐞𝐱𝐭</i>
-║ 👉🏻 <code><u>{post_caption}</u></code>
+║   <i>𝐈𝐭𝐚𝐥𝐢𝐜 𝐓𝐞𝐱𝐭</i>
+║   👉🏻  <code>__{post_caption}__</code>   
 ║  
-║ <i>𝐇𝐲𝐩𝐞𝐫𝐥𝐢𝐧𝐤 𝐓𝐞𝐱𝐭</i>
-║ 👉🏻 <code>[{post_caption}](https://t.me/Public_Caption_Bot)</code>
-╚════════════════════════════════➣""" 
+║   <i>𝐂𝐨𝐝𝐞 𝐓𝐞𝐱𝐭</i>
+║   👉🏻  <code>`{file_size}`</code>   
+║
+║   <i>𝐐𝐮𝐨𝐭𝐞 𝐓𝐞𝐱𝐭</i>
+║   👉🏻  <code> > {file_name}</code>   
+║
+║   <i>𝐒𝐭𝐫𝐢𝐤𝐞 𝐓𝐞𝐱𝐭</i>
+║   👉🏻  <code>~~{file_size}~~</code>   
+║
+║   <i>𝐒𝐩𝐨𝐢𝐥𝐞𝐫 𝐓𝐞𝐱𝐭</i>
+║   👉🏻  <code>||{file_name}||</code>   
+║
+║   <i>𝐔𝐧𝐝𝐞𝐫𝐥𝐢𝐧𝐞 𝐓𝐞𝐱𝐭</i>
+║   👉🏻  <code><u>{post_caption}</u></code>
+║  
+║   <i>𝐇𝐲𝐩𝐞𝐫𝐥𝐢𝐧𝐤 𝐓𝐞𝐱𝐭</i>
+║   👉🏻  <code>[{post_caption}](https://t.me/Public_Caption_Bot)</code>
+╚══════════════════➣""" 
     
 
 # ===================== [ DONATE TEXT ] ===================== #

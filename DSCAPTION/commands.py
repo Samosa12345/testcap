@@ -20,7 +20,7 @@ EMOJI1 = "🤔"
 
 @Client.on_message(filters.private & filters.incoming)
 async def capBot(bot, message):
-    await message.react(emoji=EMOJI1, big=True)
+    # await message.react(emoji=EMOJI1, big=True)
     is_joined = await checkSub(bot, message)
     if not is_joined: return
     await message.reply_text("use /start command to get started.")
@@ -32,7 +32,7 @@ EMOJI2 = "😘"
 
 @Client.on_message(filters.command("start") & filters.private)
 async def start_cmd(bot, message):
-    await message.react(emoji=EMOJI2, big=True)
+    # await message.react(emoji=EMOJI2, big=True)
     user_id = int(message.from_user.id)
     await insert(user_id)
     is_joined = await checkSub(bot, message)

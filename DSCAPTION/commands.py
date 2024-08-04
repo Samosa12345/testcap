@@ -45,7 +45,7 @@ async def start_cmd(bot, message):
 
 # ===================== [ Help Command ] ===================== #
 
-EMOJI3 = "😉"
+EMOJI3 = "👻"
 
 @Client.on_message(filters.command(["help"]) & filters.private)
 async def help_cmd(bot, message):

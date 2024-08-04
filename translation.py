@@ -124,17 +124,17 @@ and shared when you use this bot.
 Public Caption Bot does not collect any personal information 
 from its users.
 
-<b><u><u>How We Use Your Information</u><b>
+<b><u><u>How We Use Your Information</u></b>
 
 Since we do not collect any personal information, we do not use, 
 store, or share any information about you.
 
-<b><u>Sharing Your Information</u><b>
+<b><u>Sharing Your Information</u></b>
 
 We do not share any personal information because we do not collect 
 any personal information.
 
-<b><u>Changes to This Privacy Policy</u><b>
+<b><u>Changes to This Privacy Policy</u></b>
 
 We may update this Privacy Policy from time to time in order to 
 reflect, for example, changes to our practices or for other 
@@ -150,44 +150,44 @@ Then Contact My Developer (see /start).</b>
 # ===================== [ BOT LIST TEXT ] ===================== #
 
 
-    BOTLIST = """🔥 <u>𝐒𝐢𝐥𝐞𝐧𝐭 𝐏𝐮𝐛𝐥𝐢𝐜 𝐁𝐨𝐭 𝐋𝐢𝐬𝐭</u> 🔥
+    BOTLIST = """<blockquote>🔥 <u>𝐒𝐢𝐥𝐞𝐧𝐭 𝐏𝐮𝐛𝐥𝐢𝐜 𝐁𝐨𝐭 𝐋𝐢𝐬𝐭</u> 🔥</blockquote>
 
-1.  <b>Public File Store Bot</b> ⚡
-    👉🏻 @PublicFileStore01_Bot
+1.  <blockquote><b>Public File Store Bot</b> ⚡
+    👉🏻 @PublicFileStore01_Bot</blockquote>
     
     You Can Save Your Files, Videos, Photos etc On Bot,
     and get anywhere, anytime when you want !
 
-2. <b>Public File To Link / Stream Bot</b> ⚡
-    👉🏻 @PublicFileToLink01Bot
+<blockquote>2. <b>Public File To Link / Stream Bot</b> ⚡
+    👉🏻 @PublicFileToLink01Bot</blockquote>
 
     You Can Generate Fast Download link & Stream Link 
     Stream Videos On Internet (Without Downloading)
     Group Support Added !
 
-3. <b>Public Auto Reaction Bot</b> ⚡
-    👉🏻 @SILENT_REACT_BOT
+<blockquote>3. <b>Public Auto Reaction Bot</b> ⚡
+    👉🏻 @SILENT_REACT_BOT</blockquote>
 
     This Bot Will Give Reaction On Your Message !
     Support In Group & Channel Both ! 
 
-4. <b>Public Caption Bot Beta</b> ⚡
-    👉🏻 @PublicCaption_Bot 
+<blockquote>4. <b>Public Caption Bot Beta</b> ⚡
+    👉🏻 @PublicCaption_Bot</blockquote>
 
     This bot is Beta Version Of Advance Caption Bot !
     Easy To Use !
     This Bot have Simple UI & Caption System  
 
-5. <b>Advance Public Caption Bot</b> ⚡
-    👉🏻 @Public_Caption_Bot
+<blockquote>5. <b>Advance Public Caption Bot</b> ⚡
+    👉🏻 @Public_Caption_Bot</blockquote>
 
     This is an advance and Multifunctional caption bot !
     caption with file_name & post_caption & file_size Supported
 
-6. <b>Public Instagram Downloader Bot</b> ⚡
+<blockquote>6. <b>Public Instagram Downloader Bot</b> ⚡
     👉🏻 Bot is Under maintaince
     
-7. <b>Public Spotify Music Downloader Bot</b>
+<blockquote>7. <b>Public Spotify Music Downloader Bot</b></blockquote>
     👉🏻 Bot is Under maintaince"""
 
 

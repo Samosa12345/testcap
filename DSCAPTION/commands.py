@@ -18,7 +18,7 @@ from translation import TXT
 
 EMOJI1 = "🤔"
 
-@Client.on_message(filters.private & filters.incoming)
+# @Client.on_message(filters.private & filters.incoming)
 async def capBot(bot, message):
     # await message.react(emoji=EMOJI1, big=True)
     is_joined = await checkSub(bot, message)

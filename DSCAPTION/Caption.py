@@ -272,21 +272,41 @@ def get_size(size):
 
 # ===================== [ Quality Extract Function ] ===================== #
 
+# Extract video quality from caption
 def extract_quality(default_caption):
-    quality_pattern = r'\b(2160p|4k|1440p|1080p|720p|575p|560p|480p|360p|240p)\b(?:\s+(HEVC))?'
+    # Updated regex for quality (with optional HEVC tag)
+    quality_pattern = r'\b(2160p|4k|1440p|1080p|720p|576p|560p|480p|360p|240p)\b(?:\s*(HEVC))?'
+    
+    # Find all matches, capturing quality and HEVC
     qualities = set(re.findall(quality_pattern, default_caption, re.IGNORECASE))
+    
     if not qualities:
         return "Unknown Quality"
-    return ", ".join(sorted(qualities, key=str.lower))
+    
+    # Only return the quality, optionally including 'HEVC' if it was matched
+    result = []
+    for quality, hevc in qualities:
+        result.append(quality)
+        if hevc:
+            result.append(f"{hevc.upper()}")  # Ensure HEVC is in uppercase
+    return ", ".join(sorted(result, key=str.lower))
 
 # ===================== [ Language Extraction Function ] ===================== #
 
+# Extract language(s) from caption
 def extract_language(default_caption):
-    language_pattern = r'\b(Hindi|hindi|hin|Marathi|mar|marathi|English|Eng|eng|english|Gujarati|gujarati|Guj|guj|Tamil|Tam|tamil|tam|Telugu|telugu|tel|Tel|Malayalam|malayalam|Mal|mal|Kannada|kan|Kan|kannada|Hin)\b'#Contribute More Language If You Have
+    # Optimized regex for language detection
+    language_pattern = r'\b(Hindi|hindi|hin|Marathi|mar|marathi|English|Eng|eng|english|Gujarati|gujarati|Guj|guj|Tamil|Tam|tamil|tam|Telugu|telugu|tel|Tel|Malayalam|malayalam|Mal|mal|Kannada|kan|Kan|kannada|Hin)\b'
+    
+    # Find all matches (case insensitive)
     languages = set(re.findall(language_pattern, default_caption, re.IGNORECASE))
+    
     if not languages:
-        return "Hindi-English"
+        return "Hindi-English"  # Default fallback
+    
+    # Sort languages alphabetically and return as comma-separated string
     return ", ".join(sorted(languages, key=str.lower))
+
 
 # ===================== [ Year Extract Function ] ===================== #
 

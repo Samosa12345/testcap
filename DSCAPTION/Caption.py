@@ -288,7 +288,7 @@ def extract_quality(default_caption):
     for quality, hevc in qualities:
         result.append(quality)
         if hevc:
-            result.append(f"{hevc.upper()}")  # Ensure HEVC is in uppercase
+            result.append(f"HEVC")  # Ensure HEVC is in uppercase
     return ", ".join(sorted(result, key=str.lower))
 
 # ===================== [ Language Extraction Function ] ===================== #

@@ -1,5 +1,6 @@
 datetime 
-pyrofork
+pyrogram==2.0.106
+pyrofork==2.3.48
 tgcrypto
 motor
 aiohttp

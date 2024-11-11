@@ -145,7 +145,7 @@ async def auto_edit_caption(bot, message):
                             language=language,
                             year=year,
                             file_type=media_type,
-                            duration=format_duration(duration)  # Include duration in caption
+                            duration=format_duration(duration),  # Include duration in caption
                             mime_type=mime_type,
                             durations=duration1
                         )

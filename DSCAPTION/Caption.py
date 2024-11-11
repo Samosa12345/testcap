@@ -91,7 +91,6 @@ async def auto_edit_caption(bot, message):
         return str(timedelta(seconds=duration))
 
     if message.media:
-        media_type = message.media.media_type  # Extract media type
         for file_type in ("video", "audio", "document", "voice"):
             obj = getattr(message, file_type, None)
             if obj and hasattr(obj, "file_name"):
@@ -107,6 +106,26 @@ async def auto_edit_caption(bot, message):
                     .replace(".", " ")
                 )
 
+                mime_type = "Unknown"
+                if hasattr(message.media, "mime_type"):
+                    mime_type = message.media.mime_type
+
+                duration1 = "Unknown"
+                if hasattr(message.media, "duration"):
+                    duration1 = message.media.duration
+
+                media_type = "Unknown"  # This is what you're trying to determine
+                if message.photo:
+                    media_type = "Photo"
+                elif message.video:
+                    media_type = "Video"
+                elif message.document:
+                    media_type = "Document"
+                elif message.audio:
+                    media_type = "Audio"
+                elif message.voice:
+                    media_type = "Voice Note" 
+                
                 # Extract media duration if available
                 duration = 0  # Default to 0
                 if media_type == "video" and obj.duration:
@@ -127,6 +146,8 @@ async def auto_edit_caption(bot, message):
                             year=year,
                             file_type=media_type,
                             duration=format_duration(duration)  # Include duration in caption
+                            mime_type=mime_type,
+                            durations=duration1
                         )
                         await message.edit(replaced_caption) 
                     else:

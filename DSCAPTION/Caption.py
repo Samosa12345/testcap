@@ -7,7 +7,8 @@ import asyncio, re
 from pyrogram.errors import FloodWait
 from pyrogram import Client, filters
 from .database import addCap, updateCap, chnl_ids
-    
+from pyrogram.types import Message
+from datetime import timedelta    
 
 # ===================== [ Set Caption Command ] ===================== #
 
@@ -49,7 +50,7 @@ async def delCaption(_, msg):
 
 # ===================== [ Edit Caption In Channel ] ===================== #
 
-
+"""
 @Client.on_message(filters.channel)
 async def auto_edit_caption(bot, message):
     chnl_id = message.chat.id
@@ -77,6 +78,64 @@ async def auto_edit_caption(bot, message):
                     await asyncio.sleep(e.x)
                     continue
     return
+    """
+
+
+@Client.on_message(filters.channel)
+async def auto_edit_caption(bot, message):
+    chnl_id = message.chat.id
+    default_caption = message.caption or message.text or ""
+    
+    # Function to format duration to HH:MM:SS
+    def format_duration(duration: int):
+        return str(timedelta(seconds=duration))
+
+    if message.media:
+        media_type = message.media.type  # Extract media type
+        for file_type in ("video", "audio", "document", "voice"):
+            obj = getattr(message, file_type, None)
+            if obj and hasattr(obj, "file_name"):
+                file_name = obj.file_name
+                file_size = obj.file_size
+                language = extract_language(default_caption)
+                year = extract_year(default_caption)
+
+                # Clean the file name
+                file_name = (
+                    re.sub(r"@\w+\s*", "", file_name)
+                    .replace("_", " ")
+                    .replace(".", " ")
+                )
+
+                # Extract media duration if available
+                duration = 0  # Default to 0
+                if media_type == "video" and obj.duration:
+                    duration = obj.duration  # Video duration in seconds
+                elif media_type == "audio" and obj.duration:
+                    duration = obj.duration  # Audio duration in seconds
+
+                # Get caption details from the database
+                cap_dets = await chnl_ids.find_one({"chnl_id": chnl_id})
+                try:
+                    if cap_dets:
+                        cap = cap_dets["caption"]
+                        replaced_caption = cap.format(
+                            file_name=file_name,
+                            file_size=get_size(file_size),
+                            file_caption=default_caption,
+                            language=language,
+                            year=year,
+                            file_type=media_type,
+                            duration=format_duration(duration)  # Include duration in caption
+                        )
+                        await message.edit(replaced_caption) 
+                    else:
+                        replaced_caption = DEF_CAP.format(file_name=default_caption)
+                        await message.edit(replaced_caption)
+                except FloodWait as e:
+                    await asyncio.sleep(e.x)
+                    continue
+    return
 
 # ===================== [ Size Conversion Function ] ===================== #
 
@@ -90,5 +149,28 @@ def get_size(size):
         size /= 1024.0
     return "%.2f %s" % (size, units[i])
 
+# ===================== [ Quality Extract Function ] ===================== #
+
+def extract_quality(default_caption):
+    quality_pattern = r'\b(2160p|4k|1440p|1080p|720p|575p|560p|480p|360p|240p)\b(?:\s+(HEVC))?'
+    qualities = set(re.findall(quality_pattern, default_caption, re.IGNORECASE))
+    if not qualities:
+        return "Unknown Quality"
+    return ", ".join(sorted(qualities, key=str.lower))
+
+# ===================== [ Language Extraction Function ] ===================== #
+
+def extract_language(default_caption):
+    language_pattern = r'\b(Hindi|hindi|hin|Marathi|mar|marathi|English|Eng|eng|english|Gujarati|gujarati|Guj|guj|Tamil|Tam|tamil|tam|Telugu|telugu|tel|Tel|Malayalam|malayalam|Mal|mal|Kannada|kan|Kan|kannada|Hin)\b'#Contribute More Language If You Have
+    languages = set(re.findall(language_pattern, default_caption, re.IGNORECASE))
+    if not languages:
+        return "Hindi-English"
+    return ", ".join(sorted(languages, key=str.lower))
+
+# ===================== [ Year Extract Function ] ===================== #
+
+def extract_year(default_caption):
+    match = re.search(r'\b(19\d{2}|20\d{2})\b', default_caption)
+    return match.group(1) if match else None
 
 # ===================== [🔺 End Of Caption.py 🔺] ===================== #

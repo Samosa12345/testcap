@@ -91,7 +91,7 @@ async def auto_edit_caption(bot, message):
         return str(timedelta(seconds=duration))
 
     if message.media:
-        media_type = message.media.type  # Extract media type
+        media_type = message.media.media_type  # Extract media type
         for file_type in ("video", "audio", "document", "voice"):
             obj = getattr(message, file_type, None)
             if obj and hasattr(obj, "file_name"):

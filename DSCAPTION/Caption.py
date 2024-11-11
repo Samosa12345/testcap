@@ -78,7 +78,7 @@ async def auto_edit_caption(bot, message):
                     await asyncio.sleep(e.x)
                     continue
     return
-    """
+    
 
 
 @Client.on_message(filters.channel)
@@ -129,14 +129,14 @@ async def auto_edit_caption(bot, message):
                     media_type = "Audio"
                 elif message.voice:
                     media_type = "Voice Note" 
-                """
+                
                 # Extract media duration if available
                 duration = 0  # Default to 0
                 if media_type == "video" and obj.duration:
                     duration = obj.duration  # Video duration in seconds
                 elif media_type == "audio" and obj.duration:
                     duration = obj.duration  # Audio duration in seconds
-"""
+
                 # Get caption details from the database
                 cap_dets = await chnl_ids.find_one({"chnl_id": chnl_id})
                 try:
@@ -160,7 +160,103 @@ async def auto_edit_caption(bot, message):
                 except FloodWait as e:
                     await asyncio.sleep(e.x)
                     continue
+    return"""
+
+@Client.on_message(filters.channel)
+async def auto_edit_caption(bot, message):
+    chnl_id = message.chat.id
+    default_caption = message.caption or message.text or ""
+
+    # Function to format duration to HH:MM:SS
+    def format_duration(duration: int):
+        return str(timedelta(seconds=duration))
+
+    if message.media:
+        # Check the file type for duration and mime_type
+        file_type = None
+        obj = None
+        media_type = "Unknown"
+        duration = "Unknown"
+        mime_type = "Unknown"
+
+        if message.video:
+            file_type = "video"
+            obj = message.video
+            media_type = "Video"
+            if hasattr(obj, "duration"):
+                duration = obj.duration
+            if hasattr(message.media, "mime_type"):
+                mime_type = message.media.mime_type
+        elif message.audio:
+            file_type = "audio"
+            obj = message.audio
+            media_type = "Audio"
+            if hasattr(obj, "duration"):
+                duration = obj.duration
+            if hasattr(message.media, "mime_type"):
+                mime_type = message.media.mime_type
+        elif message.document:
+            file_type = "document"
+            obj = message.document
+            media_type = "Document"
+            if hasattr(message.media, "mime_type"):
+                mime_type = message.media.mime_type
+        elif message.voice:
+            file_type = "voice"
+            obj = message.voice
+            media_type = "Voice Note"
+            if hasattr(message.media, "mime_type"):
+                mime_type = message.media.mime_type
+
+        # If there's a valid object with a file name, proceed to clean and process
+        if obj and hasattr(obj, "file_name"):
+            file_name = obj.file_name
+            file_size = obj.file_size
+            language = extract_language(default_caption)
+            year = extract_year(default_caption)
+            quality = extract_quality(default_caption)
+
+            # Clean the file name
+            file_name = (
+                re.sub(r"@\w+\s*", "", file_name)
+                .replace("_", " ")
+                .replace(".", " ")
+            )
+
+            # Format the duration to HH:MM:SS if available
+            if isinstance(duration, int):
+                duration = format_duration(duration)
+            else:
+                duration = "Unknown"
+
+            # Get caption details from the database
+            cap_dets = await chnl_ids.find_one({"chnl_id": chnl_id})
+            try:
+                if cap_dets:
+                    cap = cap_dets["caption"]
+                    replaced_caption = cap.format(
+                        file_name=file_name,
+                        file_size=get_size(file_size),
+                        file_caption=default_caption,
+                        language=language,
+                        year=year,
+                        file_type=media_type,
+                        duration=duration,  # Include formatted duration in caption
+                        mime_type=mime_type,
+                        quality=quality
+                    )
+                    await message.edit(replaced_caption)
+                else:
+                    replaced_caption = DEF_CAP.format(file_name=default_caption)
+                    await message.edit(replaced_caption)
+            except FloodWait as e:
+                await asyncio.sleep(e.x)
+                # Retry the edit after waiting
+                continue
+
     return
+                    
+
 
 # ===================== [ Size Conversion Function ] ===================== #
 

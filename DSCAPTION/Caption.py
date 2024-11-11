@@ -98,7 +98,8 @@ async def auto_edit_caption(bot, message):
                 file_size = obj.file_size
                 language = extract_language(default_caption)
                 year = extract_year(default_caption)
-
+                quality = extract_quality(default_caption)
+        
                 # Clean the file name
                 file_name = (
                     re.sub(r"@\w+\s*", "", file_name)
@@ -147,6 +148,7 @@ async def auto_edit_caption(bot, message):
                             file_caption=default_caption,
                             language=language,
                             year=year,
+                            quality=quality,
                             file_type=media_type,
                             duration=format_duration(duration),  # Include duration in caption
                             mime_type=mime_type

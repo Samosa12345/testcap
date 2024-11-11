@@ -8,7 +8,7 @@ class DS(object):
     # Bot config  ( required.. 😥)
     API_ID = os.environ.get("API_ID", "25833520")
     API_HASH = os.environ.get("API_HASH", "7d012a6cbfabc2d0436d7a09d8362af7")
-    BOT_TOKEN = os.environ.get("BOT_TOKEN", "7312480511:AAElQ52v_jM-PH0jQCopWixyR7o3c4fviGM")
+    BOT_TOKEN = os.environ.get("BOT_TOKEN", "7312480511:AAF2V4w27h5IVZM9VbC-PAouV_UpSBCQKmA")
 
     # start_pic
     START_PIC = os.environ.get("START_PIC", "https://telegra.ph/file/c5952790fa8235f499749.jpg")
@@ -24,7 +24,7 @@ class DS(object):
     PORT = int(os.environ.get("PORT", "8080"))
 
     # force subs channel ( required.. 😥)
-    FORCE_SUB = int(os.environ.get("FORCE_SUB", -1002158291506) )
+    FORCE_SUB = int(os.environ.get("FORCE_SUB", -1002104350566) )
     
     # database config ( required.. 😥)
     DB_NAME = os.environ.get("DB_NAME", "testpubcapbot")     

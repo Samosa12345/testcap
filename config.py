@@ -28,7 +28,7 @@ class DS(object):
     
     # database config ( required.. 😥)
     DB_NAME = os.environ.get("DB_NAME", "testpubcapbot")     
-    DB_URL = os.environ.get("DB_URL", "mongodb+srv://silent:ghost@cluster0.qqcqepv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+    DB_URL = os.environ.get("DB_URL", "mongodb+srv://trumbot:trumbot@cluster0.cfkaeno.mongodb.net/?retryWrites=true&w=majority")
 
     # default caption 
     DEF_CAP = os.environ.get("DEF_CAP", "<b>{file_name}</b>",

@@ -106,13 +106,16 @@ async def auto_edit_caption(bot, message):
                     .replace(".", " ")
                 )
 
+                
                 mime_type = "Unknown"
                 if hasattr(message.media, "mime_type"):
                     mime_type = message.media.mime_type
 
-                duration1 = "Unknown"
-                if hasattr(message.media, "duration"):
-                    duration1 = message.media.duration
+                duration = "Unknown"
+                if media_type == "Video" and hasattr(message.media, "duration"):  # Only for videos
+                    duration = message.media.duration
+                elif media_type == "Audio" and hasattr(message.media, "duration"):  # Only for audio
+                    duration = message.media.duration
 
                 media_type = "Unknown"  # This is what you're trying to determine
                 if message.photo:
@@ -125,14 +128,14 @@ async def auto_edit_caption(bot, message):
                     media_type = "Audio"
                 elif message.voice:
                     media_type = "Voice Note" 
-                
+                """
                 # Extract media duration if available
                 duration = 0  # Default to 0
                 if media_type == "video" and obj.duration:
                     duration = obj.duration  # Video duration in seconds
                 elif media_type == "audio" and obj.duration:
                     duration = obj.duration  # Audio duration in seconds
-
+"""
                 # Get caption details from the database
                 cap_dets = await chnl_ids.find_one({"chnl_id": chnl_id})
                 try:
@@ -146,8 +149,7 @@ async def auto_edit_caption(bot, message):
                             year=year,
                             file_type=media_type,
                             duration=format_duration(duration),  # Include duration in caption
-                            mime_type=mime_type,
-                            durations=duration1
+                            mime_type=mime_type
                         )
                         await message.edit(replaced_caption) 
                     else:

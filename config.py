@@ -11,7 +11,7 @@ class DS(object):
     BOT_TOKEN = os.environ.get("BOT_TOKEN", "7312480511:AAF2V4w27h5IVZM9VbC-PAouV_UpSBCQKmA")
 
     # start_pic
-    START_PIC = os.environ.get("START_PIC", "https://telegra.ph/file/c5952790fa8235f499749.jpg")
+    START_PIC = os.environ.get("START_PIC", "https://envs.sh/Zzd.jpg")
 
     # UPI QR Code Pic
     UPI_QR_CODE = os.environ.get("UPI_QR_CODE", "https://graph.org/file/7b782be88a32be378790f.jpg")
@@ -22,9 +22,10 @@ class DS(object):
     # wes response configuration
     BOT_UPTIME = time.time()
     PORT = int(os.environ.get("PORT", "8080"))
-
+    
     # force subs channel ( required.. 😥)
-    FORCE_SUB = int(os.environ.get("FORCE_SUB", -1002104350566) )
+    FSUB_ON = bool(os.environ.get("FSUB_ON", True))
+    FORCE_SUB = int(os.environ.get("FORCE_SUB", -1002104350566))
     
     # database config ( required.. 😥)
     DB_NAME = os.environ.get("DB_NAME", "testpubcapbot")     

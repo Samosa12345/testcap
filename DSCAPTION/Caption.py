@@ -3,6 +3,7 @@
 # ===================== [ importing Requirements ] ===================== #
 import os
 from config import DS
+from magic import Magic
 import asyncio, re
 from pyrogram.errors import FloodWait
 from pyrogram import Client, filters
@@ -168,15 +169,22 @@ async def auto_edit_caption(bot, message):
     default_caption = message.caption or message.text or ""
 
     # Function to format duration to HH:MM:SS
-    def format_duration(duration: int):
-        return str(timedelta(seconds=duration))
+    #def format_duration(duration: int):
+        #return str(timedelta(seconds=duration))
 
-    if message.media:
+    ds = message.media
+    def get_mime_type(ds):
+    mime = Magic(mime=True)
+    mimetype = mime.from_file(ds)
+    mimetype = mimetype or "text/plain"
+    return mimetype
+    
+    """if message.media:
         # Check the file type for duration and mime_type
         file_type = None
         obj = None
         media_type = "Unknown"
-        duration = "Unknown"
+        #duration = "Unknown"
         mime_type = "Unknown"
 
         if message.video:
@@ -206,8 +214,19 @@ async def auto_edit_caption(bot, message):
             obj = message.voice
             media_type = "Voice Note"
             if hasattr(message.media, "mime_type"):
-                mime_type = message.media.mime_type
+                mime_type = message.media.mime_type"""
 
+        if file_type in ("audio", "video", "voice"):
+                    if obj.duration:
+                        hours = int(obj.duration // 3600)
+                        minutes = int((obj.duration % 3600) // 60)
+                        seconds = int(obj.duration % 60)
+                        if hours > 0:
+                            duration = f"{hours} Hr {minutes} Min {seconds} Sec"
+                        else:
+                            duration = f"{minutes} Min {seconds} Sec"
+                    else:
+                        duration = ""
         # If there's a valid object with a file name, proceed to clean and process
         if obj and hasattr(obj, "file_name"):
             file_name = obj.file_name
@@ -224,10 +243,10 @@ async def auto_edit_caption(bot, message):
             )
 
             # Format the duration to HH:MM:SS if available
-            if isinstance(duration, int):
+            """if isinstance(duration, int):
                 duration = format_duration(duration)
             else:
-                duration = "Unknown"
+                duration = "Unknown""""
 
             # Get caption details from the database
             cap_dets = await chnl_ids.find_one({"chnl_id": chnl_id})
@@ -240,9 +259,10 @@ async def auto_edit_caption(bot, message):
                         file_caption=default_caption,
                         language=language,
                         year=year,
+                        mimetype=mimetype,
                         file_type=media_type,
                         duration=duration,  # Include formatted duration in caption
-                        mime_type=mime_type,
+                      #  mime_type=mime_type,
                         quality=quality
                     )
                     await message.edit(replaced_caption)

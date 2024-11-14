@@ -271,9 +271,7 @@ async def auto_edit_caption(bot, message):
                     replaced_caption = DEF_CAP.format(file_name=default_caption)
                     await message.edit(replaced_caption)
             except FloodWait as e:
-                await asyncio.sleep(e.x)
-                # Retry the edit after waiting
-                
+                await asyncio.sleep(e.x) 
 
     return
                     
@@ -283,7 +281,7 @@ async def auto_edit_caption(bot, message):
 
 
 def get_size(size):
-    units = ["Bytes", "Kʙ", "Mʙ", "Gʙ", "Tʙ", "Pʙ", "Eʙ"]
+    units = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB"]
     size = float(size)
     i = 0
     while size >= 1024.0 and i < len(units) - 1:  

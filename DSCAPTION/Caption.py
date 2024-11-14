@@ -226,10 +226,11 @@ async def auto_edit_caption(bot, message):
         if obj and hasattr(obj, "file_name"):
             file_name = obj.file_name
             file_size = obj.file_size
+            mime_type = obj.mime_type
             language = extract_language(default_caption)
             year = extract_year(default_caption)
             quality = extract_quality(default_caption)
-            mimetype = get_mime_type(file_path)
+        
             # Clean the file name
             file_name = (
                 re.sub(r"@\w+\s*", "", file_name)
@@ -255,10 +256,9 @@ async def auto_edit_caption(bot, message):
                         file_caption=default_caption,
                         language=language,
                         year=year,
-                        mimetype=mimetype,
+                        mime_type=get_mime_type(mime_type),
                         file_type=media_type,
-                        duration=duration,  # Include formatted duration in caption
-                      #  mime_type=mime_type,
+                        duration=duration,  
                         quality=quality
                     )
                     await message.edit(replaced_caption)
@@ -276,9 +276,9 @@ async def auto_edit_caption(bot, message):
 
 def get_mime_type(file_path):
     mime = Magic(mime=True)
-    mimetype = mime.from_file(file_path)
-    mimetype = mimetype or "text/plain"
-    return mimetype
+    mime_type = mime.from_file(file_path)
+    mime_type = mime_type or "text/plain"
+    return mime_type
     
 def get_size(size):
     units = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB"]

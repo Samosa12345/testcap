@@ -212,10 +212,10 @@ async def auto_edit_caption(bot, message):
             seconds = int(obj.duration % 60)
             if hours > 0:
                 duration = f"{hours} Hr {minutes} Min {seconds} Sec"
-            else:
+            elif:
                 duration = f"{minutes} Min {seconds} Sec"
-                else:
-                    duration = ""
+            else:
+                duration = ""
                 
         # If there's a valid object with a file name, proceed to clean and process
         if obj and hasattr(obj, "file_name"):

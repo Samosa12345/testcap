@@ -167,17 +167,6 @@ async def auto_edit_caption(bot, message):
 async def auto_edit_caption(bot, message):
     chnl_id = message.chat.id
     default_caption = message.caption or message.text or ""
-
-    # Function to format duration to HH:MM:SS
-    #def format_duration(duration: int):
-        #return str(timedelta(seconds=duration))
-
-    #ds = message.media
-    def get_mime_type(file_path):
-        mime = Magic(mime=True)
-        mimetype = mime.from_file(file_path)
-        mimetype = mimetype or "text/plain"
-        return mimetype
     
     """if message.media:
         # Check the file type for duration and mime_type
@@ -216,17 +205,18 @@ async def auto_edit_caption(bot, message):
             if hasattr(message.media, "mime_type"):
                 mime_type = message.media.mime_type"""
 
-        if file_type in ("audio", "video", "voice"):
-                    if obj.duration:
-                        hours = int(obj.duration // 3600)
-                        minutes = int((obj.duration % 3600) // 60)
-                        seconds = int(obj.duration % 60)
-                        if hours > 0:
-                            duration = f"{hours} Hr {minutes} Min {seconds} Sec"
-                        else:
-                            duration = f"{minutes} Min {seconds} Sec"
-                    else:
-                        duration = ""
+    if file_type in ("audio", "video", "voice"): 
+        if obj.duration:
+            hours = int(obj.duration // 3600)
+            minutes = int((obj.duration % 3600) // 60)
+            seconds = int(obj.duration % 60)
+            if hours > 0:
+                duration = f"{hours} Hr {minutes} Min {seconds} Sec"
+            else:
+                duration = f"{minutes} Min {seconds} Sec"
+            else:
+                duration = ""
+                
         # If there's a valid object with a file name, proceed to clean and process
         if obj and hasattr(obj, "file_name"):
             file_name = obj.file_name
@@ -234,7 +224,7 @@ async def auto_edit_caption(bot, message):
             language = extract_language(default_caption)
             year = extract_year(default_caption)
             quality = extract_quality(default_caption)
-
+            mimetype = get_mime_type(file_path)
             # Clean the file name
             file_name = (
                 re.sub(r"@\w+\s*", "", file_name)
@@ -279,7 +269,12 @@ async def auto_edit_caption(bot, message):
 
 # ===================== [ Size Conversion Function ] ===================== #
 
-
+def get_mime_type(file_path):
+    mime = Magic(mime=True)
+    mimetype = mime.from_file(file_path)
+    mimetype = mimetype or "text/plain"
+    return mimetype
+    
 def get_size(size):
     units = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB"]
     size = float(size)

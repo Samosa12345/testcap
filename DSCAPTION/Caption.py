@@ -172,12 +172,12 @@ async def auto_edit_caption(bot, message):
     #def format_duration(duration: int):
         #return str(timedelta(seconds=duration))
 
-    ds = message.media
-    def get_mime_type(ds):
-    mime = Magic(mime=True)
-    mimetype = mime.from_file(ds)
-    mimetype = mimetype or "text/plain"
-    return mimetype
+    #ds = message.media
+    def get_mime_type(file_path):
+        mime = Magic(mime=True)
+        mimetype = mime.from_file(file_path)
+        mimetype = mimetype or "text/plain"
+        return mimetype
     
     """if message.media:
         # Check the file type for duration and mime_type

@@ -246,7 +246,8 @@ async def auto_edit_caption(bot, message):
             """if isinstance(duration, int):
                 duration = format_duration(duration)
             else:
-                duration = "Unknown""""
+                duration = "Unknown"
+                """
 
             # Get caption details from the database
             cap_dets = await chnl_ids.find_one({"chnl_id": chnl_id})

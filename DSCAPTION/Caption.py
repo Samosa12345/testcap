@@ -56,20 +56,21 @@ async def auto_edit_caption(bot, message):
     chnl_id = message.chat.id
     default_caption = message.caption or message.text or ""
     
-    if file_type in ("audio", "video", "voice"):
-        duration_seconds = int(obj.duration) if obj.duration else 0 #Handles None or 0 gracefully
-        if duration_seconds > 0:
-            hours = duration_seconds // 3600
-            minutes = (duration_seconds % 3600) // 60
-            seconds = duration_seconds % 60
-            if hours > 0:
-                duration = f"{hours} Hr {minutes} Min {seconds} Sec"
+    if message.media:
+        if file_type in ("audio", "video", "voice"):
+            duration_seconds = int(obj.duration) if obj.duration else 0 #Handles None or 0 gracefully
+            if duration_seconds > 0:
+                hours = duration_seconds // 3600
+                minutes = (duration_seconds % 3600) // 60
+                seconds = duration_seconds % 60
+                if hours > 0:
+                    duration = f"{hours} Hr {minutes} Min {seconds} Sec"
+                else:
+                    duration = f"{minutes} Min {seconds} Sec"
             else:
-                duration = f"{minutes} Min {seconds} Sec"
+                duration = "0 Sec" # Or "" if you prefer an empty string for zero duration
         else:
-            duration = "0 Sec" # Or "" if you prefer an empty string for zero duration
-    else:
-        duration = "" # Handle cases where file_type is not audio, video, or voice
+            duration = "" # Handle cases where file_type is not audio, video, or voice
 
                 
         # If there's a valid object with a file name, proceed to clean and process

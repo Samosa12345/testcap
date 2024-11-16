@@ -57,7 +57,8 @@ async def auto_edit_caption(bot, message):
     default_caption = message.caption or message.text or ""
     
     if message.media:
-        if file_type in ("audio", "video", "voice"):
+        for file_type in ("audio", "video", "voice"):
+            obj = getattr(message, file_type, None)
             duration_seconds = int(obj.duration) if obj.duration else 0 #Handles None or 0 gracefully
             if duration_seconds > 0:
                 hours = duration_seconds // 3600

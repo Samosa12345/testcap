@@ -110,7 +110,7 @@ async def auto_edit_caption(bot, message):
                         language=language,
                         year=year,
                         mime_type=mime_type,
-                        mime_type=get_mime_type(mime_type),
+                      #  mime_type=get_mime_type(mime_type),
                         file_type=media_type,
                         duration=duration,  
                         quality=quality

@@ -55,7 +55,7 @@ async def delCaption(_, msg):
 async def auto_edit_caption(bot, message):
     chnl_id = message.chat.id
     default_caption = message.caption or message.text or ""
-    
+    '''
     if message.media:
         for file_type in ("audio", "video", "voice"):
             duration_seconds = int(obj.duration) if obj.duration else 0 #Handles None or 0 gracefully
@@ -71,17 +71,29 @@ async def auto_edit_caption(bot, message):
                 duration = "0 Sec" # Or "" if you prefer an empty string for zero duration
         else:
             duration = "" # Handle cases where file_type is not audio, video, or voice
+'''
 
-                
+        media = message.document or message.photo or message.audio or message.video or message.voice or message.sticker
+        if media and hasattr(media, "duration"):
+            duration = media.duration
+            hours = math.floor(duration / 3600)
+            minutes = math.floor((duration % 3600) / 60)
+            seconds = math.floor(duration % 60)
+            formatted_duration = f"{hours}h {minutes}m {seconds}s"
+        else:
+            formatted_duration = ""
+            
+        if media and hasattr(media, "mime_type"):
+            mime_type = media.mime_type        
         # If there's a valid object with a file name, proceed to clean and process
         if obj and hasattr(obj, "file_name"):
             file_name = obj.file_name
             file_size = obj.file_size
-            mime_type = obj.mime_type
+           # mime_type = obj.mime_type
             language = extract_language(default_caption)
             year = extract_year(default_caption)
             quality = extract_quality(default_caption)
-            duration = duration
+            duration = formatted_duration
             
             # Clean the file name
             file_name = (
@@ -113,6 +125,7 @@ async def auto_edit_caption(bot, message):
                         file_caption=default_caption,
                         language=language,
                         year=year,
+                        mime_type=mime_type,
                         mime_type=get_mime_type(mime_type),
                         file_type=media_type,
                         duration=duration,  

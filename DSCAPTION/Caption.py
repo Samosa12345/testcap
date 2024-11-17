@@ -54,7 +54,6 @@ async def delCaption(_, msg):
 @Client.on_message(filters.channel)
 async def auto_edit_caption(bot, message):
     chnl_id = message.chat.id
-    default_caption = message.caption or message.text or ""
     
     if message.media:
         media = message.document or message.photo or message.audio or message.video or message.voice or message.sticker
@@ -80,7 +79,7 @@ async def auto_edit_caption(bot, message):
                 year = extract_year(default_caption)
                 quality = extract_quality(default_caption)
                 duration = formatted_duration
-            
+                default_caption = message.caption or message.text or ""
             # Clean the file name
                 file_name = (
                     re.sub(r"@\w+\s*", "", file_name)

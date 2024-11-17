@@ -1,7 +1,7 @@
 # (c) @Bisal & (c) @Sanchit0102
 
 # ===================== [ importing Requirements ] ===================== #
-import os
+import os, math
 from config import DS
 from magic import Magic
 import asyncio, re

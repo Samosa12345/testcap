@@ -55,8 +55,9 @@ async def delCaption(_, msg):
 async def auto_edit_caption(bot, message):
     chnl_id = message.chat.id
     default_caption = message.caption or message.text or ""
-    '''
+    
     if message.media:
+    '''
         for file_type in ("audio", "video", "voice"):
             duration_seconds = int(obj.duration) if obj.duration else 0 #Handles None or 0 gracefully
             if duration_seconds > 0:

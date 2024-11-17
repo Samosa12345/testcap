@@ -57,8 +57,6 @@ async def auto_edit_caption(bot, message):
     default_caption = message.caption or message.text or ""
     
     if message.media:
-        for file_type in ("video", "audio", "document", "voice"):
-            obj = getattr(message, file_type, None)
         media = message.document or message.photo or message.audio or message.video or message.voice or message.sticker
         if media and hasattr(media, "duration"):
             duration = media.duration
@@ -72,57 +70,59 @@ async def auto_edit_caption(bot, message):
         if media and hasattr(media, "mime_type"):
             mime_type = media.mime_type        
         # If there's a valid object with a file name, proceed to clean and process
-        if obj and hasattr(obj, "file_name"):
-            file_name = obj.file_name
-            file_size = obj.file_size
+        for file_type in ("video", "audio", "document", "voice"):
+            obj = getattr(message, file_type, None)
+            if obj and hasattr(obj, "file_name"):
+                file_name = obj.file_name
+                file_size = obj.file_size
            # mime_type = obj.mime_type
-            language = extract_language(default_caption)
-            year = extract_year(default_caption)
-            quality = extract_quality(default_caption)
-            duration = formatted_duration
+                language = extract_language(default_caption)
+                year = extract_year(default_caption)
+                quality = extract_quality(default_caption)
+                duration = formatted_duration
             
             # Clean the file name
-            file_name = (
-                re.sub(r"@\w+\s*", "", file_name)
-                .replace("_", " ")
-                .replace(".", " ")
-            )
+                file_name = (
+                    re.sub(r"@\w+\s*", "", file_name)
+                    .replace("_", " ")
+                    .replace(".", " ")
+                )
 
-            media_type = "Unknown"  # This is what you're trying to determine
-            if message.photo:
-                media_type = "Photo"
-            elif message.video:
-                media_type = "Video"
-            elif message.document:
-                media_type = "Document"
-            elif message.audio:
-                media_type = "Audio"
-            elif message.voice:
-                media_type = "Voice Note" 
+                media_type = "Unknown"  # This is what you're trying to determine
+                if message.photo:
+                    media_type = "Photo"
+                elif message.video:
+                    media_type = "Video"
+                elif message.document:
+                    media_type = "Document"
+                elif message.audio:
+                    media_type = "Audio"
+                elif message.voice:
+                    media_type = "Voice Note" 
                 
             # Get caption details from the database
-            cap_dets = await chnl_ids.find_one({"chnl_id": chnl_id})
-            try:
-                if cap_dets:
-                    cap = cap_dets["caption"]
-                    replaced_caption = cap.format(
-                        file_name=file_name,
-                        file_size=get_size(file_size),
-                        file_caption=default_caption,
-                        language=language,
-                        year=year,
-                        mime_type=mime_type,
+                cap_dets = await chnl_ids.find_one({"chnl_id": chnl_id})
+                try:
+                    if cap_dets:
+                        cap = cap_dets["caption"]
+                        replaced_caption = cap.format(
+                            file_name=file_name,
+                            file_size=get_size(file_size),
+                            file_caption=default_caption,
+                            language=language,
+                            year=year,
+                            mime_type=mime_type,
                       #  mime_type=get_mime_type(mime_type),
-                        file_type=media_type,
-                        duration=duration,  
-                        quality=quality
-                    )
-                    await message.edit(replaced_caption)
-                else:
-                    replaced_caption = DEF_CAP.format(file_name=default_caption)
-                    await message.edit(replaced_caption)
-            except FloodWait as e:
-                await asyncio.sleep(e.x) 
+                            file_type=media_type,
+                            duration=duration,  
+                            quality=quality
+                        )
+                        await message.edit(replaced_caption)
+                    else:
+                        replaced_caption = DEF_CAP.format(file_name=default_caption)
+                        await message.edit(replaced_caption)
+                except FloodWait as e:
+                    await asyncio.sleep(e.x) 
 
     return
                     

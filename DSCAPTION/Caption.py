@@ -57,23 +57,6 @@ async def auto_edit_caption(bot, message):
     default_caption = message.caption or message.text or ""
     
     if message.media:
-    '''
-        for file_type in ("audio", "video", "voice"):
-            duration_seconds = int(obj.duration) if obj.duration else 0 #Handles None or 0 gracefully
-            if duration_seconds > 0:
-                hours = duration_seconds // 3600
-                minutes = (duration_seconds % 3600) // 60
-                seconds = duration_seconds % 60
-                if hours > 0:
-                    duration = f"{hours} Hr {minutes} Min {seconds} Sec"
-                else:
-                    duration = f"{minutes} Min {seconds} Sec"
-            else:
-                duration = "0 Sec" # Or "" if you prefer an empty string for zero duration
-        else:
-            duration = "" # Handle cases where file_type is not audio, video, or voice
-'''
-
         media = message.document or message.photo or message.audio or message.video or message.voice or message.sticker
         if media and hasattr(media, "duration"):
             duration = media.duration
@@ -201,8 +184,22 @@ def extract_year(default_caption):
 
 
 
-
-
+'''
+    for file_type in ("audio", "video", "voice"):
+            duration_seconds = int(obj.duration) if obj.duration else 0 #Handles None or 0 gracefully
+            if duration_seconds > 0:
+                hours = duration_seconds // 3600
+                minutes = (duration_seconds % 3600) // 60
+                seconds = duration_seconds % 60
+                if hours > 0:
+                    duration = f"{hours} Hr {minutes} Min {seconds} Sec"
+                else:
+                    duration = f"{minutes} Min {seconds} Sec"
+            else:
+                duration = "0 Sec" # Or "" if you prefer an empty string for zero duration
+        else:
+            duration = "" # Handle cases where file_type is not audio, video, or voice
+'''
 
 
 

@@ -155,7 +155,7 @@ async def reCap(bot, message):
     await process_files_in_batch(message, cap_dets, files_data)
 
 # Command to show available placeholders for caption usage
-@Client.on_message(filters.command("variables") & filters.user)
+@Client.on_message(filters.command("variables"))
 async def show_placeholders(bot, message):
     placeholders_info = """
     {filename} = File name.

@@ -13,7 +13,7 @@ from DSCAPTION.buttons import temp
 class DS_AutoCaptionBot(Client):
     def __init__(self):
         super().__init__(
-            name="DS-AutoCaptionBot",
+            "DS-AutoCaptionBot",
             api_id=DS.API_ID,
             api_hash=DS.API_HASH,
             bot_token=DS.BOT_TOKEN,

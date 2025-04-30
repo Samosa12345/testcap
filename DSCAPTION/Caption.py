@@ -117,7 +117,7 @@ async def process_files_in_batch(message, cap_dets, files_data):
         artist = file_data.get('artist', None)
 
         # Get caption template from DB or default
-        caption = cap_dets["caption"] if cap_dets else DEF_CAP
+        caption = cap_dets["caption"] if cap_dets else DS.DEF_CAP
         replaced_caption = format_caption(caption, file_name, file_size, default_caption, duration, height, width, mime_type, title, artist)
         
         # Create a task to edit the caption asynchronously

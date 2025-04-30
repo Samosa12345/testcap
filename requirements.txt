@@ -3,3 +3,6 @@ pyrofork==2.3.48
 tgcrypto
 motor
 aiohttp
+Flask
+gunicorn
+

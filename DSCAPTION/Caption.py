@@ -1,52 +1,52 @@
 # (c) @Bisal & (c) @Sanchit0102
 
-# ===================== [ importing Requirements ] ===================== #
-import os, datetime, asyncio, re
-from config import DS
-from .database import *    
-from pyrogram.types import *
+# ===================== [ Importing Requirements ] ===================== #
+import os
+import re
+import datetime
+import asyncio
 from pyrogram import Client, filters
-from pyrogram.errors import FloodWait
+from pyrogram.types import Message
 from .database import addCap, updateCap, chnl_ids
+from config import DS
 
 # ===================== [ Set Caption Command ] ===================== #
 
 @Client.on_message(filters.command(["setcap", "setcaption"]) & filters.channel)
-async def setCaption(bot, message):
+async def set_caption(bot, message: Message):
     if len(message.command) < 2:
         return await message.reply(
-            "<b>Example: /setcap set your caption ( Use <code>{file_name}</code> or <code>{post_caption}</code> to show file name\nAlso Use <code>{file_size}</code> to show file size</b>\n\n<b>For More Information Give /help Command To Bot</b>)"
+            "<b>Example:</b> /setcap Your caption here. Use <code>{filename}</code>, <code>{filesize}</code>, etc.\n<b>Use /variables to see all placeholders.</b>"
         )
+
     chnl_id = message.chat.id
-    caption = (
-        message.text.split(" ", 1)[1] if len(message.text.split(" ", 1)) > 1 else None
-    )
-    chkData = await chnl_ids.find_one({"chnl_id": chnl_id})
-    if chkData:
+    caption = message.text.split(" ", 1)[1]
+    chk_data = await chnl_ids.find_one({"chnl_id": chnl_id})
+
+    if chk_data:
         await updateCap(chnl_id, caption)
-        return await message.reply(f"Your New Caption is: `{caption}`")
     else:
         await addCap(chnl_id, caption)
-        return await message.reply(f"Your Caption is: `{caption}`")
+
+    await message.reply(f"Your new caption is:\n<code>{caption}</code>")
 
 
 # ===================== [ Delete Caption Command ] ===================== #
 
 @Client.on_message(filters.command(["delcap", "delcaption", "delete_caption"]) & filters.channel)
-async def delCaption(_, msg):
-    chnl_id = msg.chat.id
+async def delete_caption(_, message: Message):
+    chnl_id = message.chat.id
     try:
         await chnl_ids.delete_one({"chnl_id": chnl_id})
-        return await msg.reply("<b>Successfully deleted your caption. Using default caption now</b>")
+        await message.reply("<b>Successfully deleted your custom caption. Default will now be used.</b>")
     except Exception as e:
-        ds = await msg.reply(f"Error: {e}")
+        reply = await message.reply(f"Error: {e}")
         await asyncio.sleep(5)
-        await ds.delete()
-        return
+        await reply.delete()
 
-# ===================== [ Edit Caption In Channel ] ===================== #
 
-# Get wish based on time
+# ===================== [ Caption Replacer Code Functions ] ===================== #
+
 def get_wish():
     hour = datetime.datetime.now().hour
     if hour < 12:
@@ -55,130 +55,91 @@ def get_wish():
         return "Good Afternoon"
     elif 17 <= hour < 21:
         return "Good Evening"
-    else:
-        return "Good Night"
+    return "Good Night"
 
-def get_size(size):
-    units = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB"]
-    size = float(size)
-    i = 0
-    while size >= 1024.0 and i < len(units) - 1:  
-        i += 1
-        size /= 1024.0
-    return "%.2f %s" % (size, units[i])
-    
-# Extract metadata from filename
+def get_size(size_bytes):
+    size = float(size_bytes)
+    for unit in ["Bytes", "KB", "MB", "GB", "TB"]:
+        if size < 1024:
+            return f"{size:.2f} {unit}"
+        size /= 1024
+    return f"{size:.2f} PB"
+
 def extract_from_filename(name):
     patterns = {
-        "year": r'\b(19\d{2}|20\d{2})\b',
-        "quality": r'(144p|240p|360p|480p|720p|1080p|2160p|4k)',
-        "season": r's(\d{1,2})',
-        "episode": r'e(\d{1,2})',
-        "language": r'(hindi|marathi|punjabi|gujarati|english|telugu|tamil|malayalam|kannada|dual)',
-        "ext": r'\.([a-z0-9]+)$'
+        "year": r"\\b(19\\d{2}|20\\d{2})\\b",
+        "quality": r"(144p|240p|360p|480p|720p|1080p|2160p|4k)",
+        "season": r"s(\\d{1,2})",
+        "episode": r"e(\\d{1,2})",
+        "language": r"(hindi|english|tamil|telugu|malayalam|kannada|punjabi|marathi|gujarati|dual)",
+        "ext": r"\\.([a-z0-9]+)$"
     }
     name_lower = name.lower()
-    data = {key: re.search(pattern, name_lower).group(1) if re.search(pattern, name_lower) else "N/A" for key, pattern in patterns.items()}
-    return data
+    return {key: (re.search(pat, name_lower).group(1) if re.search(pat, name_lower) else "N/A") for key, pat in patterns.items()}
 
-# Format caption with placeholders
-def format_caption(template, file_name, file_size, caption="", duration=None, height=None, width=None, mime_type=None, title=None, artist=None):
-    file_info = extract_from_filename(file_name)
+def format_caption(template, file_name, file_size, caption="", duration=None, height=None, width=None, mime_type=None, media_type=None, title=None, artist=None):
+    info = extract_from_filename(file_name)
     resolution = f"{width}x{height}" if width and height else "N/A"
-
+    
     placeholders = {
         "{filename}": file_name,
-        "{filesize}": file_size,
+        "{filesize}": get_size(file_size),
         "{caption}": caption or "",
-        "{language}": file_info["language"],
-        "{year}": file_info["year"],
-        "{quality}": file_info["quality"],
-        "{season}": file_info["season"],
-        "{episode}": file_info["episode"],
+        "{language}": info["language"],
+        "{year}": info["year"],
+        "{quality}": info["quality"],
+        "{season}": info["season"],
+        "{episode}": info["episode"],
         "{duration}": duration or "N/A",
-        "{height}": str(height) if height else "N/A",
-        "{width}": str(width) if width else "N/A",
+        "{height}": str(height or "N/A"),
+        "{width}": str(width or "N/A"),
         "{resolution}": resolution,
-        "{ext}": file_info["ext"],
+        "{ext}": info["ext"],
         "{mime_type}": mime_type or "N/A",
+        "{media_type}": media_type or "N/A",
         "{title}": title or "N/A",
         "{artist}": artist or "N/A",
         "{wish}": get_wish()
     }
 
-    for key, value in placeholders.items():
-        template = template.replace(key, str(value))
-
+    for key, val in placeholders.items():
+        template = template.replace(key, str(val))
     return template
 
-# Function to process files in batch and rename captions
-async def process_files_in_batch(message, cap_dets, files_data):
-    tasks = []
-    media_type = "Unknown"  # This is what you're trying to determine
-    if message.photo:
-        media_type = "Photo"
-    elif message.video:
-        media_type = "Video"
-    elif message.document:
-        media_type = "Document"
-    elif message.audio:
-        media_type = "Audio"
-    elif message.voice:
-        media_type = "Voice Note" 
-        
-    for file_data in files_data:
-        file_name = file_data["file_name"]
-        file_size = file_data["file_size"]
-        default_caption = message.caption
-        duration = file_data.get('duration', None)
-        height = file_data.get('height', None)
-        width = file_data.get('width', None)
-        mime_type = file_data.get('mime_type', None)
-        title = file_data.get('title', None)
-        artist = file_data.get('artist', None)
+# ===================== [ Main Channel Message Handler ] ===================== #
 
-        # Get caption template from DB or default
-        caption = cap_dets["caption"] if cap_dets else DS.DEF_CAP
-        replaced_caption = format_caption(caption, file_name, file_size=get_size(file_size), default_caption, duration, height, width, mime_type, media_type, title, artist)
-        
-        # Create a task to edit the caption asynchronously
-        tasks.append(message.edit(replaced_caption))
-
-    # Wait for all tasks to complete
-    await asyncio.gather(*tasks)
-
-# Function to handle caption update for multiple files
 @Client.on_message(filters.channel)
-async def reCap(bot, message):
+async def handle_channel_message(bot, message: Message):
     chnl_id = message.chat.id
-    default_caption = message.caption
+    file = message.document or message.video or message.audio
 
-    # Extract file data from message
-    files_data = []
-    for file_type in ("video", "audio", "document", "voice"):
-        obj = getattr(message, file_type, None)
-        if obj and hasattr(obj, "file_name"):
-            files_data.append({
-                "file_name": obj.file_name,
-                "file_size": obj.file_size,
-                "duration": getattr(obj, 'duration', None),
-                "height": getattr(obj, 'height', None),
-                "width": getattr(obj, 'width', None),
-                "mime_type": getattr(obj, 'mime_type', None),
-                "title": getattr(obj, 'title', None),
-                "artist": getattr(obj, 'performer', None),
-            })
+    if not file:
+        return
 
-    # Fetch caption template from database
-    cap_dets = await chnl_ids.find_one({"chnl_id": chnl_id})
+    cap_data = await chnl_ids.find_one({"chnl_id": chnl_id})
+    template = cap_data["caption"] if cap_data else DS.DEF_CAP
 
-    # Process all files in batch
-    await process_files_in_batch(message, cap_dets, files_data)
+    edited_caption = format_caption(
+        template,
+        file_name=file.file_name,
+        file_size=file.file_size,
+        caption=message.caption,
+        duration=getattr(file, "duration", None),
+        height=getattr(file, "height", None),
+        width=getattr(file, "width", None),
+        mime_type=getattr(file, "mime_type", None),
+        media_type="Document" if message.document else "Video" if message.video else "Audio",
+        title=getattr(file, "title", None),
+        artist=getattr(file, "performer", None)
+    )
 
-# Command to show available placeholders for caption usage
+    await message.edit(edited_caption)
+
+# ===================== [ Show Placeholder Variables ] ===================== #
+
 @Client.on_message(filters.command("variables"))
-async def show_placeholders(bot, message):
-    placeholders_info = """<b>
+async def show_placeholders(_, message: Message):
+    text = """<b>
 ⋗ {filename} = File name.
 ⋗ {filesize} = Original file size.
 ⋗ {caption} = File caption.
@@ -196,6 +157,7 @@ async def show_placeholders(bot, message):
 ⋗ {mime_type} = Mime type of the file (video/mp4, audio/mpeg, etc.).
 ⋗ {title} = Title of the audio.
 ⋗ {artist} = Artist of the audio.
-⋗ {wish} = A greeting based on time (e.g., Good Morning, Good Evening).
-    </b>"""
-    await message.reply(placeholders_info)
+⋗ {wish} = Good Morning / Afternoon / Evening / Night
+</b>"""
+    await message.reply(text)
+    

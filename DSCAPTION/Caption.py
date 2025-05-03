@@ -157,24 +157,23 @@ async def reCap(bot, message):
 # Command to show available placeholders for caption usage
 @Client.on_message(filters.command("variables"))
 async def show_placeholders(bot, message):
-    placeholders_info = """
-    {filename} = File name.
-    {filesize} = Original file size.
-    {caption} = File caption.
-    {language} = Languages extracted from the file name.
-    {year} = Year extracted from the file name.
-    {quality} = Quality extracted from the file name.
-    {season} = Season extracted from the file name.
-    {episode} = Episode extracted from the file name.
-    {duration} = Duration of the file (for videos/audio).
-    {height} = Height of the video.
-    {width} = Width of the video.
-    {resolution} = Resolution (e.g., 1920x1080).
-    {ext} = File extension (e.g., mp4, mkv).
-    {mime_type} = Mime type of the file (video/mp4, audio/mpeg, etc.).
-    {title} = Title of the audio.
-    {artist} = Artist of the audio.
-    {wish} = A greeting based on time of day (e.g., Good Morning, Good Evening).
-    """
+    placeholders_info = """<b>
+⋗ {filename} = File name.
+⋗ {filesize} = Original file size.
+⋗ {caption} = File caption.
+⋗ {language} = Languages extracted from the file name.
+⋗ {year} = Year extracted from the file name.
+⋗ {quality} = Quality extracted from the file name.
+⋗ {season} = Season extracted from the file name.
+⋗ {episode} = Episode extracted from the file name.
+⋗ {duration} = Duration of the file (for videos/audio).
+⋗ {height} = Height of the video.
+⋗ {width} = Width of the video.
+⋗ {resolution} = Resolution (e.g., 1920x1080).
+⋗ {ext} = File extension (e.g., mp4, mkv).
+⋗ {mime_type} = Mime type of the file (video/mp4, audio/mpeg, etc.).
+⋗ {title} = Title of the audio.
+⋗ {artist} = Artist of the audio.
+⋗ {wish} = A greeting based on time of day (e.g., Good Morning, Good Evening).
+    </b>"""
     await message.reply(placeholders_info)
-

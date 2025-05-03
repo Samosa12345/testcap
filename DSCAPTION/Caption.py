@@ -70,9 +70,10 @@ def format_duration(seconds):
     if not seconds:
         return "N/A"
     seconds = int(seconds)
-    hours, remainder = divmod(seconds, 3600)
-    minutes, sec = divmod(remainder, 60)
-    return f"{hours:02d} | {minutes:02d} | {sec:02d}"
+    hours = seconds // 3600
+    minutes = (seconds % 3600) // 60
+    sec = seconds % 60
+    return f"{int(hours):02d}h {int(minutes):02d}m {int(sec):02d}s"
 
 """def extract_from_filename(name):
     name_lower = name.lower()

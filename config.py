@@ -11,7 +11,7 @@ class DS(object):
     BOT_TOKEN = os.environ.get("BOT_TOKEN", "7312480511:AAF2V4w27h5IVZM9VbC-PAouV_UpSBCQKmA")
 
     # start_pic
-    START_PIC = os.environ.get("START_PIC", "https://telegra.ph/file/c5952790fa8235f499749.jpg")
+    START_PIC = os.environ.get("START_PIC", "https://envs.sh/lCm.jpg") # "https://telegra.ph/file/c5952790fa8235f499749.jpg")
 
     # UPI QR Code Pic
     UPI_QR_CODE = os.environ.get("UPI_QR_CODE", "https://graph.org/file/7b782be88a32be378790f.jpg")

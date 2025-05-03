@@ -84,10 +84,11 @@ def extract_from_filename(name):
 def format_duration(seconds):
     if not seconds:
         return "N/A"
+    seconds = int(seconds)
     hours = seconds // 3600
     minutes = (seconds % 3600) // 60
     sec = seconds % 60
-    return f"{hours:02d} | {minutes:02d} | {sec:02d}"
+    return f"{int(hours):02d} | {int(minutes):02d} | {int(sec):02d}"
 
 def format_caption(template, file_name, file_size, caption="", duration=None, height=None, width=None, mime_type=None, media_type=None, title=None, artist=None):
     info = extract_from_filename(file_name)

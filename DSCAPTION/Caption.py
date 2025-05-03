@@ -58,10 +58,19 @@ def get_wish():
     else:
         return "Good Night"
 
+def get_size(size):
+    units = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB"]
+    size = float(size)
+    i = 0
+    while size >= 1024.0 and i < len(units) - 1:  
+        i += 1
+        size /= 1024.0
+    return "%.2f %s" % (size, units[i])
+    
 # Extract metadata from filename
 def extract_from_filename(name):
     patterns = {
-        "year": r'(19|20)\d{2}',
+        "year": r'\b(19\d{2}|20\d{2})\b',
         "quality": r'(144p|240p|360p|480p|720p|1080p|2160p|4k)',
         "season": r's(\d{1,2})',
         "episode": r'e(\d{1,2})',
@@ -118,7 +127,7 @@ async def process_files_in_batch(message, cap_dets, files_data):
 
         # Get caption template from DB or default
         caption = cap_dets["caption"] if cap_dets else DS.DEF_CAP
-        replaced_caption = format_caption(caption, file_name, file_size, default_caption, duration, height, width, mime_type, title, artist)
+        replaced_caption = format_caption(caption, file_name, file_size=get_size(file_size), default_caption, duration, height, width, mime_type, title, artist)
         
         # Create a task to edit the caption asynchronously
         tasks.append(message.edit(replaced_caption))

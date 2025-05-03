@@ -166,9 +166,8 @@ If you have any questions or suggestions about our Privacy Policy, Then Contact 
     
 <blockquote>7. <b>Public Spotify Music Downloader Bot</b></blockquote>
     👉🏻 Bot is Under maintaince
-"""
-
-    SAMPLE = """𝐨𝐫   <code><b>{file_name}</b></code>
+    
+    𝐨𝐫   <code><b>{file_name}</b></code>
 
     𝐨𝐫   <code><i>{post_caption}</i></code>
 
@@ -179,5 +178,5 @@ If you have any questions or suggestions about our Privacy Policy, Then Contact 
     𝐨𝐫   <code><s>{file_size}</s></code>
 
     𝐨𝐫   <code><spoiler>{file_name}</spoiler></code>
-    """
+"""
 # ===================== [😎 END OF translation.py 😎] ===================== #

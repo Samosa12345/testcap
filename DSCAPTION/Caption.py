@@ -114,6 +114,18 @@ def format_caption(template, file_name, file_size, caption="", duration=None, he
 # Function to process files in batch and rename captions
 async def process_files_in_batch(message, cap_dets, files_data):
     tasks = []
+    media_type = "Unknown"  # This is what you're trying to determine
+    if message.photo:
+        media_type = "Photo"
+    elif message.video:
+        media_type = "Video"
+    elif message.document:
+        media_type = "Document"
+    elif message.audio:
+        media_type = "Audio"
+    elif message.voice:
+        media_type = "Voice Note" 
+        
     for file_data in files_data:
         file_name = file_data["file_name"]
         file_size = file_data["file_size"]
@@ -127,7 +139,7 @@ async def process_files_in_batch(message, cap_dets, files_data):
 
         # Get caption template from DB or default
         caption = cap_dets["caption"] if cap_dets else DS.DEF_CAP
-        replaced_caption = format_caption(caption, file_name, file_size=get_size(file_size), default_caption, duration, height, width, mime_type, title, artist)
+        replaced_caption = format_caption(caption, file_name, file_size=get_size(file_size), default_caption, duration, height, width, mime_type, media_type, title, artist)
         
         # Create a task to edit the caption asynchronously
         tasks.append(message.edit(replaced_caption))
@@ -180,9 +192,10 @@ async def show_placeholders(bot, message):
 ⋗ {width} = Width of the video.
 ⋗ {resolution} = Resolution (e.g., 1920x1080).
 ⋗ {ext} = File extension (e.g., mp4, mkv).
+⋗ {media_type} = Type of media (e.g., video, document)
 ⋗ {mime_type} = Mime type of the file (video/mp4, audio/mpeg, etc.).
 ⋗ {title} = Title of the audio.
 ⋗ {artist} = Artist of the audio.
-⋗ {wish} = A greeting based on time of day (e.g., Good Morning, Good Evening).
+⋗ {wish} = A greeting based on time (e.g., Good Morning, Good Evening).
     </b>"""
     await message.reply(placeholders_info)

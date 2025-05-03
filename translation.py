@@ -13,7 +13,7 @@ class TXT(object):
 ɪ ᴀᴍ ᴛʜᴇ ᴍᴏꜱᴛ ᴘᴏᴡᴇʀꜰᴜʟ ᴀᴜᴛᴏ ᴄᴀᴘᴛɪᴏɴ ʙᴏᴛ ᴡɪᴛʜ Aᴅᴠᴀɴᴄᴇ ꜰᴇᴀᴛᴜʀᴇꜱ !
 I ᴀᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ ᴇᴅɪᴛ ᴄᴀᴘᴛɪᴏɴꜱ ғᴏʀ ᴠɪᴅᴇᴏꜱ, ᴀᴜᴅɪᴏ ғɪʟᴇꜱ, ᴀɴᴅ ᴅᴏᴄᴜᴍᴇɴᴛꜱ ᴘᴏꜱᴛᴇᴅ ᴏɴ ᴄʜᴀɴɴᴇʟꜱ.
 
-<blockquote>ᴜꜱᴇ /setcap ᴛᴏ ꜱᴇᴛ ᴄᴀᴘᴛɪᴏɴ.\nᴜꜱᴇ /delcap Tᴏ ᴅᴇʟᴇᴛᴇ ᴄᴀᴘᴛɪᴏɴ ᴀɴᴅ ꜱᴇᴛ ᴄᴀᴘᴛɪᴏɴ ᴛᴏ ᴅᴇғᴀᴜʟᴛ.\nᴜꜱᴇ /ᴠᴀʀɪᴀʙʟᴇꜱ ᴛᴏ ᴄʜᴇᴄᴋ ᴀʟʟ ᴠᴀʟɪᴅ ᴄᴀᴘᴛɪᴏɴ ᴠᴀʀɪᴀʙʟᴇꜱ.</blockquote>
+<blockquote>ᴜꜱᴇ /setcap ᴛᴏ ꜱᴇᴛ ᴄᴀᴘᴛɪᴏɴ.\nᴜꜱᴇ /delcap Tᴏ ᴅᴇʟᴇᴛᴇ ᴄᴀᴘᴛɪᴏɴ ᴀɴᴅ ꜱᴇᴛ ᴄᴀᴘᴛɪᴏɴ ᴛᴏ ᴅᴇғᴀᴜʟᴛ.\nᴜꜱᴇ /variables ᴛᴏ ᴄʜᴇᴄᴋ ᴀʟʟ ᴠᴀʟɪᴅ ᴄᴀᴘᴛɪᴏɴ ᴠᴀʀɪᴀʙʟᴇꜱ.</blockquote>
 
 Nᴏᴛᴇ: Cᴀᴘᴛɪᴏɴ ᴄᴏᴍᴍᴀɴᴅꜱ ᴡᴏʀᴋꜱ ᴏɴ ᴄʜᴀɴɴᴇʟꜱ ᴏɴʟʏ ⚠</b>"""
 
@@ -32,12 +32,10 @@ Nᴏᴛᴇ: Cᴀᴘᴛɪᴏɴ ᴄᴏᴍᴍᴀɴᴅꜱ ᴡᴏʀᴋꜱ ᴏɴ ᴄʜ
 
 𝑭𝒐𝒓𝒎𝒂𝒕:
 
-<code>{file_name}</code> = Oʀɪɢɪɴᴀʟ Fɪʟᴇ Nᴀᴍᴇ
-<code>{post_caption}</code> = Cᴀᴘᴛɪᴏɴ Oғ Fɪʟᴇ
-<code>{file_size}</code> = Oʀɪɢɪɴᴀʟ Fɪʟᴇ Sɪᴢᴇ 
+ᴜꜱᴇ /variables ᴛᴏ ᴄʜᴇᴄᴋ ᴀʟʟ ᴠᴀʟɪᴅ ᴄᴀᴘᴛɪᴏɴ ᴠᴀʀɪᴀʙʟᴇꜱ
 
 Eg:- <code>/setcap 
-{file_name} / {post_caption}
+{file_name} 
 
 ⚙️ Size » {file_size}
 
@@ -52,7 +50,6 @@ Eg:- <code>/setcap
 
 <blockquote>➣ 📃ʙᴏᴛ : <a href='https://t.me/Public_Caption_Bot'>Pᴜʙʟɪᴄ Aᴜᴛᴏ Cᴀᴘᴛɪᴏɴ</a>
 ➣ 👦Dᴇᴠᴇʟᴏᴘᴇʀ : <a href='https://t.me/THE_DS_OFFICIAL'>ՏIᒪᗴᑎT ᘜᕼOՏT ⚡️</a>
-➣ 🤖Uᴘᴅᴀᴛᴇ : <a href='https://t.me/Silent_Bots'>Sɪʟᴇɴᴛ Bᴏᴛꜱ</a>
 ➣ 📡Hᴏsᴛᴇᴅ ᴏɴ : Aɴʏᴡʜᴇʀᴇ 
 ➣ 🗣️Lᴀɴɢᴜᴀɢᴇ : Pʏᴛʜᴏɴ3
 ➣ 📚Lɪʙʀᴀʀʏ : Pʏʀᴏɢʀᴀᴍ
@@ -134,7 +131,9 @@ If you have any questions or suggestions about our Privacy Policy, Then Contact 
 # ===================== [ BOT LIST TEXT ] ===================== #
 
 
-    BOTLIST = """<blockquote>🔥 <u>𝐒𝐢𝐥𝐞𝐧𝐭 𝐏𝐮𝐛𝐥𝐢𝐜 𝐁𝐨𝐭 𝐋𝐢𝐬𝐭</u> 🔥</blockquote>
+    BOTLIST = "Nothing... "
+
+"""<blockquote>🔥 <u>𝐒𝐢𝐥𝐞𝐧𝐭 𝐏𝐮𝐛𝐥𝐢𝐜 𝐁𝐨𝐭 𝐋𝐢𝐬𝐭</u> 🔥</blockquote>
 
 <blockquote>1. <b>Public File Store Bot</b> ⚡
     👉🏻 @PublicFileStore01_Bot</blockquote>
@@ -166,7 +165,8 @@ If you have any questions or suggestions about our Privacy Policy, Then Contact 
     👉🏻 Bot is Under maintaince
     
 <blockquote>7. <b>Public Spotify Music Downloader Bot</b></blockquote>
-    👉🏻 Bot is Under maintaince"""
+    👉🏻 Bot is Under maintaince
+"""
 
     SAMPLE = """𝐨𝐫   <code><b>{file_name}</b></code>
 

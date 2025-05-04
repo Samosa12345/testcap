@@ -219,7 +219,7 @@ def extract_metadata(name: str, caption: str = "") -> dict:
 
     episode = ""
     for pattern in episode_patterns:
-        match = re.search(pattern, file_name, re.IGNORECASE)
+        match = re.search(pattern, name, re.IGNORECASE)
         if not match:
             match = re.search(pattern, message.caption or "", re.IGNORECASE)
         if match:

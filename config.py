@@ -31,7 +31,7 @@ class DS(object):
     DB_URL = os.environ.get("DB_URL", "mongodb+srv://trumbot:trumbot@cluster0.cfkaeno.mongodb.net/?retryWrites=true&w=majority")
 
     # default caption 
-    DEF_CAP = os.environ.get("DEF_CAP", "<b>{file_name}</b>",
+    DEF_CAP = os.environ.get("DEF_CAP", "<b>{caption}</b>",
     )
 
     # admin id  ( required.. 😥)

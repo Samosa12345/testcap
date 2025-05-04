@@ -87,12 +87,20 @@ def format_duration(seconds):
         "ext": re.search(r"\.([a-z0-9]{2,4})$", name.lower()).group(1) if re.search(r"\.([a-z0-9]{2,4})$", name.lower()) else "N/A"
     }
 """
+
+def extract_episode_range(name):
+    episodes = re.findall(r'e(\d{2,4})', name.lower())
+    if not episodes:
+        return "N/A"
+    episodes = sorted(set(int(ep) for ep in episodes))
+    if len(episodes) == 1:
+        return f"{episodes[0]:02d}"
+    return f"{episodes[0]:02d}-{episodes[-1]:02d}"
+
 def extract_languages(name):
     name_lower = name.lower()
 
-    # Full map of language short codes to full names (Indian + International)
     language_map = {
-        # Indian Languages
         'hin': 'Hindi', 'hindi': 'Hindi',
         'tam': 'Tamil', 'tamil': 'Tamil',
         'tel': 'Telugu', 'telugu': 'Telugu',
@@ -106,7 +114,6 @@ def extract_languages(name):
         'ori': 'Odia', 'odia': 'Odia',
         'ass': 'Assamese', 'assamese': 'Assamese',
 
-        # International Languages
         'eng': 'English', 'english': 'English',
         'fre': 'French', 'french': 'French',
         'ger': 'German', 'german': 'German',
@@ -137,6 +144,7 @@ def extract_languages(name):
     else:
         return "N/A"
         
+        
 def extract_from_filename(name):
     name_lower = name.lower()
 
@@ -158,7 +166,7 @@ def extract_from_filename(name):
         "year": results["year"],
         "quality": results["quality"],
         "season": results["season"],
-        "episode": results["episode"],
+        "episode": extract_episode_range(name),
         "language": extract_languages(name),
         "ext": ext
         }

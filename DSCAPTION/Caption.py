@@ -460,9 +460,9 @@ async def handle_channel_message(bot, message: Message):
     file = message.document or message.video or message.audio
     if not file:
         return
-
+    default = message.caption or ""
     cap_data = await chnl_ids.find_one({"chnl_id": chnl_id})
-    template = cap_data["caption"] if cap_data else DS.DEF_CAP
+    template = cap_data["caption"] if cap_data else DS.DEF_CAP.format(caption=clean_filename(default))
 
     edited_caption = format_caption(
         template,

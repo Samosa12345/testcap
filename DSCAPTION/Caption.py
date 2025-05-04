@@ -143,10 +143,36 @@ def extract_languages(name):
         return ', '.join(lang_list)
     else:
         return "N/A"
-
-import re
-
-
+        
+LANGUAGE_MAP = {  
+    'ori': 'Odia', 'odia': 'Odia',
+    'ass': 'Assamese', 'assamese': 'Assamese',
+    'tur': 'Turkish', 'turkish': 'Turkish',
+    "eng": "English", "english": "English",
+    "hin": "Hindi", "hindi": "Hindi",
+    "tam": "Tamil", "tamil": "Tamil",
+    "tel": "Telugu", "telugu": "Telugu",
+    "mal": "Malayalam", "malayalam": "Malayalam",
+    "kan": "Kannada", "kannada": "Kannada",
+    "mar": "Marathi", "marathi": "Marathi",
+    "guj": "Gujarati", "gujarati": "Gujarati",
+    "ben": "Bengali", "bengali": "Bengali",
+    "pun": "Punjabi", "punjabi": "Punjabi",
+    "urdu": "Urdu", "urdu": "Urdu",
+    "jap": "Japanese", "japanese": "Japanese",
+    "chi": "Chinese", "chinese": "Chinese",
+    "kor": "Korean", "korean": "Korean",
+    "fre": "French", "french": "French",
+    "ger": "German", "german": "German",
+    "ita": "Italian", "italian": "Italian",
+    "spa": "Spanish", "spanish": "Spanish",
+    "arab": "Arabic", "arabic": "Arabic",
+    "port": "Portuguese", "portuguese": "Portuguese",
+    "rus": "Russian", "russian": "Russian",
+    "nep": "Nepali", "nepali": "Nepali",
+    "san": "Sanskrit", "sanskrit": "Sanskrit",
+    "lat": "Latin", "latin": "Latin"
+}
 LANG_MAP = {  
     'ori': 'Odia', 'odia': 'Odia',
     'ass': 'Assamese', 'assamese': 'Assamese',

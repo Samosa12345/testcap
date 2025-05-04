@@ -46,9 +46,9 @@ Eg:- <code>/setcap
 
 # ===================== [ ABOUT TEXT ] ===================== #
 
-    ABOUT = """<b>⍟─────[ 🔘 𝐀𝐛𝐨𝐮𝐭 𝐌𝐞 🔘 ]─────⍟
+    ABOUT = """<b>⍟──────[ 🔘 𝐀𝐛𝐨𝐮𝐭 𝐌𝐞 🔘 ]──────⍟
 
-<blockquote>➣ 📃ʙᴏᴛ : <a href='https://t.me/Public_Caption_Bot'>Pᴜʙʟɪᴄ Aᴜᴛᴏ Cᴀᴘᴛɪᴏɴ</a>
+<blockquote>➣ ʙᴏᴛ : <a href='https://t.me/Public_Caption_Bot'>Pᴜʙʟɪᴄ Aᴜᴛᴏ Cᴀᴘᴛɪᴏɴ</a>
 ➣ Dᴇᴠᴇʟᴏᴘᴇʀ : <a href='https://t.me/THE_DS_OFFICIAL'>ՏIᒪᗴᑎT ᘜᕼOՏT ⚡️</a>
 ➣ Hᴏsᴛᴇᴅ ᴏɴ : Aɴʏᴡʜᴇʀᴇ 
 ➣ Lᴀɴɢᴜᴀɢᴇ : Pʏᴛʜᴏɴ3

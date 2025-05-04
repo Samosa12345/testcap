@@ -210,20 +210,32 @@ def extract_metadata(name: str, caption: str = "") -> dict:
     season_match = re.search(r'(?:s|season)[\s\._-]*(\d+)', text, re.IGNORECASE)
     season = season_match.group(1) if season_match else None
 
-    # Episode detection — supports single & ranges
-    episode = None
-    episode_range_match = re.search(
-        r'(?:e|episode)?[\s\._-]*(\d{1,2})[\s\-to]*(\d{1,2})?',
-        text, re.IGNORECASE
-    )
-    if episode_range_match:
-        ep_start = episode_range_match.group(1)
-        ep_end = episode_range_match.group(2)
-        if ep_start and ep_end:
-            episode = f"{int(ep_start):02d}-{int(ep_end):02d}"
-        elif ep_start:
-            episode = f"{int(ep_start):02d}"
+    # Updated and more precise episode parsing
+    episode_patterns = [
+        r'[Ss]eason[ _.-]*([0-9]{1,2})[^\n\r]*?[Ee]pisode[ _.-]*([0-9]{1,2})(?:\s*(?:to|-|–)\s*([0-9]{1,2}))?',
+        r'[Ss]([0-9]{1,2})[^\n\r]*?[Ee]([0-9]{1,2})(?:\s*(?:to|-|–)\s*([0-9]{1,2}))?',
+        r'[Ss]eason[ _.-]*([0-9]{1,2})[^\n\r]*?[Ee]p?[ _.-]*([0-9]{1,2})(?:\s*(?:to|-|–)\s*([0-9]{1,2}))?',
+    ]
 
+    episode = ""
+    for pattern in episode_patterns:
+        match = re.search(pattern, file_name, re.IGNORECASE)
+        if not match:
+            match = re.search(pattern, message.caption or "", re.IGNORECASE)
+        if match:
+            season_num = match.group(1)
+            episode_start = match.group(2)
+            episode_end = match.group(3) if len(match.groups()) > 2 and match.group(3) else None
+
+        # Ensure we're not capturing a 4-digit year as episode
+            if episode_start and len(episode_start) == 4:
+                continue
+ 
+            if episode_end:
+                episode = f"S{int(season_num):02}E{int(episode_start):02}-E{int(episode_end):02}"
+            else:
+                episode = f"S{int(season_num):02}E{int(episode_start):02}"
+            break
     # Year detection
     year_match = re.search(r'(?<!\d)((?:19|20)\d{2})(?!\d)', text)
     year = year_match.group(1) if year_match else None

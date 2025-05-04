@@ -13,9 +13,9 @@ class TXT(object):
 ɪ ᴀᴍ ᴛʜᴇ ᴍᴏꜱᴛ ᴘᴏᴡᴇʀꜰᴜʟ ᴀᴜᴛᴏ ᴄᴀᴘᴛɪᴏɴ ʙᴏᴛ ᴡɪᴛʜ Aᴅᴠᴀɴᴄᴇ ꜰᴇᴀᴛᴜʀᴇꜱ !
 I ᴀᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ ᴇᴅɪᴛ ᴄᴀᴘᴛɪᴏɴꜱ ғᴏʀ ᴠɪᴅᴇᴏꜱ, ᴀᴜᴅɪᴏ ғɪʟᴇꜱ, ᴀɴᴅ ᴅᴏᴄᴜᴍᴇɴᴛꜱ ᴘᴏꜱᴛᴇᴅ ᴏɴ ᴄʜᴀɴɴᴇʟꜱ.
 
-<blockquote>ᴜꜱᴇ /setcap ᴛᴏ ꜱᴇᴛ ᴄᴀᴘᴛɪᴏɴ.\nᴜꜱᴇ /delcap Tᴏ ᴅᴇʟᴇᴛᴇ ᴄᴀᴘᴛɪᴏɴ ᴀɴᴅ ꜱᴇᴛ ᴄᴀᴘᴛɪᴏɴ ᴛᴏ ᴅᴇғᴀᴜʟᴛ.\nᴜꜱᴇ /variables ᴛᴏ ᴄʜᴇᴄᴋ ᴀʟʟ ᴠᴀʟɪᴅ ᴄᴀᴘᴛɪᴏɴ ᴠᴀʀɪᴀʙʟᴇꜱ.</blockquote>
+<blockquote>⋗ ᴜꜱᴇ /setcap ᴛᴏ ꜱᴇᴛ ᴄᴀᴘᴛɪᴏɴ.\n⋗ ᴜꜱᴇ /delcap Tᴏ ᴅᴇʟᴇᴛᴇ ᴄᴀᴘᴛɪᴏɴ ᴀɴᴅ ꜱᴇᴛ ᴄᴀᴘᴛɪᴏɴ ᴛᴏ ᴅᴇғᴀᴜʟᴛ.\n⋗ Uꜱᴇ /showcap ᴛᴏ ꜱᴇᴇ ᴛʜᴇ ꜱᴀᴠᴇᴅ ᴄᴀᴘᴛɪᴏɴ ᴛᴇᴍᴘʟᴀᴛᴇ ɪɴ ᴄʜᴀɴɴᴇʟ. \n⋗ ᴜꜱᴇ /variables ᴛᴏ ᴄʜᴇᴄᴋ ᴀʟʟ ᴠᴀʟɪᴅ ᴄᴀᴘᴛɪᴏɴ ᴠᴀʀɪᴀʙʟᴇꜱ.</blockquote>
 
-Nᴏᴛᴇ: Cᴀᴘᴛɪᴏɴ ᴄᴏᴍᴍᴀɴᴅꜱ ᴡᴏʀᴋꜱ ᴏɴ ᴄʜᴀɴɴᴇʟꜱ ᴏɴʟʏ ⚠</b>"""
+Nᴏᴛᴇ: Aʟʟ ᴀʙᴏᴠᴇ ᴄᴏᴍᴍᴀɴᴅꜱ ᴡᴏʀᴋꜱ ᴏɴ ᴄʜᴀɴɴᴇʟꜱ ᴏɴʟʏ ⚠</b>"""
 
 # ===================== [ HELP TEXT ] ===================== # 
 
@@ -35,9 +35,9 @@ Nᴏᴛᴇ: Cᴀᴘᴛɪᴏɴ ᴄᴏᴍᴍᴀɴᴅꜱ ᴡᴏʀᴋꜱ ᴏɴ ᴄʜ
 ᴜꜱᴇ /variables ᴛᴏ ᴄʜᴇᴄᴋ ᴀʟʟ ᴠᴀʟɪᴅ ᴄᴀᴘᴛɪᴏɴ ᴠᴀʀɪᴀʙʟᴇꜱ
 
 Eg:- <code>/setcap 
-{file_name} 
+{filename} 
 
-⚙️ Size » {file_size}
+⚙️ Size » {filesize}
 
 ╔═════ ᴊᴏɪɴ ᴡɪᴛʜ ᴜs ════╗
 🔸 𝐉𝐨𝐢𝐧 :- ᴄʜᴀɴɴᴇʟ ʟɪɴᴋ 
@@ -46,14 +46,14 @@ Eg:- <code>/setcap
 
 # ===================== [ ABOUT TEXT ] ===================== #
 
-    ABOUT = """<b>⍟────[ 🔘 𝐀𝐛𝐨𝐮𝐭 𝐌𝐞 🔘 ]────⍟
+    ABOUT = """<b>⍟─────[ 🔘 𝐀𝐛𝐨𝐮𝐭 𝐌𝐞 🔘 ]─────⍟
 
 <blockquote>➣ 📃ʙᴏᴛ : <a href='https://t.me/Public_Caption_Bot'>Pᴜʙʟɪᴄ Aᴜᴛᴏ Cᴀᴘᴛɪᴏɴ</a>
-➣ 👦Dᴇᴠᴇʟᴏᴘᴇʀ : <a href='https://t.me/THE_DS_OFFICIAL'>ՏIᒪᗴᑎT ᘜᕼOՏT ⚡️</a>
-➣ 📡Hᴏsᴛᴇᴅ ᴏɴ : Aɴʏᴡʜᴇʀᴇ 
-➣ 🗣️Lᴀɴɢᴜᴀɢᴇ : Pʏᴛʜᴏɴ3
-➣ 📚Lɪʙʀᴀʀʏ : Pʏʀᴏɢʀᴀᴍ
-➣ 👨🏻‍💻Cʀᴇᴅɪᴛꜱ : @THE_DS_OFFICIAL & @Biisal</blockquote> 
+➣ Dᴇᴠᴇʟᴏᴘᴇʀ : <a href='https://t.me/THE_DS_OFFICIAL'>ՏIᒪᗴᑎT ᘜᕼOՏT ⚡️</a>
+➣ Hᴏsᴛᴇᴅ ᴏɴ : Aɴʏᴡʜᴇʀᴇ 
+➣ Lᴀɴɢᴜᴀɢᴇ : Pʏᴛʜᴏɴ3
+➣ Lɪʙʀᴀʀʏ : Pʏʀᴏɢʀᴀᴍ
+➣ Cʀᴇᴅɪᴛꜱ : @THE_DS_OFFICIAL & @Biisal</blockquote> 
 ⍟────[ @Public_Caption_Bot ]────⍟</b>"""
 
 
@@ -63,28 +63,28 @@ Eg:- <code>/setcap
     MARKDOWN ="""<b>╔═❰ 🔰 <u>𝐀𝐛𝐨𝐮𝐭 𝐌𝐚𝐫𝐤𝐝𝐨𝐰𝐧𝐬</u> 🔰 ❱══➣
 ║
 ║   <i>𝐁𝐨𝐥𝐝 𝐓𝐞𝐱𝐭</i>
-║   👉🏻  <code>**{file_name}**</code>   
+║   👉🏻  <code>**{filename}**</code>   
 ║
 ║   <i>𝐈𝐭𝐚𝐥𝐢𝐜 𝐓𝐞𝐱𝐭</i>
-║   👉🏻  <code>__{post_caption}__</code>   
+║   👉🏻  <code>__{filename}__</code>   
 ║  
 ║   <i>𝐂𝐨𝐝𝐞 𝐓𝐞𝐱𝐭</i>
-║   👉🏻  <code>`{file_size}`</code>   
+║   👉🏻  <code>`{filesize}`</code>   
 ║
 ║   <i>𝐐𝐮𝐨𝐭𝐞 𝐓𝐞𝐱𝐭</i>
-║   👉🏻  <code> > {file_name}</code>   
+║   👉🏻  <code> > {filename}</code>   
 ║
 ║   <i>𝐒𝐭𝐫𝐢𝐤𝐞 𝐓𝐞𝐱𝐭</i>
-║   👉🏻  <code>~~{file_size}~~</code>   
+║   👉🏻  <code>~~{filesize}~~</code>   
 ║
 ║   <i>𝐒𝐩𝐨𝐢𝐥𝐞𝐫 𝐓𝐞𝐱𝐭</i>
-║   👉🏻  <code>||{file_name}||</code>   
+║   👉🏻  <code>||{filename}||</code>   
 ║
 ║   <i>𝐔𝐧𝐝𝐞𝐫𝐥𝐢𝐧𝐞 𝐓𝐞𝐱𝐭</i>
-║   👉🏻  <code><u>{post_caption}</u></code>
+║   👉🏻  <code><u>{filename}</u></code>
 ║  
 ║   <i>𝐇𝐲𝐩𝐞𝐫𝐥𝐢𝐧𝐤 𝐓𝐞𝐱𝐭</i>
-║   👉🏻  <code>[{post_caption}](https://t.me/Public_Caption_Bot)</code>
+║   👉🏻  <code>[{filename}](https://t.me/Public_Caption_Bot)</code>
 ╚══════════════════➣""" 
     
 
@@ -132,51 +132,5 @@ If you have any questions or suggestions about our Privacy Policy, Then Contact 
 
 
     BOTLIST = "Nothing... "
-
-"""<blockquote>🔥 <u>𝐒𝐢𝐥𝐞𝐧𝐭 𝐏𝐮𝐛𝐥𝐢𝐜 𝐁𝐨𝐭 𝐋𝐢𝐬𝐭</u> 🔥</blockquote>
-
-<blockquote>1. <b>Public File Store Bot</b> ⚡
-    👉🏻 @PublicFileStore01_Bot</blockquote>
     
-    You Can Save Your Files, Videos, Photos etc
-    On Bot, and get anywhere, anytime when you want !
-
-<blockquote>2. <b>Public File To Link / Stream Bot</b> ⚡
-    👉🏻 @PublicFileToLink01Bot</blockquote>
-
-    You Can Generate Fast Download link & Stream Link! Also Stream Videos On Internet (Without Downloading) and having Group Support!
-
-<blockquote>3. <b>Public Auto Reaction Bot</b> ⚡
-    👉🏻 @SILENT_REACT_BOT</blockquote>
-
-    This Bot Will Give Reaction On Your Message !, Support In Group & Channel Both ! 
-
-<blockquote>4. <b>Public Caption Bot Beta</b> ⚡
-    👉🏻 @PublicCaption_Bot</blockquote>
-
-    This bot is Beta Version Of Advance Caption Bot ! Easy To Use & Very Simple UI & Caption System  
-
-<blockquote>5. <b>Advance Public Caption Bot</b> ⚡
-    👉🏻 @Public_Caption_Bot</blockquote>
-
-    This is an advance and Multifunctional caption bot ! it have caption with file_name & post_caption & file_size Supported
-
-<blockquote>6. <b>Public Instagram Downloader Bot</b> ⚡</blockquote>
-    👉🏻 Bot is Under maintaince
-    
-<blockquote>7. <b>Public Spotify Music Downloader Bot</b></blockquote>
-    👉🏻 Bot is Under maintaince
-    
-    𝐨𝐫   <code><b>{file_name}</b></code>
-
-    𝐨𝐫   <code><i>{post_caption}</i></code>
-
-    𝐨𝐫   <code><code>{file_size}</code></code>  
-
-    𝐨𝐫   <code><blockquote>{file_size}</blockquote></code>  
-
-    𝐨𝐫   <code><s>{file_size}</s></code>
-
-    𝐨𝐫   <code><spoiler>{file_name}</spoiler></code>
-"""
 # ===================== [😎 END OF translation.py 😎] ===================== #

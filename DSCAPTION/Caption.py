@@ -11,7 +11,7 @@ from config import DS
 
 @Client.on_message(filters.command(["setcap", "setcaption"]) & filters.channel)
 async def set_caption(bot, message: Message):
-    if message.chat.type != "channel":
+    if message.chat.type == "private":
         await message.reply("<blockquote><b>Uꜱᴇ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ ɪɴ ᴛʜᴇ ᴄʜᴀɴɴᴇʟ ᴡʜᴇʀᴇ ᴛʜᴇ ʙᴏᴛ ɪꜱ ᴀᴅᴅᴇᴅ ᴀꜱ ᴀᴅᴍɪɴ.</b></blockquote>")
         return
     if len(message.command) < 2:
@@ -29,7 +29,7 @@ async def set_caption(bot, message: Message):
 
 @Client.on_message(filters.command(["delcap", "delcaption", "delete_caption"]) & filters.channel)
 async def delete_caption(_, message: Message):
-    if message.chat.type != "channel":
+    if message.chat.type == "private":
         await message.reply("<blockquote><b>Uꜱᴇ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ ɪɴ ᴛʜᴇ ᴄʜᴀɴɴᴇʟ ᴡʜᴇʀᴇ ᴛʜᴇ ʙᴏᴛ ɪꜱ ᴀᴅᴅᴇᴅ ᴀꜱ ᴀᴅᴍɪɴ.</b></blockquote>")
         return
     chnl_id = message.chat.id
@@ -43,7 +43,7 @@ async def delete_caption(_, message: Message):
 
 @Client.on_message(filters.command(["preview", "showcap"]) & filters.channel)
 async def preview_caption(_, message: Message):
-    if message.chat.type != "channel":
+    if message.chat.type == "private":
         await message.reply("<blockquote><b>Uꜱᴇ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ ɪɴ ᴛʜᴇ ᴄʜᴀɴɴᴇʟ ᴡʜᴇʀᴇ ᴛʜᴇ ʙᴏᴛ ɪꜱ ᴀᴅᴅᴇᴅ ᴀꜱ ᴀᴅᴍɪɴ.</b></blockquote>")
         return
     chnl_id = message.chat.id
@@ -55,7 +55,7 @@ async def preview_caption(_, message: Message):
 
 @Client.on_message(filters.command("variables") & filters.channel)
 async def show_placeholders(_, message: Message):
-    if message.chat.type != "channel":
+    if message.chat.type == "private":
         await message.reply("<blockquote><b>Uꜱᴇ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ ɪɴ ᴛʜᴇ ᴄʜᴀɴɴᴇʟ ᴡʜᴇʀᴇ ᴛʜᴇ ʙᴏᴛ ɪꜱ ᴀᴅᴅᴇᴅ ᴀꜱ ᴀᴅᴍɪɴ.</b></blockquote>")
         return
     text = """<b>

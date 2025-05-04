@@ -9,7 +9,7 @@ from pyrogram.types import Message
 from .database import addCap, updateCap, chnl_ids
 from config import DS
 
-@Client.on_message(filters.command(["setcap", "setcaption"]) & filters.channel)
+@Client.on_message(filters.command(["setcap", "setcaption"]))
 async def set_caption(bot, message: Message):
     if not message.chat.type == "channel":
         await message.reply("<blockquote><b>Use this command in the channel where the bot is added as admin.</b></blockquote>")
@@ -27,7 +27,7 @@ async def set_caption(bot, message: Message):
         await addCap(chnl_id, caption)
     await message.reply(f"Your new caption is:\n<code>{caption}</code>")
 
-@Client.on_message(filters.command(["delcap", "delcaption", "delete_caption"]) & filters.channel)
+@Client.on_message(filters.command(["delcap", "delcaption", "delete_caption"]))
 async def delete_caption(_, message: Message):
     if not message.chat.type == "channel":
         await message.reply("<blockquote><b>Use this command in the channel where the bot is added as admin.</b></blockquote>")
@@ -41,7 +41,7 @@ async def delete_caption(_, message: Message):
         await asyncio.sleep(5)
         await reply.delete()
 
-@Client.on_message(filters.command(["preview", "showcap"]) & filters.channel)
+@Client.on_message(filters.command(["preview", "showcap"]))
 async def preview_caption(_, message: Message):
     if not message.chat.type == "channel":
         await message.reply("<blockquote><b>Use this command in the channel where the bot is added as admin.</b></blockquote>")
@@ -53,7 +53,7 @@ async def preview_caption(_, message: Message):
     else:
         await message.reply("<b>No custom caption set. Default will be used.</b>")
 
-@Client.on_message(filters.command("variables") & filters.channel)
+@Client.on_message(filters.command("variables"))
 async def show_placeholders(_, message: Message):
     if not message.chat.type == "channel":
         await message.reply("<blockquote><b>Use this command in the channel where the bot is added as admin.</b></blockquote>")

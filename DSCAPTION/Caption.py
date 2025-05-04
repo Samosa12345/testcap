@@ -221,7 +221,7 @@ def extract_metadata(name: str, caption: str = "") -> dict:
     for pattern in episode_patterns:
         match = re.search(pattern, name, re.IGNORECASE)
         if not match:
-            match = re.search(pattern, message.caption or "", re.IGNORECASE)
+            match = re.search(pattern, caption or "", re.IGNORECASE)
         if match:
             season_num = match.group(1)
             episode_start = match.group(2)

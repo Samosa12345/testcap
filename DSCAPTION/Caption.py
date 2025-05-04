@@ -163,7 +163,7 @@ def extract_metadata(name: str, caption: str = "") -> dict:
     elif "multi" in text:
         lang = f"multi - {', '.join(sorted(languages))}" if languages else "multi"
     else:
-        lang = ', '.join(sorted(languages)) if languages else None
+        lang = ', '.join(sorted(languages)) if languages else "N/A"
 
     return {
         "quality": quality,

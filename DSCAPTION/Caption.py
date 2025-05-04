@@ -11,8 +11,8 @@ from config import DS
 
 @Client.on_message(filters.command(["setcap", "setcaption"]))
 async def set_caption(bot, message: Message):
-    if not message.chat.type == "channel":
-        await message.reply("<blockquote><b>Use this command in the channel where the bot is added as admin.</b></blockquote>")
+    if message.chat.type != "channel":
+        await message.reply("<blockquote><b>Uꜱᴇ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ ɪɴ ᴛʜᴇ ᴄʜᴀɴɴᴇʟ ᴡʜᴇʀᴇ ᴛʜᴇ ʙᴏᴛ ɪꜱ ᴀᴅᴅᴇᴅ ᴀꜱ ᴀᴅᴍɪɴ.</b></blockquote>")
         return
     if len(message.command) < 2:
         return await message.reply(
@@ -29,8 +29,8 @@ async def set_caption(bot, message: Message):
 
 @Client.on_message(filters.command(["delcap", "delcaption", "delete_caption"]))
 async def delete_caption(_, message: Message):
-    if not message.chat.type == "channel":
-        await message.reply("<blockquote><b>Use this command in the channel where the bot is added as admin.</b></blockquote>")
+    if message.chat.type != "channel":
+        await message.reply("<blockquote><b>Uꜱᴇ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ ɪɴ ᴛʜᴇ ᴄʜᴀɴɴᴇʟ ᴡʜᴇʀᴇ ᴛʜᴇ ʙᴏᴛ ɪꜱ ᴀᴅᴅᴇᴅ ᴀꜱ ᴀᴅᴍɪɴ.</b></blockquote>")
         return
     chnl_id = message.chat.id
     try:
@@ -43,8 +43,8 @@ async def delete_caption(_, message: Message):
 
 @Client.on_message(filters.command(["preview", "showcap"]))
 async def preview_caption(_, message: Message):
-    if not message.chat.type == "channel":
-        await message.reply("<blockquote><b>Use this command in the channel where the bot is added as admin.</b></blockquote>")
+    if message.chat.type != "channel":
+        await message.reply("<blockquote><b>Uꜱᴇ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ ɪɴ ᴛʜᴇ ᴄʜᴀɴɴᴇʟ ᴡʜᴇʀᴇ ᴛʜᴇ ʙᴏᴛ ɪꜱ ᴀᴅᴅᴇᴅ ᴀꜱ ᴀᴅᴍɪɴ.</b></blockquote>")
         return
     chnl_id = message.chat.id
     cap_data = await chnl_ids.find_one({"chnl_id": chnl_id})
@@ -55,8 +55,8 @@ async def preview_caption(_, message: Message):
 
 @Client.on_message(filters.command("variables"))
 async def show_placeholders(_, message: Message):
-    if not message.chat.type == "channel":
-        await message.reply("<blockquote><b>Use this command in the channel where the bot is added as admin.</b></blockquote>")
+    if message.chat.type != "channel":
+        await message.reply("<blockquote><b>Uꜱᴇ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ ɪɴ ᴛʜᴇ ᴄʜᴀɴɴᴇʟ ᴡʜᴇʀᴇ ᴛʜᴇ ʙᴏᴛ ɪꜱ ᴀᴅᴅᴇᴅ ᴀꜱ ᴀᴅᴍɪɴ.</b></blockquote>")
         return
     text = """<b>
 ⋗ {filename} = File name.

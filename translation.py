@@ -128,9 +128,28 @@ We may update this Privacy Policy from time to time in order to reflect, for exa
 If you have any questions or suggestions about our Privacy Policy, Then Contact My Developer (see /start).</b>"""
 
 
-# ===================== [ BOT LIST TEXT ] ===================== #
+# ===================== [ BOT VARIABLES ] ===================== #
 
 
-    BOTLIST = "Nothing... "
+    VAR = """<b>
+⋗ {filename} = File name.
+⋗ {filesize} = Original file size.
+⋗ {caption} = File caption.
+⋗ {language} = Languages extracted from the file name.
+⋗ {year} = Year extracted from the file name.
+⋗ {quality} = Quality extracted from the file name.
+⋗ {season} = Season extracted from the file name.
+⋗ {episode} = Episode extracted from the file name.
+⋗ {duration} = Duration in Hour | Min | Sec.
+⋗ {height} = Height of the video.
+⋗ {width} = Width of the video.
+⋗ {resolution} = Resolution (e.g., 1920x1080).
+⋗ {ext} = File extension (e.g., mp4, mkv).
+⋗ {media_type} = Type of media (e.g., video, document)
+⋗ {mime_type} = Mime type of the file (video/mp4, audio/mpeg, etc.).
+⋗ {title} = Title of the audio.
+⋗ {artist} = Artist of the audio.
+⋗ {wish} = Good Morning / Afternoon / Evening / Night
+</b>"""
     
 # ===================== [😎 END OF translation.py 😎] ===================== #

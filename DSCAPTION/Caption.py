@@ -11,9 +11,6 @@ from config import DS
 
 @Client.on_message(filters.command(["setcap", "setcaption"]) & filters.channel)
 async def set_caption(bot, message: Message):
-    if message.chat.type == "private":
-        await message.reply("<blockquote><b>Uꜱᴇ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ ɪɴ ᴛʜᴇ ᴄʜᴀɴɴᴇʟ ᴡʜᴇʀᴇ ᴛʜᴇ ʙᴏᴛ ɪꜱ ᴀᴅᴅᴇᴅ ᴀꜱ ᴀᴅᴍɪɴ.</b></blockquote>")
-        return
     if len(message.command) < 2:
         return await message.reply(
             "<b>Example:</b> /setcap Your caption here. Use <code>{filename}</code>, <code>{filesize}</code>, etc.\n<b>Use /variables to see all placeholders.</b>"
@@ -29,9 +26,6 @@ async def set_caption(bot, message: Message):
 
 @Client.on_message(filters.command(["delcap", "delcaption", "delete_caption"]) & filters.channel)
 async def delete_caption(_, message: Message):
-    if message.chat.type == "private":
-        await message.reply("<blockquote><b>Uꜱᴇ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ ɪɴ ᴛʜᴇ ᴄʜᴀɴɴᴇʟ ᴡʜᴇʀᴇ ᴛʜᴇ ʙᴏᴛ ɪꜱ ᴀᴅᴅᴇᴅ ᴀꜱ ᴀᴅᴍɪɴ.</b></blockquote>")
-        return
     chnl_id = message.chat.id
     try:
         await chnl_ids.delete_one({"chnl_id": chnl_id})
@@ -43,9 +37,6 @@ async def delete_caption(_, message: Message):
 
 @Client.on_message(filters.command(["preview", "showcap"]) & filters.channel)
 async def preview_caption(_, message: Message):
-    if message.chat.type == "private":
-        await message.reply("<blockquote><b>Uꜱᴇ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ ɪɴ ᴛʜᴇ ᴄʜᴀɴɴᴇʟ ᴡʜᴇʀᴇ ᴛʜᴇ ʙᴏᴛ ɪꜱ ᴀᴅᴅᴇᴅ ᴀꜱ ᴀᴅᴍɪɴ.</b></blockquote>")
-        return
     chnl_id = message.chat.id
     cap_data = await chnl_ids.find_one({"chnl_id": chnl_id})
     if cap_data and "caption" in cap_data:
@@ -55,9 +46,6 @@ async def preview_caption(_, message: Message):
 
 @Client.on_message(filters.command("variables") & filters.channel)
 async def show_placeholders(_, message: Message):
-    if message.chat.type == "private":
-        await message.reply("<blockquote><b>Uꜱᴇ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ ɪɴ ᴛʜᴇ ᴄʜᴀɴɴᴇʟ ᴡʜᴇʀᴇ ᴛʜᴇ ʙᴏᴛ ɪꜱ ᴀᴅᴅᴇᴅ ᴀꜱ ᴀᴅᴍɪɴ.</b></blockquote>")
-        return
     text = """<b>
 ⋗ {filename} = File name.
 ⋗ {filesize} = Original file size.

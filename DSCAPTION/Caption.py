@@ -146,14 +146,85 @@ def extract_languages(name):
 
 import re
 
-LANGUAGE_MAP = {
-    'hin': 'Hindi', 'eng': 'English', 'tam': 'Tamil', 'tel': 'Telugu', 'kan': 'Kannada',
-    'mal': 'Malayalam', 'guj': 'Gujarati', 'pun': 'Punjabi', 'mar': 'Marathi',
-    'ben': 'Bengali', 'urd': 'Urdu', 'fre': 'French', 'spa': 'Spanish', 'ger': 'German',
-    'ita': 'Italian', 'jpn': 'Japanese', 'kor': 'Korean', 'chi': 'Chinese',
-    'du': 'Dutch', 'ara': 'Arabic', 'rus': 'Russian', 'multi': 'Multi', 'dual': 'Dual'
+
+LANG_MAP = {  
+    'ori': 'Odia', 'odia': 'Odia',
+    'ass': 'Assamese', 'assamese': 'Assamese',
+    'tur': 'Turkish', 'turkish': 'Turkish',
+    "eng": "English", "english": "English",
+    "hin": "Hindi", "hindi": "Hindi",
+    "tam": "Tamil", "tamil": "Tamil",
+    "tel": "Telugu", "telugu": "Telugu",
+    "mal": "Malayalam", "malayalam": "Malayalam",
+    "kan": "Kannada", "kannada": "Kannada",
+    "mar": "Marathi", "marathi": "Marathi",
+    "guj": "Gujarati", "gujarati": "Gujarati",
+    "ben": "Bengali", "bengali": "Bengali",
+    "pun": "Punjabi", "punjabi": "Punjabi",
+    "urdu": "Urdu", "urdu": "Urdu",
+    "jap": "Japanese", "japanese": "Japanese",
+    "chi": "Chinese", "chinese": "Chinese",
+    "kor": "Korean", "korean": "Korean",
+    "fre": "French", "french": "French",
+    "ger": "German", "german": "German",
+    "ita": "Italian", "italian": "Italian",
+    "spa": "Spanish", "spanish": "Spanish",
+    "arab": "Arabic", "arabic": "Arabic",
+    "port": "Portuguese", "portuguese": "Portuguese",
+    "rus": "Russian", "russian": "Russian",
+    "nep": "Nepali", "nepali": "Nepali",
+    "san": "Sanskrit", "sanskrit": "Sanskrit",
+    "lat": "Latin", "latin": "Latin"
 }
 
+def extract_metadata(name: str, caption: str = "") -> dict:
+    text = f"{name} {caption}".lower()
+
+    # Season detection
+    season_match = re.search(r'(?:s|season)[\s\._-]*(\d+)', text, re.IGNORECASE)
+    season = season_match.group(1) if season_match else None
+
+    # Episode detection — supports single & ranges
+    episode = None
+    episode_range_match = re.search(
+        r'(?:e|episode)?[\s\._-]*(\d{1,2})[\s\-to]*(\d{1,2})?',
+        text, re.IGNORECASE
+    )
+    if episode_range_match:
+        ep_start = episode_range_match.group(1)
+        ep_end = episode_range_match.group(2)
+        if ep_start and ep_end:
+            episode = f"{int(ep_start):02d}-{int(ep_end):02d}"
+        elif ep_start:
+            episode = f"{int(ep_start):02d}"
+
+    # Year detection
+    year_match = re.search(r'(?<!\d)((?:19|20)\d{2})(?!\d)', text)
+    year = year_match.group(1) if year_match else None
+
+    # Resolution detection
+    quality_match = re.search(r'(480p|720p|1080p|2160p|4k)', text)
+    resolution = quality_match.group(1).upper() if quality_match else None
+
+    # Language detection
+    languages_raw = re.findall(r'\b(?:' + '|'.join(LANG_MAP.keys()) + r')\b', text)
+    languages = list({LANG_MAP.get(lang.lower(), lang.capitalize()) for lang in languages_raw})
+
+    # Dual/Multi prefix formatting
+    if "dual" in text:
+        lang = f"dual - {', '.join(sorted(languages))}" if languages else "dual"
+    elif "multi" in text:
+        lang = f"multi - {', '.join(sorted(languages))}" if languages else "multi"
+    else:
+        lang = ', '.join(sorted(languages)) if languages else None
+
+    return {
+        "season": season,
+        "episode": episode,
+        "year": year,
+        "resolution": resolution,
+        "language": lang
+    }
 def extract_languages_and_year(caption_text: str, file_name: str):
     text = f"{caption_text or ''} {file_name}".lower()
 
@@ -282,6 +353,7 @@ def extract_from_filename(name):
 
 def format_caption(template, file_name, file_size, caption="", duration=None, height=None, width=None, mime_type=None, media_type=None, title=None, artist=None):
     info = extract_from_filename(file_name)
+    test = extract_metadata(file_name, caption)
     resolution = f"{width}x{height}" if width and height else "N/A"
     clean_name = clean_filename(file_name)
     lang, year = extract_languages_and_year(caption, clean_name)
@@ -290,11 +362,11 @@ def format_caption(template, file_name, file_size, caption="", duration=None, he
         "{filename}": clean_name,
         "{filesize}": get_size(file_size),
         "{caption}": caption or "",
-        "{language}": lang,
+        "{language}": test["language"],
         "{year}": year,
         "{quality}": info["quality"],
-        "{season}": info["season"],
-        "{episode}": info["episode"],
+        "{season}": test["season"],
+        "{episode}": test["episode"],
         "{duration}": format_duration(duration),
         "{height}": str(height or "N/A"),
         "{width}": str(width or "N/A"),

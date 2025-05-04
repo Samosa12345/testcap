@@ -14,10 +14,10 @@ class DS(object):
     START_PIC = os.environ.get("START_PIC", "https://envs.sh/lCm.jpg") # "https://telegra.ph/file/c5952790fa8235f499749.jpg")
 
     # UPI QR Code Pic
-    UPI_QR_CODE = os.environ.get("UPI_QR_CODE", "https://graph.org/file/7b782be88a32be378790f.jpg")
+    UPI_QR_CODE = os.environ.get("UPI_QR_CODE", "https://envs.sh/l9M.jpg")
 
     # markdown Image
-    MARKDOWN_PIC = os.environ.get("MARKDOWN_PIC", "https://envs.sh/ZEt.png")
+    MARKDOWN_PIC = os.environ.get("MARKDOWN_PIC", "https://envs.sh/l9U.jpg")
     
     # wes response configuration
     BOT_UPTIME = time.time()

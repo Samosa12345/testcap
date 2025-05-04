@@ -52,13 +52,18 @@ def get_size(size_bytes):
             return f"{size:.2f} {unit}"
         size /= 1024
     return f"{size:.2f} PB"
-
+"""
 def clean_filename(name):
     name = name.strip()
     name_without_ext, ext = os.path.splitext(name)
     name_cleaned = re.sub(r'[\._]+', ' ', name_without_ext)  # Replace dots/underscores with space
     name_cleaned = re.sub(r'\s{2,}', ' ', name_cleaned).strip()  # Remove extra spaces
     return f"{name_cleaned}{ext}"
+    """
+def clean_filename(name):
+    name_without_ext = os.path.splitext(name)[0]
+    clean = re.sub(r'[._]+', ' ', name_without_ext).strip()
+    return f"{clean}{os.path.splitext(name)[1]}"
     
 """def clean_filename(name):
     name = re.sub(r"[._]+", " ", name)
@@ -96,26 +101,65 @@ def format_duration(seconds):
     }
 """
 def extract_from_filename(name):
-    name_cleaned = re.sub(r"[._]+", " ", name).strip().lower()
+    name_lower = name.lower()
 
+    # Extension (last dot-based split)
+    ext = os.path.splitext(name)[1].lower().strip() or "N/A"
+
+    # Language mappings
+    language_map = {
+        'hin': 'Hindi', 'hindi': 'Hindi',
+        'eng': 'English', 'english': 'English',
+        'tam': 'Tamil', 'tamil': 'Tamil',
+        'tel': 'Telugu', 'telugu': 'Telugu',
+        'mal': 'Malayalam', 'malayalam': 'Malayalam',
+        'kan': 'Kannada', 'kannada': 'Kannada',
+        'pun': 'Punjabi', 'punjabi': 'Punjabi',
+        'mar': 'Marathi', 'marathi': 'Marathi',
+        'guj': 'Gujarati', 'gujarati': 'Gujarati',
+        'beng': 'Bengali', 'bengali': 'Bengali',
+        'urd': 'Urdu', 'urdu': 'Urdu',
+        'dual': 'Dual', 'multi': 'Multi'
+    }
+
+    # Detect all present languages
+    found_languages = []
+    for key, lang in language_map.items():
+        if re.search(rf'\b{key}\b', name_lower):
+            if lang not in found_languages:
+                found_languages.append(lang)
+
+    # Language label
+    if 'Multi' in found_languages:
+        found_languages.remove('Multi')
+        language = f"Multi - {', '.join(found_languages)}" if found_languages else "Multi"
+    elif 'Dual' in found_languages:
+        found_languages.remove('Dual')
+        language = f"Dual - {', '.join(found_languages)}" if found_languages else "Dual"
+    else:
+        language = ', '.join(found_languages) if found_languages else "N/A"
+
+    # Patterns
     patterns = {
-        "year": r"\b(19[0-9]{2}|20[0-4][0-9]|2050)\b",
-        "quality": r"\b(144p|240p|360p|480p|720p|1080p|2160p|4k|hdr)\b",
-        "season": r"(?:s|season[\s._-]?)(\d{1,2})",
-        "episode": r"(?:e|ep|episode[\s._-]?)(\d{1,4})",
-        "language": r"\b(hindi|english|tamil|telugu|malayalam|kannada|punjabi|marathi|gujarati|bengali|urdu|french|german|spanish|korean|japanese|dual|multi|dubbed|subbed|mandarin|russian|chinese|thai)\b",
-        "ext": r"\.([a-z0-9]{2,5})$"
+        "year": r"\b(19\d{2}|20\d{2})\b",
+        "quality": r"(144p|240p|360p|480p|720p|1080p|2160p|4k)",
+        "season": r"(?:s|season)[\s._-]?(\d{1,2})",
+        "episode": r"(?:e|episode)[\s._-]?(\d{1,4})"
     }
 
     results = {}
     for key, pat in patterns.items():
-        match = re.search(pat, name_cleaned, re.IGNORECASE)
-        if match:
-            results[key] = match.group(1).title() if key == "language" else match.group(1)
-        else:
-            results[key] = "N/A"
+        match = re.search(pat, name_lower)
+        results[key] = match.group(1) if match else "N/A"
 
-    return results
+    return {
+        "year": results["year"],
+        "quality": results["quality"],
+        "season": results["season"],
+        "episode": results["episode"],
+        "language": language,
+        "ext": ext
+        }
 
 def format_caption(template, file_name, file_size, caption="", duration=None, height=None, width=None, mime_type=None, media_type=None, title=None, artist=None):
     info = extract_from_filename(file_name)

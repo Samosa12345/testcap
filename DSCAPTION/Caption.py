@@ -284,7 +284,7 @@ def format_caption(template, file_name, file_size, caption="", duration=None, he
     info = extract_from_filename(file_name)
     resolution = f"{width}x{height}" if width and height else "N/A"
     clean_name = clean_filename(file_name)
-    lang, year = extract_languages_and_year(caption, cleaned_name)
+    lang, year = extract_languages_and_year(caption, clean_name)
     
     placeholders = {
         "{filename}": clean_name,

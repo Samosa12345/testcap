@@ -144,8 +144,82 @@ def extract_languages(name):
     else:
         return "N/A"
         
-        
 def extract_from_filename(name):
+    name_lower = name.lower()
+
+    # Mapping short codes & language names
+    lang_map = {
+        "eng": "English", "english": "English",
+        "hin": "Hindi", "hindi": "Hindi",
+        "spa": "Spanish", "spanish": "Spanish",
+        "tam": "Tamil", "tamil": "Tamil",
+        "tel": "Telugu", "telugu": "Telugu",
+        "mal": "Malayalam", "malayalam": "Malayalam",
+        "kan": "Kannada", "kannada": "Kannada",
+        "pun": "Punjabi", "punjabi": "Punjabi",
+        "mar": "Marathi", "marathi": "Marathi",
+        "guj": "Gujarati", "gujarati": "Gujarati",
+        "jap": "Japanese", "japanese": "Japanese",
+        "kor": "Korean", "korean": "Korean",
+        "fre": "French", "french": "French",
+        "ger": "German", "german": "German",
+        "ita": "Italian", "italian": "Italian",
+        "multi": "Multi", "dual": "Dual"
+    }
+
+    # Clean filename
+    clean = re.sub(r"[(){}]", " ", name_lower)
+    clean = re.sub(r"[^a-z0-9+]", " ", clean)
+
+    # Year
+    year_match = re.search(r"\b(19\d{2}|20\d{2})\b", name_lower)
+    year = year_match.group(1) if year_match else "N/A"
+
+    # Season
+    season_match = re.search(r"s(\d{1,2})", name_lower)
+    season = f"{int(season_match.group(1)):02d}" if season_match else "N/A"
+
+    # Episode with range (like e01-05 or e01_05 or e01to05)
+    ep_range_match = re.search(r"e(\d{2,4})\D*?(\d{2,4})", name_lower)
+    if ep_range_match:
+        episode = f"{ep_range_match.group(1)}–{ep_range_match.group(2)}"
+    else:
+        ep_match = re.search(r"e(\d{1,4})", name_lower)
+        episode = f"{int(ep_match.group(1)):02d}" if ep_match else "N/A"
+
+    # Quality
+    quality_match = re.search(r"(144p|240p|360p|480p|720p|1080p|2160p|4k)", name_lower)
+    quality = quality_match.group(1) if quality_match else "N/A"
+
+    # Extension
+    ext_match = re.search(r"\.([a-z0-9]{2,5})$", name)
+    ext = ext_match.group(1) if ext_match else "N/A"
+
+    # Language
+    lang_found = []
+    for code, full in lang_map.items():
+        if re.search(rf"\b{re.escape(code)}\b", clean):
+            if full not in lang_found:
+                lang_found.append(full)
+
+    if "Dual" in lang_found:
+        lang_found.remove("Dual")
+        language = f"Dual - {', '.join(lang_found)}" if lang_found else "Dual"
+    elif "Multi" in lang_found:
+        lang_found.remove("Multi")
+        language = f"Multi - {', '.join(lang_found)}" if lang_found else "Multi"
+    else:
+        language = ", ".join(lang_found) if lang_found else "N/A"
+
+    return {
+        "year": year,
+        "quality": quality,
+        "season": season,
+        "episode": episode,
+        "language": language,
+        "ext": ext
+        }      
+"""def extract_from_filename(name):
     name_lower = name.lower()
 
     # Extension (last dot-based split)
@@ -169,7 +243,7 @@ def extract_from_filename(name):
         "episode": extract_episode_range(name),
         "language": extract_languages(name),
         "ext": ext
-        }
+        }"""
 
 def format_caption(template, file_name, file_size, caption="", duration=None, height=None, width=None, mime_type=None, media_type=None, title=None, artist=None):
     info = extract_from_filename(file_name)

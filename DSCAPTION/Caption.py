@@ -11,6 +11,9 @@ from config import DS
 
 @Client.on_message(filters.command(["setcap", "setcaption"]) & filters.channel)
 async def set_caption(bot, message: Message):
+    if not message.chat.type == "channel":
+        await message.reply("<blockquote><b>Use this command in the channel where the bot is added as admin.</b></blockquote>")
+        return
     if len(message.command) < 2:
         return await message.reply(
             "<b>Example:</b> /setcap Your caption here. Use <code>{filename}</code>, <code>{filesize}</code>, etc.\n<b>Use /variables to see all placeholders.</b>"
@@ -26,6 +29,9 @@ async def set_caption(bot, message: Message):
 
 @Client.on_message(filters.command(["delcap", "delcaption", "delete_caption"]) & filters.channel)
 async def delete_caption(_, message: Message):
+    if not message.chat.type == "channel":
+        await message.reply("<blockquote><b>Use this command in the channel where the bot is added as admin.</b></blockquote>")
+        return
     chnl_id = message.chat.id
     try:
         await chnl_ids.delete_one({"chnl_id": chnl_id})
@@ -35,6 +41,45 @@ async def delete_caption(_, message: Message):
         await asyncio.sleep(5)
         await reply.delete()
 
+@Client.on_message(filters.command(["preview", "showcap"]) & filters.channel)
+async def preview_caption(_, message: Message):
+    if not message.chat.type == "channel":
+        await message.reply("<blockquote><b>Use this command in the channel where the bot is added as admin.</b></blockquote>")
+        return
+    chnl_id = message.chat.id
+    cap_data = await chnl_ids.find_one({"chnl_id": chnl_id})
+    if cap_data and "caption" in cap_data:
+        await message.reply(f"<b>Your saved caption template:</b>\n<code>{cap_data['caption']}</code>")
+    else:
+        await message.reply("<b>No custom caption set. Default will be used.</b>")
+
+@Client.on_message(filters.command("variables") & filters.channel)
+async def show_placeholders(_, message: Message):
+    if not message.chat.type == "channel":
+        await message.reply("<blockquote><b>Use this command in the channel where the bot is added as admin.</b></blockquote>")
+        return
+    text = """<b>
+⋗ {filename} = File name.
+⋗ {filesize} = Original file size.
+⋗ {caption} = File caption.
+⋗ {language} = Languages extracted from the file name.
+⋗ {year} = Year extracted from the file name.
+⋗ {quality} = Quality extracted from the file name.
+⋗ {season} = Season extracted from the file name.
+⋗ {episode} = Episode extracted from the file name.
+⋗ {duration} = Duration in Hour | Min | Sec.
+⋗ {height} = Height of the video.
+⋗ {width} = Width of the video.
+⋗ {resolution} = Resolution (e.g., 1920x1080).
+⋗ {ext} = File extension (e.g., mp4, mkv).
+⋗ {media_type} = Type of media (e.g., video, document)
+⋗ {mime_type} = Mime type of the file (video/mp4, audio/mpeg, etc.).
+⋗ {title} = Title of the audio.
+⋗ {artist} = Artist of the audio.
+⋗ {wish} = Good Morning / Afternoon / Evening / Night
+</b>"""
+    await message.reply(text)
+    
 def get_wish():
     hour = datetime.datetime.now().hour
     if hour < 12:
@@ -217,7 +262,7 @@ def extract_metadata(name: str, caption: str = "") -> dict:
         r'[Ss]eason[ _.-]*([0-9]{1,2})[^\n\r]*?[Ee]p?[ _.-]*([0-9]{1,2})(?:\s*(?:to|-|–)\s*([0-9]{1,2}))?',
     ]
 
-    episode = ""
+    episode = "N/A"
     for pattern in episode_patterns:
         match = re.search(pattern, name, re.IGNORECASE)
         if not match:
@@ -232,9 +277,9 @@ def extract_metadata(name: str, caption: str = "") -> dict:
                 continue
  
             if episode_end:
-                episode = f"S{int(season_num):02}E{int(episode_start):02}-E{int(episode_end):02}"
+                episode = f"E{int(episode_start):02} to E{int(episode_end):02}"
             else:
-                episode = f"S{int(season_num):02}E{int(episode_start):02}"
+                episode = f"{int(episode_start):02}"
             break
     # Year detection
     year_match = re.search(r'(?<!\d)((?:19|20)\d{2})(?!\d)', text)
@@ -446,28 +491,4 @@ async def handle_channel_message(bot, message: Message):
     )
 
     await message.edit(edited_caption)
-
-@Client.on_message(filters.command("variables"))
-async def show_placeholders(_, message: Message):
-    text = """<b>
-⋗ {filename} = File name.
-⋗ {filesize} = Original file size.
-⋗ {caption} = File caption.
-⋗ {language} = Languages extracted from the file name.
-⋗ {year} = Year extracted from the file name.
-⋗ {quality} = Quality extracted from the file name.
-⋗ {season} = Season extracted from the file name.
-⋗ {episode} = Episode extracted from the file name.
-⋗ {duration} = Duration in Hour | Min | Sec.
-⋗ {height} = Height of the video.
-⋗ {width} = Width of the video.
-⋗ {resolution} = Resolution (e.g., 1920x1080).
-⋗ {ext} = File extension (e.g., mp4, mkv).
-⋗ {media_type} = Type of media (e.g., video, document)
-⋗ {mime_type} = Mime type of the file (video/mp4, audio/mpeg, etc.).
-⋗ {title} = Title of the audio.
-⋗ {artist} = Artist of the audio.
-⋗ {wish} = Good Morning / Afternoon / Evening / Night
-</b>"""
-    await message.reply(text)
     

@@ -143,7 +143,42 @@ def extract_languages(name):
         return ', '.join(lang_list)
     else:
         return "N/A"
-        
+
+import re
+
+LANGUAGE_MAP = {
+    'hin': 'Hindi', 'eng': 'English', 'tam': 'Tamil', 'tel': 'Telugu', 'kan': 'Kannada',
+    'mal': 'Malayalam', 'guj': 'Gujarati', 'pun': 'Punjabi', 'mar': 'Marathi',
+    'ben': 'Bengali', 'urd': 'Urdu', 'fre': 'French', 'spa': 'Spanish', 'ger': 'German',
+    'ita': 'Italian', 'jpn': 'Japanese', 'kor': 'Korean', 'chi': 'Chinese',
+    'du': 'Dutch', 'ara': 'Arabic', 'rus': 'Russian', 'multi': 'Multi', 'dual': 'Dual'
+}
+
+def extract_languages_and_year(caption_text: str, file_name: str):
+    text = f"{caption_text or ''} {file_name}".lower()
+
+    # Extract year (4 digit between 1900 and 2099)
+    year_match = re.search(r'\b(19\d{2}|20\d{2})\b', text)
+    year = year_match.group(1) if year_match else "N/A"
+
+    # Detect language codes and full names
+    langs_found = set()
+    for code, full in LANGUAGE_MAP.items():
+        if re.search(rf'\b{code}\b', text) or re.search(rf'\b{full.lower()}\b', text):
+            langs_found.add(full)
+
+    langs_list = sorted(langs_found)
+    lang_label = "N/A"
+    if langs_list:
+        if "Multi" in text:
+            lang_label = f"Multi - {', '.join(langs_list)}"
+        elif "Dual" in text or len(langs_list) == 2:
+            lang_label = f"Dual - {', '.join(langs_list)}"
+        else:
+            lang_label = ", ".join(langs_list)
+
+    return lang_label, year
+    
 def extract_from_filename(name):
     name_lower = name.lower()
 
@@ -249,13 +284,14 @@ def format_caption(template, file_name, file_size, caption="", duration=None, he
     info = extract_from_filename(file_name)
     resolution = f"{width}x{height}" if width and height else "N/A"
     clean_name = clean_filename(file_name)
-
+    lang, year = extract_languages_and_year(caption, cleaned_name)
+    
     placeholders = {
         "{filename}": clean_name,
         "{filesize}": get_size(file_size),
         "{caption}": caption or "",
-        "{language}": info["language"],
-        "{year}": info["year"],
+        "{language}": lang,
+        "{year}": year,
         "{quality}": info["quality"],
         "{season}": info["season"],
         "{episode}": info["episode"],

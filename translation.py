@@ -138,6 +138,7 @@ If you have any questions or suggestions about our Privacy Policy, Then Contact 
 ⋗ {language} = Languages extracted from the file name.
 ⋗ {year} = Year extracted from the file name.
 ⋗ {quality} = Quality extracted from the file name.
+⋗ {ott_print} = eg. Zee5 - WEBRip
 ⋗ {season} = Season extracted from the file name.
 ⋗ {episode} = Episode extracted from the file name.
 ⋗ {duration} = Duration in Hour | Min | Sec.

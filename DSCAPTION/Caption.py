@@ -154,10 +154,12 @@ def extract_metadata(name: str, caption: str = "") -> dict:
             else:
                 episode = f"{int(episode_start):02}"
             break
-    print_raw = re.findall(r'\b(?:' + '|'.join(PRINTS.keys()) + r')\b', text)
-    printf = list({PRINTS.get(pf) for pf in print_raw})
+            
+    pattern = r'(?<!\w)(' + '|'.join(map(re.escape, PRINTS.keys())) + r')(?!\w)'
+    print_raw = re.findall(pattern, text)
+    printf = list(dict.fromkeys(PRINTS.get(pf) for pf in print_raw))
 
-    # ott fetching 
+        # ott fetching 
     if "nf" in text:
         p = f"NETFLIX - {', '.join(sorted(printf))}" if printf else "NF"
     elif "amzn" in text:

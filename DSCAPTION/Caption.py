@@ -172,6 +172,8 @@ def extract_metadata(name: str, caption: str = "") -> dict:
         p = f"ZEE5 - {', '.join(sorted(printf))}" if printf else "ZEE5"
     elif "sonyliv" in text or "sony liv" in text:
         p = f"SONYLIV - {', '.join(sorted(printf))}" if printf else "SONYLIV"
+    elif "crunchyroll" in text or "cr" in text:
+        p = f"Crunchyroll - {', '.join(sorted(printf))}" if printf else "Crunchyroll" 
     elif "voot" in text:
         p = f"VOOT - {', '.join(sorted(printf))}" if printf else "VOOT"
     elif "paramount" in text:

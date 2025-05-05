@@ -153,17 +153,6 @@ def extract_metadata(name: str, caption: str = "") -> dict:
             else:
                 episode = f"{int(episode_start):02}"
             break
-
-
-    """
-    found_prints = []
-    for print_type in print_keywords:
-        pattern = r'\b' + re.escape(print_type) + r'\b'
-        if re.search(pattern, text):
-            found_prints.append(print_type.upper())
-
-    prints = ", ".join(found_prints) if found_prints else "N/A"
-    """
     print_raw = re.findall(r'\b(?:' + '|'.join(PRINTS.keys()) + r')\b', text)
     printf = list({PRINTS.get(pf) for pf in print_raw})
 
@@ -202,7 +191,7 @@ def extract_metadata(name: str, caption: str = "") -> dict:
         p = f"DISCOVERY - {', '.join(sorted(printf))}" if printf else "DISCOVERY"
     elif "eros" or "eros now" in text:
         p = f"EROS NOW - {', '.join(sorted(printf))}" if printf else "EROS NOW"
-    elif "ujhs" or in text:
+    elif "ujhs" in text:
         p = f"Ultra Jhakaas - {', '.join(sorted(printf))}" if printf else "UJHS"
     elif "youtube" in text:
         p = f"YOUTUBE - {', '.join(sorted(printf))}" if printf else "YOUTUBE"

@@ -40,6 +40,17 @@ LANG_MAP = {
     "lat": "Latin", "latin": "Latin"
 }
 
+PRINTS = {
+        "bluray": "Bluray", "brrip": "BR-Rip", "bdrip": "BD-Rip",
+        "web-dl": "WEB-DL", "webdl": "WEB-DL", "webrip": "WEBRip", "web-rip": "WEBRip",
+        "hdrip": "HDRip", "dvdrip": "DVD-Rip", "hdtvdl": "HDTV-DL", "hdtv": "HDTV",
+        "tvrip": "TVRip", "hd-tvrip": "HDTV-Rip", "pdtv": "PDTV", "sdtv": "SDTV",
+        "uhd": "UHD", "hdts": "HDTS", "hdtc": "HDTC", "ytdl": "YTDL",
+        "hdcam": "HDCAM", "hdcamrip": "HDCAM-Rip", "hq s-print": "HQ S-Print",
+        "camrip": "HDCAM-Rip", "telesync": "TELESYNC", "dvdscr": "DVD-SCR",
+        "workprint": "WORK PRINT", "repack": "REPACK", "extended": "EXTENDED", "unrated": "UNRATED"
+}
+
 @Client.on_message(filters.command(["setcap", "setcaption"]) & filters.channel)
 async def set_caption(bot, message: Message):
     if len(message.command) < 2:
@@ -142,6 +153,64 @@ def extract_metadata(name: str, caption: str = "") -> dict:
             else:
                 episode = f"{int(episode_start):02}"
             break
+
+
+    """
+    found_prints = []
+    for print_type in print_keywords:
+        pattern = r'\b' + re.escape(print_type) + r'\b'
+        if re.search(pattern, text):
+            found_prints.append(print_type.upper())
+
+    prints = ", ".join(found_prints) if found_prints else "N/A"
+    """
+    print_raw = re.findall(r'\b(?:' + '|'.join(PRINTS.keys()) + r')\b', text)
+    printf = list({PRINTS.get(pf) for pf in print_raw})
+
+    # ott fetching 
+    if "nf" in text:
+        p = f"NETFLIX - {', '.join(sorted(printf))}" if printf else "NF"
+    elif "amzn" in text:
+        p = f"AMZN - {', '.join(sorted(printf))}" if printf else "AMZN"
+    elif "jhs" in text:
+        p = f"Jio-Hotstar - {', '.join(sorted(printf))}" if printf else "JHS"
+    elif "hulu" in text:
+        p = f"HULU - {', '.join(sorted(printf))}" if printf else "HULU"
+    elif "hbo" in text:
+        p = f"HBO MAX - {', '.join(sorted(printf))}" if printf else "HBO"
+    elif "zee5" in text:
+        p = f"ZEE5 - {', '.join(sorted(printf))}" if printf else "ZEE5"
+    elif "sonyliv" or "sony liv" in text:
+        p = f"SONYLIV - {', '.join(sorted(printf))}" if printf else "SONYLIV"
+    elif "voot" in text:
+        p = f"VOOT - {', '.join(sorted(printf))}" if printf else "VOOT"
+    elif "paramount" in text:
+        p = f"PARAMOUNT - {', '.join(sorted(printf))}" if printf else "PARAMOUNT"
+    elif "peacock" in text:
+        p = f"PEACOCK - {', '.join(sorted(printf))}" if printf else "PEACOCK"
+    elif "js" or "jio cinema" or "jiocinema" in text:
+        p = f"JIO CINEMA - {', '.join(sorted(printf))}" if printf else "JIO CINEMA"
+    elif "aha" in text:
+        p = f"AHA - {', '.join(sorted(printf))}" if printf else "AHA"
+    elif "altbalaji" or "alt" in text:
+        p = f"ALT BALAJI - {', '.join(sorted(printf))}" if printf else "ALT BALAJI"
+    elif "mx" or "mx player" in text:
+        p = f"MX - {', '.join(sorted(printf))}" if printf else "MX"
+    elif "sun nxt" or "sunnxt" in text:
+        p = f"SUN NXT - {', '.join(sorted(printf))}" if printf else "SUN NXT"
+    elif "discovery" in text:
+        p = f"DISCOVERY - {', '.join(sorted(printf))}" if printf else "DISCOVERY"
+    elif "eros" or "eros now" in text:
+        p = f"EROS NOW - {', '.join(sorted(printf))}" if printf else "EROS NOW"
+    elif "ujhs" or in text:
+        p = f"Ultra Jhakaas - {', '.join(sorted(printf))}" if printf else "UJHS"
+    elif "youtube" in text:
+        p = f"YOUTUBE - {', '.join(sorted(printf))}" if printf else "YOUTUBE"
+    elif "lionsgate play" or "lionsgate" in text:
+        p = f"Lionsgate Play - {', '.join(sorted(printf))}" if printf else "Lionsgate Play"
+    else:
+        p = ', '.join(sorted(languages)) if languages else "N/A"
+        
     # Year detection
     year_match = re.search(r'\b(19\d{2}|20\d{2})\b', text)
     year = year_match.group(1) if year_match else "N/A"
@@ -159,13 +228,14 @@ def extract_metadata(name: str, caption: str = "") -> dict:
 
     # Dual/Multi prefix formatting
     if "dual" in text:
-        lang = f"dual - {', '.join(sorted(languages))}" if languages else "dual"
+        lang = f"Dual - {', '.join(sorted(languages))}" if languages else "Dual"
     elif "multi" in text:
-        lang = f"multi - {', '.join(sorted(languages))}" if languages else "multi"
+        lang = f"Multi - {', '.join(sorted(languages))}" if languages else "Multi"
     else:
         lang = ', '.join(sorted(languages)) if languages else "N/A"
 
     return {
+        "prints": p,
         "quality": quality,
         "extension": ext,
         "season": season,
@@ -187,6 +257,7 @@ def format_caption(template, file_name, file_size, caption="", duration=None, he
         "{quality}": info["quality"],
         "{season}": info["season"],
         "{episode}": info["episode"],
+        "{ott_print}": info["prints"],
         "{duration}": format_duration(duration),
         "{height}": str(height or "N/A"),
         "{width}": str(width or "N/A"),

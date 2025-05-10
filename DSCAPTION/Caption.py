@@ -1,9 +1,8 @@
 # (c) @Bisal & (c) @Sanchit0102
 
-import os
-import re
-import datetime
-import asyncio
+import os, re, asyncio
+from datetime import datetime
+from zoneinfo import ZoneInfo   
 from pyrogram import Client, filters
 from pyrogram.types import Message
 from .database import addCap, updateCap, chnl_ids
@@ -91,7 +90,8 @@ async def show_placeholders(_, message: Message):
     await message.reply(TXT.VAR)
     
 def get_wish():
-    hour = datetime.datetime.now().hour
+    time = datetime.now(ZoneInfo("Asia/Kolkata"))
+    hour = time.hour
     if 5 <= hour < 12:
         return "Good Morning"
     elif 12 <= hour < 17:

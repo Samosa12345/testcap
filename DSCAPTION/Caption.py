@@ -132,9 +132,9 @@ def extract_metadata(name: str, caption: str = "") -> dict:
 
     # OTT detection
     ott_keys = {
-        "nf": "NETFLIX", "amzn": "AMZN", "jhs": "Jio-Hotstar", "hulu": "HULU", "hbo": "HBO MAX",
+        "nf": "NETFLIX", "amzn": "AMZN", "jh": "Jio-Hotstar", "hulu": "HULU", "hbo": "HBO MAX",
         "zee5": "ZEE5", "sonyliv": "SONYLIV", "sony liv": "SONYLIV", "crunchyroll": "Crunchyroll", "cr": "Crunchyroll",
-        "voot": "VOOT", "paramount": "PARAMOUNT", "peacock": "PEACOCK", "js": "JIO CINEMA",
+        "voot": "VOOT", "paramount": "PARAMOUNT", "peacock": "PEACOCK", "jc": "JIO CINEMA", "jio": "Jio Cinema",
         "jio cinema": "JIO CINEMA", "jiocinema": "JIO CINEMA", "aha": "AHA", "altbalaji": "ALT BALAJI",
         "alt": "ALT BALAJI", "mx": "MX", "mx player": "MX", "sun nxt": "SUN NXT", "sunnxt": "SUN NXT",
         "discovery": "DISCOVERY", "eros": "EROS NOW", "eros now": "EROS NOW", "ujhs": "Ultra Jhakaas",

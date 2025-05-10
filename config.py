@@ -8,7 +8,7 @@ class DS(object):
     # Bot config  ( required.. 😥)
     API_ID = os.environ.get("API_ID", "25833520")
     API_HASH = os.environ.get("API_HASH", "7d012a6cbfabc2d0436d7a09d8362af7")
-    BOT_TOKEN = os.environ.get("BOT_TOKEN", "7312480511:AAF2V4w27h5IVZM9VbC-PAouV_UpSBCQKmA")
+    BOT_TOKEN = os.environ.get("BOT_TOKEN", "7016777070:AAFlFW1ELdwUP36MV0zCyy43Dlv9iHSz5HI")
 
     # start_pic
     START_PIC = os.environ.get("START_PIC", "https://envs.sh/lCm.jpg") # "https://telegra.ph/file/c5952790fa8235f499749.jpg")

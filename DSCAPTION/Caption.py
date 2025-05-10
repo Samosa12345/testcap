@@ -278,5 +278,5 @@ async def handle_channel_message(bot, message: Message):
         artist=getattr(file, "performer", None)
     )
 
-    await message.edit(caption=caption, reply_markup=button))
+    await message.edit(caption=caption, reply_markup=button)
     

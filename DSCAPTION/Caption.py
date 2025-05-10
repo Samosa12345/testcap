@@ -141,7 +141,7 @@ def extract_metadata(name: str, caption: str = "") -> dict:
         "youtube": "YOUTUBE", "lionsgate play": "Lionsgate Play", "lionsgate": "Lionsgate Play"
     }
 
-    ott_name = "N/A"
+    ott_name = ""
     for key, label in ott_keys.items():
         if key in normalized_text:
             ott_name = label

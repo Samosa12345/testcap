@@ -216,14 +216,12 @@ def inlinebutton(caption: str):
     matches = pattern.findall(caption)
 
     buttons = [InlineKeyboardButton(text=text.strip(), url=url.strip()) for text, url in matches]
-    cleaned_caption = pattern.sub('', caption).strip()
 
-    keyboard = []
-    for i in range(0, len(buttons), 2):
-        keyboard.append(buttons[i:i+2])
+    cleaned_caption = pattern.sub('', caption).strip()
+    keyboard = [buttons[i:i + 2] for i in range(0, len(buttons), 2)]
 
     return cleaned_caption, InlineKeyboardMarkup(keyboard) if buttons else None
-
+    
 def format_caption(template, file_name, file_size, caption="", duration=None, height=None, width=None, mime_type=None, media_type=None, title=None, artist=None):
     info = extract_metadata(file_name, caption)
     resolution = f"{width}x{height}" if width and height else "N/A"

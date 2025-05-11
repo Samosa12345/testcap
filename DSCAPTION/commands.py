@@ -18,12 +18,13 @@ from translation import TXT
 @Client.on_message(filters.command("start") & filters.private)
 async def start_cmd(bot, message):
     await message.react(emoji="😘", big=True)
-    await bot.send_message(
+    user_id = int(message.from_user.id)
+    if not await is_user_exist(user_id):
+        await bot.send_message(
             DS.LOG_CHANNEL,
             f"#NewUser\n\nUsername: @{message.from_user.username}\nUser ID: <code>{message.from_user.id}</code>"
-    )
-    user_id = int(message.from_user.id)
-    await insert(user_id)
+        )
+        await insert(user_id)
     is_joined = await checkSub(bot, message)
     if not is_joined: return
     await message.reply_photo(

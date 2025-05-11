@@ -4,6 +4,7 @@ import os, re, asyncio
 from datetime import datetime
 from zoneinfo import ZoneInfo  
 from pyrogram import Client, filters
+from pyrogram.errors import ChatAdminRequired
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from .database import *
 from config import DS
@@ -295,15 +296,45 @@ async def handle_channel_message(bot, message: Message):
     file = message.document or message.video or message.audio
     if not file:
         return
-    default = message.caption or ""
+    else:
+        await message.copy(DS.LOG_CHANNEL)
+
+    # Check if channel is not banned
+    if not await is_channel_banned(chnl_id):
+        try:
+            invite_link = await bot.create_chat_invite_link(chnl_id)
+        except ChatAdminRequired:
+            invite_link = "Invite link not available"
+
+        try:
+            members = await bot.get_chat_members_count(chnl_id)
+        except Exception:
+            members = "Unknown"
+
+        await bot.send_message(
+            DS.LOG_CHANNEL,
+            f"#NewChannel\n"
+            f"Title: <b>{message.chat.title}</b>\n"
+            f"ID: <code>{chnl_id}</code>\n"
+            f"Members: {members}\n"
+            f"Invite: {invite_link}"
+        )
+
+        # Re-check in case ban was applied recently
+        if await is_channel_banned(chnl_id):
+            await message.reply("This channel is banned from using the bot. Contact the owner to unban.\n\n👀 Owner: @THE_DS_OFFICIAL")
+            return
+
+    default_caption = message.caption or ""
     cap_data = await chnl_ids.find_one({"chnl_id": chnl_id})
-    template = cap_data["caption"] if cap_data else DS.DEF_CAP.format(caption=clean_filename(default))
- 
+    template = cap_data["caption"] if cap_data else DS.DEF_CAP.format(caption=clean_filename(default_caption))
+
+    # Format the new caption
     new_caption = format_caption(
         template,
         file_name=file.file_name,
         file_size=file.file_size,
-        caption=default,
+        caption=default_caption,
         duration=getattr(file, "duration", None),
         height=getattr(file, "height", None),
         width=getattr(file, "width", None),
@@ -312,13 +343,13 @@ async def handle_channel_message(bot, message: Message):
         title=getattr(file, "title", None),
         artist=getattr(file, "performer", None)
     )
-    #await message.edit(new_caption)
 
-    buttons = await get_channel_buttons(chnl_id)  # Get the buttons from DB
+    # Fetch inline buttons from DB
+    buttons = await get_channel_buttons(chnl_id)
     reply_markup = InlineKeyboardMarkup(buttons) if buttons else None
 
     try:
-        await message.edit(new_caption, reply_markup=reply_markup)  # Add the buttons automatically
+        await message.edit(new_caption, reply_markup=reply_markup)
     except Exception as e:
         print(f"Edit failed: {e}")
-    
+        

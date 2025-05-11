@@ -23,7 +23,10 @@ async def insert(user_id):
     except:
         pass
         
-# Total User
+async def is_user_exist(user_id):
+    user = await users.find_one({'_id': int(user_id)})
+    return bool(user)
+    
 async def total_user():
     user = await users.count_documents({})
     return user

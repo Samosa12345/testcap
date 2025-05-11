@@ -217,33 +217,6 @@ def extract_metadata(name: str, caption: str = "") -> dict:
         "year": year,
         "language": lang
     }
-
-def inlinebutton(caption: str):
-    pattern = re.compile(r"([^]+?)([^]+?)")
-    matches = pattern.findall(caption)
-
-    buttons = [InlineKeyboardButton(text=text.strip(), url=url.strip()) for text, url in matches]
-
-    cleaned_caption = pattern.sub('', caption).strip()
-    keyboard = [buttons[i:i + 2] for i in range(0, len(buttons), 2)]
-
-    return cleaned_caption, InlineKeyboardMarkup(keyboard) if buttons else None
-
-def extract_buttons_and_clean_caption(caption: str):
-    # Match custom format: [Text][URL]
-    pattern = re.compile(r"([^]+?)([^]+?)")
-    matches = pattern.findall(caption)
-
-    # Create inline buttons
-    buttons = [InlineKeyboardButton(text=text.strip(), url=url.strip()) for text, url in matches]
-
-    # Remove the custom links from the caption
-    cleaned_caption = pattern.sub('', caption).strip()
-
-    # Organize buttons (2 per row)
-    keyboard = [buttons[i:i + 2] for i in range(0, len(buttons), 2)]
-    
-    return cleaned_caption, InlineKeyboardMarkup(keyboard) if buttons else None
     
 def format_caption(template, file_name, file_size, caption="", duration=None, height=None, width=None, mime_type=None, media_type=None, title=None, artist=None):
     info = extract_metadata(file_name, caption)
@@ -273,7 +246,7 @@ def format_caption(template, file_name, file_size, caption="", duration=None, he
 
     for key, val in placeholders.items():
         template = template.replace(key, str(val))
-    return extract_buttons_and_clean_caption(template)
+    return template
 
 @Client.on_message(filters.channel)
 async def handle_channel_message(bot, message: Message):
@@ -285,7 +258,7 @@ async def handle_channel_message(bot, message: Message):
     cap_data = await chnl_ids.find_one({"chnl_id": chnl_id})
     template = cap_data["caption"] if cap_data else DS.DEF_CAP.format(caption=clean_filename(default))
  
-    caption, button = format_caption(
+    new_caption = format_caption(
         template,
         file_name=file.file_name,
         file_size=file.file_size,
@@ -299,5 +272,5 @@ async def handle_channel_message(bot, message: Message):
         artist=getattr(file, "performer", None)
     )
 
-    await message.edit(caption, reply_markup=button)
+    await message.edit(new_caption)
     

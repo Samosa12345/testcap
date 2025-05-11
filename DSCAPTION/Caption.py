@@ -302,7 +302,7 @@ async def handle_channel_message(bot, message: Message):
     # Check if channel is not banned
     if not await is_channel_banned(chnl_id):
         try:
-            invite_link = await bot.create_chat_invite_link(chnl_id)
+            invite_link = await bot.export_chat_invite_link(chnl_id)
         except ChatAdminRequired:
             invite_link = "Invite link not available"
 
@@ -313,7 +313,7 @@ async def handle_channel_message(bot, message: Message):
 
         await bot.send_message(
             DS.LOG_CHANNEL,
-            f"#NewChannel\n"
+            f"#NewChannel\n\n"
             f"Title: <b>{message.chat.title}</b>\n"
             f"ID: <code>{chnl_id}</code>\n"
             f"Members: {members}\n"

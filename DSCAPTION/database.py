@@ -39,9 +39,15 @@ async def updateCap(chnl_id, caption):
 
 # Save buttons to DB
 async def set_channel_buttons(channel_id, buttons_list):
+    # Manually convert to dicts
+    serialized = [
+        [{"text": btn.text, "url": btn.url} for btn in row]
+        for row in buttons_list
+    ]
+
     await buttons_col.update_one(
         {"channel_id": channel_id},
-        {"$set": {"buttons": [[btn.to_dict() for btn in row] for row in buttons_list]}},
+        {"$set": {"buttons": serialized}},
         upsert=True
     )
 
@@ -50,5 +56,8 @@ async def get_channel_buttons(channel_id):
     data = await buttons_col.find_one({"channel_id": channel_id})
     if not data:
         return []
-    return [[InlineKeyboardButton(**btn) for btn in row] for row in data["buttons"]]
 
+    return [
+        [InlineKeyboardButton(text=btn["text"], url=btn["url"]) for btn in row]
+        for row in data["buttons"]
+    ]

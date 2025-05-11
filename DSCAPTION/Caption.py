@@ -231,7 +231,7 @@ def inlinebutton(caption: str):
 
 def extract_buttons_and_clean_caption(caption: str):
     # Match custom format: [Text][URL]
-    pattern = re.compile(r'[([^[]+)][([^]]+)]')
+    pattern = re.compile(r"([^]+?)([^]+?)")
     matches = pattern.findall(caption)
 
     # Create inline buttons

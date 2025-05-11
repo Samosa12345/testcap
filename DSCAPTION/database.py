@@ -1,5 +1,5 @@
 # (c) @Bisal
-
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 import motor.motor_asyncio
 from config import DS
 

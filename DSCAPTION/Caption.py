@@ -299,7 +299,7 @@ async def handle_channel_message(bot, message: Message):
     cap_data = await chnl_ids.find_one({"chnl_id": chnl_id})
     template = cap_data["caption"] if cap_data else DS.DEF_CAP.format(caption=clean_filename(default))
  
-    new_caption, _ = format_caption(
+    new_caption = format_caption(
         template,
         file_name=file.file_name,
         file_size=file.file_size,

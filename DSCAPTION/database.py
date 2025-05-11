@@ -98,8 +98,8 @@ def record_edit(channel_id, timestamp=None):
         upsert=True
     )
 
-# Function to get stats (weekly, monthly, yearly)
-def get_edit_stats():
+# Function to get stats (weekly, monthly, yearly
+async def get_edit_stats():
     now = datetime.utcnow()
 
     # Calculate time ranges
@@ -107,34 +107,38 @@ def get_edit_stats():
     one_month_ago = now - timedelta(weeks=4)
     one_year_ago = now - timedelta(weeks=52)
 
-    # Filter documents based on timestamps
-    week_stats = list(edits_col.aggregate([
-        {"$match": {"timestamps": {"$gte": one_week_ago}}},
-        {"$group": {"_id": None, "total_edits": {"$sum": 1}}}
-    ]))
+    # Helper to run aggregation and return result list
+    async def run_aggregate(pipeline):
+        results = []
+        async for doc in edits_col.aggregate(pipeline):
+            results.append(doc)
+        return results
 
-    month_stats = list(edits_col.aggregate([
-        {"$match": {"timestamps": {"$gte": one_month_ago}}},
+    # Stats aggregations
+    week_stats = await run_aggregate([
+        {"$match": {"timestamp": {"$gte": one_week_ago}}},
         {"$group": {"_id": None, "total_edits": {"$sum": 1}}}
-    ]))
+    ])
 
-    year_stats = list(edits_col.aggregate([
-        {"$match": {"timestamps": {"$gte": one_year_ago}}},
+    month_stats = await run_aggregate([
+        {"$match": {"timestamp": {"$gte": one_month_ago}}},
         {"$group": {"_id": None, "total_edits": {"$sum": 1}}}
-    ]))
+    ])
 
-    # Total edits (all time)
-    total_edits = list(edits_col.aggregate([
+    year_stats = await run_aggregate([
+        {"$match": {"timestamp": {"$gte": one_year_ago}}},
         {"$group": {"_id": None, "total_edits": {"$sum": 1}}}
-    ]))
+    ])
 
-    # Fetch top 3 channels where the bot is used most
-    top_channels = list(edits_col.aggregate([
-        {"$unwind": "$timestamps"},
+    total_edits = await run_aggregate([
+        {"$group": {"_id": None, "total_edits": {"$sum": 1}}}
+    ])
+
+    top_channels = await run_aggregate([
         {"$group": {"_id": "$channel_id", "edit_count": {"$sum": 1}}},
         {"$sort": {"edit_count": -1}},
         {"$limit": 3}
-    ]))
+    ])
 
     return {
         'week_stats': week_stats,
@@ -142,4 +146,4 @@ def get_edit_stats():
         'year_stats': year_stats,
         'total_edits': total_edits,
         'top_channels': top_channels
-}
+        }

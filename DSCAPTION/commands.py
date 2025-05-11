@@ -15,18 +15,15 @@ from translation import TXT
 
 # ===================== [ Start Command ] ===================== #
 
-EMOJI2 = "😘"
-
 @Client.on_message(filters.command("start") & filters.private)
 async def start_cmd(bot, message):
-    await message.react(emoji=EMOJI2, big=True)
+    await message.react(emoji="😘", big=True)
+    await bot.send_message(
+            DS.LOG_CHANNEL,
+            f"#NewUser\n\nUsername: @{message.from_user.username}\nUser ID: <code>{message.from_user.id}</code>"
+    )
     user_id = int(message.from_user.id)
     await insert(user_id)
-    if not await is_user_banned(user_id):
-        await bot.send_message(
-            DS.LOG_CHANNEL,
-            f"#NewUser\nUsername: @{message.from_user.username}\nUser ID: <code>{message.from_user.id}</code>"
-        )
     is_joined = await checkSub(bot, message)
     if not is_joined: return
     await message.reply_photo(
@@ -37,11 +34,8 @@ async def start_cmd(bot, message):
 
 # ===================== [ Help Command ] ===================== #
 
-EMOJI3 = "👻"
-
 @Client.on_message(filters.command(["help"]) & filters.private)
 async def help_cmd(bot, message):
-    await message.react(emoji=EMOJI3, big=True)
     is_joined = await checkSub(bot, message)
     if not is_joined: return
     await message.reply_photo(
@@ -53,11 +47,8 @@ async def help_cmd(bot, message):
 
 # ===================== [ About Command ] ===================== #
 
-EMOJI4 = "😎"
-
 @Client.on_message(filters.command(["about"]) & filters.private)
 async def about(bot, message):
-    await message.react(emoji=EMOJI4, big=True)
     is_joined = await checkSub(bot, message)
     if not is_joined: return
     await message.reply_photo(
@@ -71,11 +62,8 @@ async def about(bot, message):
 
 # ===================== [ Donate Command ] ===================== #
 
-EMOJI5 = "❤️"
-
 @Client.on_message(filters.private & filters.command(["donate"]))
 async def donate(bot, message):
-    await message.react(emoji=EMOJI5, big=True)
     is_joined = await checkSub(bot, message)
     if not is_joined: return
     await message.reply_photo(
@@ -149,7 +137,7 @@ async def all_db_users_here(client, message):
     await ds.edit(text=f"**--Bot Processed--** \n\n**Bot Started UpTime:** {uptime} \n**Bot Current Ping:** `{time_taken_s:.3f} ᴍꜱ` \n**All Bot Users:** `{total_users}`")
 
 # ===================== [ User Ban Command ] ===================== #
-
+"""
 @Client.on_message(filters.private & filters.user(DS.ADMIN) & filters.command(["ban"]))
 async def ban_user(client, message: Message):
     try:
@@ -171,7 +159,7 @@ async def unban_user(client, message: Message):
         await message.reply("User unbanned.")
     except:
         await message.reply("Usage: /unban <user_id>")
-
+"""
 # ===================== [ Channel Ban Command ] ===================== #
 
 @Client.on_message(filters.private & filters.user(DS.ADMIN) & filters.command(["banchannel"]))

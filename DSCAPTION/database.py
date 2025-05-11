@@ -7,6 +7,8 @@ client = motor.motor_asyncio.AsyncIOMotorClient(DS.DB_URL)
 db = client[DS.DB_NAME]
 chnl_ids = db.chnl_ids
 users = db.users
+buttons_col = db["channel_buttons"]
+chnl_ids = db["channel_captions"]
 
 #insert user data
 async def insert(user_id):
@@ -34,4 +36,19 @@ async def addCap(chnl_id, caption):
 
 async def updateCap(chnl_id, caption):
     await chnl_ids.update_one({"chnl_id": chnl_id}, {"$set": {"caption": caption}})
+
+# Save buttons to DB
+async def set_channel_buttons(channel_id, buttons_list):
+    await buttons_col.update_one(
+        {"channel_id": channel_id},
+        {"$set": {"buttons": [[btn.to_dict() for btn in row] for row in buttons_list]}},
+        upsert=True
+    )
+
+# Get buttons from DB
+async def get_channel_buttons(channel_id):
+    data = await buttons_col.find_one({"channel_id": channel_id})
+    if not data:
+        return []
+    return [[InlineKeyboardButton(**btn) for btn in row] for row in data["buttons"]]
 

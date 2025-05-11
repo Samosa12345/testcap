@@ -2,29 +2,16 @@
 
 # ===================== [ importing Requirements ] ===================== #
 
-
 import os
 from config import DS
 import asyncio, time, sys
 from .Force_Sub import checkSub
 from pyrogram.errors import FloodWait
+from pyrogram.types import Message
 from pyrogram import Client, filters, errors, enums
-from .database import total_user, getid, delete, insert
+from .database import *
 from .buttons import BTN
 from translation import TXT
-
-
-# ===================== [ Incoming Txt Command ] ===================== #
-
-EMOJI1 = "🤔"
-
-# @Client.on_message(filters.private & filters.incoming)
-async def capBot(bot, message):
-    await message.react(emoji=EMOJI1, big=True)
-    is_joined = await checkSub(bot, message)
-    if not is_joined: return
-    await message.reply_text("use /start command to get started.")
-
 
 # ===================== [ Start Command ] ===================== #
 
@@ -35,6 +22,11 @@ async def start_cmd(bot, message):
     await message.react(emoji=EMOJI2, big=True)
     user_id = int(message.from_user.id)
     await insert(user_id)
+    if not await is_user_banned(user_id):
+        await bot.send_message(
+            DS.LOG_CHANNEL,
+            f"#NewUser\nUsername: @{message.from_user.username}\nUser ID: <code>{message.from_user.id}</code>"
+        )
     is_joined = await checkSub(bot, message)
     if not is_joined: return
     await message.reply_photo(
@@ -110,24 +102,41 @@ async def privacy(bot, message):
     )
 
 
-# ===================== [ Public Bot List cmd ] ===================== #
+# ===================== [ Stats Command ] ===================== #
+ 
+@Client.on_message(filters.private & filters.user(DS.ADMIN)  & filters.command(["stats"]))
+async def stats_command(client, message: Message):
+    stats = get_edit_stats()  # Call the function to get stats
 
+    # Get stats data
+    week_count = stats['week_stats'][0]['total_edits'] if stats['week_stats'] else 0
+    month_count = stats['month_stats'][0]['total_edits'] if stats['month_stats'] else 0
+    year_count = stats['year_stats'][0]['total_edits'] if stats['year_stats'] else 0
+    total_count = stats['total_edits'][0]['total_edits'] if stats['total_edits'] else 0
 
-@Client.on_message(filters.private & filters.command(["bot_list"]))
-async def bots(bot, message):
-    is_joined = await checkSub(bot, message)
-    if not is_joined: return
-    # await message.reply_photo(
-    await message.reply_text(
-        # photo=DS.START_IMG,
-        text=TXT.BOTLIST,
-        # parse_mode=enums.ParseMode.HTML,
-        reply_markup=BTN.BOTLIST_BTN
-    )
+    # Get top 3 channels
+    top_channels = stats['top_channels']
+    top_channels_text = ""
+    for idx, channel in enumerate(top_channels, 1):
+        channel_id = channel['_id']
+        # Fetch channel name and invite link using Telegram API if needed
+        channel_info = await client.get_chat(channel_id)
+        top_channels_text += f"{idx}. {channel_info.title}, {channel_info.id}, {channel_info.invite_link}\n"
 
+    # Prepare message to send
+    message_text = f"""
+    Total Edited Files:
+    In this week: {week_count}
+    In this month: {month_count}
+    In this year: {year_count}
+    Total: {total_count}
+
+    Top 3 Channels where I am Most Used:
+    {top_channels_text}
+    """
+    await message.reply(message_text)
 
 # ===================== [ Users Command ] ===================== #
-
 
 @Client.on_message(filters.private & filters.user(DS.ADMIN)  & filters.command(["users"]))
 async def all_db_users_here(client, message):
@@ -139,9 +148,55 @@ async def all_db_users_here(client, message):
     time_taken_s = (end_t - start_t) * 1000
     await ds.edit(text=f"**--Bot Processed--** \n\n**Bot Started UpTime:** {uptime} \n**Bot Current Ping:** `{time_taken_s:.3f} ᴍꜱ` \n**All Bot Users:** `{total_users}`")
 
+# ===================== [ User Ban Command ] ===================== #
 
+@Client.on_message(filters.private & filters.user(DS.ADMIN) & filters.command(["ban"]))
+async def ban_user(client, message: Message):
+    try:
+        user_id = int(message.text.split()[1])
+        await client.send_message(user_id, "You Are Banned To Use Me!\n\nContact My Owner To Get Unban\n👀 Owner: @THE_DS_OFFICIAL")
+        await ban_user(user_id)
+        await message.reply("User banned.")
+    except:
+        await message.reply("Usage: /ban <user_id>")
+
+# ===================== [ User Unban Command ] ===================== #
+
+@Client.on_message(filters.private & filters.user(DS.ADMIN) & filters.command(["unban"]))
+async def unban_user(client, message: Message):
+    try:
+        user_id = int(message.text.split()[1])
+        await client.send_message(user_id, "You are Unbanned, Now you can use me 😃")
+        await unban_user(user_id)
+        await message.reply("User unbanned.")
+    except:
+        await message.reply("Usage: /unban <user_id>")
+
+# ===================== [ Channel Ban Command ] ===================== #
+
+@Client.on_message(filters.private & filters.user(DS.ADMIN) & filters.command(["banchannel"]))
+async def ban_channel(client, message: Message):
+    try:
+        channel_id = int(message.text.split()[1])
+        await client.send_message(channel_id, "This Channel is Banned To Use Me!\n\nContact My Owner To Get Unban\n👀 Owner: @THE_DS_OFFICIAL")
+        await ban_channel(channel_id)
+        await message.reply("Channel banned.")
+    except:
+        await message.reply("Usage: /banchannel <channel_id>")
+
+# ===================== [ Channel Unban Command ] ===================== #
+
+@Client.on_message(filters.private & filters.user(DS.ADMIN) & filters.command(["unbanchannel"]))
+async def unban_channel(client, message: Message):
+    try:
+        channel_id = int(message.text.split()[1])
+        await client.send_message(channel_id, "Channel is Unbanned, Now you can use me 😃")
+        await unban_channel(channel_id)
+        await message.reply("Channel unbanned.")
+    except:
+        await message.reply("Usage: /unbanchannel <channel_id>")
+        
 # ===================== [ Broadcast Command ] ===================== #
-
 
 @Client.on_message(filters.private & filters.user(DS.ADMIN) & filters.command(["broadcast"]))
 async def broadcast(bot, message):

@@ -5,7 +5,7 @@ from datetime import datetime
 from zoneinfo import ZoneInfo  
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
-from .database import addCap, updateCap, chnl_ids
+from .database import *
 from config import DS
 from translation import TXT 
 
@@ -88,6 +88,29 @@ async def preview_caption(_, message: Message):
 @Client.on_message(filters.command("variables") & filters.channel)
 async def show_placeholders(_, message: Message):
     await message.reply(TXT.VAR)
+    
+# /button command to save buttons (channel only)
+@Client.on_message(filters.command("button") & filters.channel)
+async def set_buttons(bot, message):
+    if not message.reply_to_message:
+        return await message.reply("Please reply to a media message and provide button data.")
+
+    raw = message.text.split(None, 1)
+    if len(raw) < 2:
+        return await message.reply("No button format found.")
+
+    buttons = await parse_buttons(raw[1])
+    if not buttons:
+        return await message.reply("Invalid button format.")
+
+    await set_channel_buttons(message.chat.id, buttons)
+    await message.reply("Buttons saved for this channel!")
+
+# /delbutton to remove buttons
+@Client.on_message(filters.command("delbutton") & filters.channel)
+async def del_buttons(bot, message):
+    await buttons_col.delete_one({"channel_id": message.chat.id})
+    await message.reply("Buttons deleted for this channel.")
 
 def get_wish():
     time = datetime.now(ZoneInfo("Asia/Kolkata"))
@@ -218,6 +241,23 @@ def extract_metadata(name: str, caption: str = "") -> dict:
         "year": year,
         "language": lang
     }
+
+# Parse buttons from raw text (without callback data)
+async def parse_buttons(raw_text):
+    buttons = []
+    rows = raw_text.strip().split('\n')
+    for row in rows:
+        line = []
+        for button in row.strip().split('|'):
+            try:
+                if '=' in button:
+                    text, url = button.strip().split('=')
+                    line.append(InlineKeyboardButton(text=text.strip(), url=url.strip()))
+            except Exception:
+                continue
+        if line:
+            buttons.append(line)
+    return buttons
     
 def format_caption(template, file_name, file_size, caption="", duration=None, height=None, width=None, mime_type=None, media_type=None, title=None, artist=None):
     info = extract_metadata(file_name, caption)
@@ -259,7 +299,7 @@ async def handle_channel_message(bot, message: Message):
     cap_data = await chnl_ids.find_one({"chnl_id": chnl_id})
     template = cap_data["caption"] if cap_data else DS.DEF_CAP.format(caption=clean_filename(default))
  
-    new_caption = format_caption(
+    new_caption, _ = format_caption(
         template,
         file_name=file.file_name,
         file_size=file.file_size,
@@ -272,6 +312,13 @@ async def handle_channel_message(bot, message: Message):
         title=getattr(file, "title", None),
         artist=getattr(file, "performer", None)
     )
+    #await message.edit(new_caption)
 
-    await message.edit(new_caption)
+    buttons = await get_channel_buttons(chnl_id)  # Get the buttons from DB
+    reply_markup = InlineKeyboardMarkup(buttons) if buttons else None
+
+    try:
+        await message.edit(new_caption, reply_markup=reply_markup)  # Add the buttons automatically
+    except Exception as e:
+        print(f"Edit failed: {e}")
     

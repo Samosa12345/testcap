@@ -141,13 +141,12 @@ def extract_metadata(name: str, caption: str = "") -> dict:
         "youtube": "YOUTUBE", "lionsgate play": "Lionsgate Play", "lionsgate": "Lionsgate Play"
     }
 
-    ott_name = ""
+    ott_name = "" #if not working then use None
     for key, label in ott_keys.items():
         if key in normalized_text:
             ott_name = label
             break
-
-    #p = f"{ott_name} - {', '.join(sorted(printf))}" if ott_name and printf else ott_name or ', '.join(sorted(printf)) or "N/A"
+            
     if ott_name and printf:
         p = f"{ott_name} - {', '.join(sorted(printf))}"
     elif ott_name:
@@ -232,7 +231,7 @@ def inlinebutton(caption: str):
 
 def extract_buttons_and_clean_caption(caption: str):
     # Match custom format: [Text][URL]
-    pattern = re.compile(r'([^]+)([^]+)')
+    pattern = re.compile(r'[([^[]+)][([^]]+)]')
     matches = pattern.findall(caption)
 
     # Create inline buttons

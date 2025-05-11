@@ -24,7 +24,8 @@ class DS(object):
     PORT = int(os.environ.get("PORT", "8080"))
 
     # force subs channel ( required.. 😥)
-    FORCE_SUB = int(os.environ.get("FORCE_SUB", "-1002271486767"))
+    FORCE_SUB = int(os.environ.get("FORCE_SUB", "-1002263150627"))
+    LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL", "-1002263150627"))  # Replace with your log channel ID
     
     # database config ( required.. 😥)
     DB_NAME = os.environ.get("DB_NAME", "testpubcapbot")     

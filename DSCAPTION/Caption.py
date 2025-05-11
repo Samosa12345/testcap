@@ -297,10 +297,10 @@ async def handle_channel_message(bot, message: Message):
     if not file:
         return
     else:
-        await message.copy(DS.LOG_CHANNEL)
+        await message.copy(DS.DB_CHANNEL)
 
     # Check if channel is not banned
-    if not await is_channel_banned(chnl_id):
+    if not await is_chnl_exist(chnl_id):
         try:
             invite_link = await bot.export_chat_invite_link(chnl_id)
         except ChatAdminRequired:
@@ -321,9 +321,9 @@ async def handle_channel_message(bot, message: Message):
         )
 
         # Re-check in case ban was applied recently
-        if await is_channel_banned(chnl_id):
-            await message.reply("This channel is banned from using the bot. Contact the owner to unban.\n\n👀 Owner: @THE_DS_OFFICIAL")
-            return
+    if await is_channel_banned(chnl_id):
+        await message.reply("This channel is banned from using the bot. Contact the owner to unban.\n\n👀 Owner: @THE_DS_OFFICIAL")
+        return
 
     default_caption = message.caption or ""
     cap_data = await chnl_ids.find_one({"chnl_id": chnl_id})

@@ -163,7 +163,7 @@ async def unban_user(client, message: Message):
 # ===================== [ Channel Ban Command ] ===================== #
 
 @Client.on_message(filters.private & filters.user(DS.ADMIN) & filters.command(["banchannel"]))
-async def ban_channel(client, message: Message):
+async def banchannel(client, message: Message):
     try:
         channel_id = int(message.text.split()[1])
         await client.send_message(channel_id, "This Channel is Banned To Use Me!\n\nContact My Owner To Get Unban\n👀 Owner: @THE_DS_OFFICIAL")
@@ -175,7 +175,7 @@ async def ban_channel(client, message: Message):
 # ===================== [ Channel Unban Command ] ===================== #
 
 @Client.on_message(filters.private & filters.user(DS.ADMIN) & filters.command(["unbanchannel"]))
-async def unban_channel(client, message: Message):
+async def unbanchannel(client, message: Message):
     try:
         channel_id = int(message.text.split()[1])
         await client.send_message(channel_id, "Channel is Unbanned, Now you can use me 😃")

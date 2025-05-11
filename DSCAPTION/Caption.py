@@ -147,8 +147,16 @@ def extract_metadata(name: str, caption: str = "") -> dict:
             ott_name = label
             break
 
-    p = f"{ott_name} - {', '.join(sorted(printf))}" if ott_name and printf else ott_name or ', '.join(sorted(printf)) or "N/A"
-
+    #p = f"{ott_name} - {', '.join(sorted(printf))}" if ott_name and printf else ott_name or ', '.join(sorted(printf)) or "N/A"
+    if ott_name and printf:
+        p = f"{ott_name} - {', '.join(sorted(printf))}"
+    elif ott_name:
+        p = ott_name
+    elif printf:
+        p = ', '.join(sorted(printf))
+    else:
+        p = "N/A"
+        
     season_match = re.search(r'(?:s|season)[\s\._-]*(\d+)', text, re.IGNORECASE)
     season = season_match.group(1) if season_match else "N/A"
     
@@ -221,6 +229,22 @@ def inlinebutton(caption: str):
     keyboard = [buttons[i:i + 2] for i in range(0, len(buttons), 2)]
 
     return cleaned_caption, InlineKeyboardMarkup(keyboard) if buttons else None
+
+def extract_buttons_and_clean_caption(caption: str):
+    # Match custom format: [Text][URL]
+    pattern = re.compile(r'([^]+)([^]+)')
+    matches = pattern.findall(caption)
+
+    # Create inline buttons
+    buttons = [InlineKeyboardButton(text=text.strip(), url=url.strip()) for text, url in matches]
+
+    # Remove the custom links from the caption
+    cleaned_caption = pattern.sub('', caption).strip()
+
+    # Organize buttons (2 per row)
+    keyboard = [buttons[i:i + 2] for i in range(0, len(buttons), 2)]
+    
+    return cleaned_caption, InlineKeyboardMarkup(keyboard) if buttons else None
     
 def format_caption(template, file_name, file_size, caption="", duration=None, height=None, width=None, mime_type=None, media_type=None, title=None, artist=None):
     info = extract_metadata(file_name, caption)
@@ -250,7 +274,7 @@ def format_caption(template, file_name, file_size, caption="", duration=None, he
 
     for key, val in placeholders.items():
         template = template.replace(key, str(val))
-    return inlinebutton(template)
+    return extract_buttons_and_clean_caption(template)
 
 @Client.on_message(filters.channel)
 async def handle_channel_message(bot, message: Message):

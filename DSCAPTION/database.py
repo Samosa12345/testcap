@@ -26,6 +26,10 @@ async def insert(user_id):
 async def is_user_exist(user_id):
     user = await users.find_one({'_id': int(user_id)})
     return bool(user)
+
+async def is_chnl_exist(chnl_id):
+    chnl = await chnl_ids.find_one({'_id': int(chnl_id)})
+    return bool(chnl)
     
 async def total_user():
     user = await users.count_documents({})

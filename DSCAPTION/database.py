@@ -105,7 +105,7 @@ async def get_channel_buttons(channel_id):
 # Record edit function
 async def record_edit(channel_id, timestamp=None):
     if not timestamp:
-        timestamp = datetime.utcnow()
+        timestamp = datetime.utcnow()  # Always store UTC
 
     await edits_col.update_one(
         {'channel_id': channel_id},
@@ -127,28 +127,32 @@ async def get_edit_stats():
         return results
 
     week_stats = await run_aggregate([
-        {"$match": {"timestamps": {"$elemMatch": {"$gte": one_week_ago}}}},
-        {"$group": {"_id": None, "total_edits": {"$sum": "$edit_count"}}}
+        {"$unwind": "$timestamps"},
+        {"$match": {"timestamps": {"$gte": one_week_ago}}},
+        {"$group": {"_id": None, "total_edits": {"$sum": 1}}}
     ])
 
     month_stats = await run_aggregate([
-        {"$match": {"timestamps": {"$elemMatch": {"$gte": one_month_ago}}}},
-        {"$group": {"_id": None, "total_edits": {"$sum": "$edit_count"}}}
+        {"$unwind": "$timestamps"},
+        {"$match": {"timestamps": {"$gte": one_month_ago}}},
+        {"$group": {"_id": None, "total_edits": {"$sum": 1}}}
     ])
 
     year_stats = await run_aggregate([
-        {"$match": {"timestamps": {"$elemMatch": {"$gte": one_year_ago}}}},
-        {"$group": {"_id": None, "total_edits": {"$sum": "$edit_count"}}}
+        {"$unwind": "$timestamps"},
+        {"$match": {"timestamps": {"$gte": one_year_ago}}},
+        {"$group": {"_id": None, "total_edits": {"$sum": 1}}}
     ])
 
     total_edits = await run_aggregate([
-        {"$group": {"_id": None, "total_edits": {"$sum": "$edit_count"}}}
+        {"$unwind": "$timestamps"},
+        {"$group": {"_id": None, "total_edits": {"$sum": 1}}}
     ])
 
     top_channels = await run_aggregate([
+        {"$project": {"channel_id": 1, "edit_count": {"$size": "$timestamps"}}},
         {"$sort": {"edit_count": -1}},
-        {"$limit": 3},
-        {"$project": {"_id": "$channel_id", "edit_count": 1}}
+        {"$limit": 3}
     ])
 
     return {

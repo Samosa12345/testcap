@@ -66,7 +66,7 @@ async def set_caption(bot, message: Message):
         await addCap(chnl_id, caption)
     await message.reply(f"Your new caption is:\n<code>{caption}</code>")
 
-@Client.on_message(filters.command(["delcap", "delcaption", "delete_caption"]) & filters.channel)
+@Client.on_message(filters.command(["delcap", "delcaption"]) & filters.channel)
 async def delete_caption(_, message: Message):
     chnl_id = message.chat.id
     try:
@@ -91,7 +91,7 @@ async def show_placeholders(_, message: Message):
     await message.reply(TXT.VAR)
     
 # /button command to save buttons (channel only)
-@Client.on_message(filters.command("button") & filters.channel)
+@Client.on_message(filters.command(["button", "setbutton"]) & filters.channel)
 async def set_buttons(bot, message):
     if not message.reply_to_message:
         return await message.reply("Please reply to a media message and provide button data.")
@@ -273,14 +273,14 @@ def format_caption(template, file_name, file_size, caption="", duration=None, he
         "{quality}": info["quality"],
         "{season}": info["season"],
         "{episode}": info["episode"],
-        "{ott_print}": info["prints"],
+        "{ottprint}": info["prints"],
         "{duration}": format_duration(duration),
         "{height}": str(height or "N/A"),
         "{width}": str(width or "N/A"),
         "{resolution}": resolution,
         "{ext}": info["extension"],
-        "{mime_type}": mime_type or "N/A",
-        "{media_type}": media_type or "N/A",
+        "{mimetype}": mime_type or "N/A",
+        "{mediatype}": media_type or "N/A",
         "{title}": title or "N/A",
         "{artist}": artist or "N/A",
         "{wish}": get_wish()
@@ -335,14 +335,14 @@ async def handle_channel_message(bot, message: Message):
     # Format caption
     new_caption = format_caption(
         template,
-        file_name=file.file_name,
-        file_size=file.file_size,
+        filename=file.file_name,
+        filesize=file.file_size,
         caption=default_caption,
         duration=getattr(file, "duration", None),
         height=getattr(file, "height", None),
         width=getattr(file, "width", None),
-        mime_type=getattr(file, "mime_type", None),
-        media_type="Document" if message.document else "Video" if message.video else "Audio",
+        mimetype=getattr(file, "mime_type", None),
+        mediatype="Document" if message.document else "Video" if message.video else "Audio",
         title=getattr(file, "title", None),
         artist=getattr(file, "performer", None)
     )

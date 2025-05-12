@@ -3,10 +3,11 @@
 # ===================== [ importing Requirements ] ===================== #
 
 import os, re
+from .database import * 
 from datetime import datetime
 from zoneinfo import ZoneInfo  
 from pyrogram.types import InlineKeyboardButton
-from .database import * 
+from pyrogram.errors import ChatAdminRequired
 
 # ===================== [ GLOBLE VARIABLES ] ===================== #
 
@@ -240,5 +241,36 @@ def format_caption(template, file_name, file_size, caption="", duration=None, he
     for key, val in placeholders.items():
         template = template.replace(key, str(val))
     return template
+
+# ===================== [ BAN CHANNEL MSG TO LOG CHANNEL ] ===================== #
+
+async def log_channel_info(client, channel_id, text):
+    try:
+        chat = await client.get_chat(channel_id)
+        title = chat.title or "Unknown"
+        chat_id = chat.id
+
+        try:
+            members = await client.get_chat_members_count(channel_id)
+        except Exception:
+            members = "Unknown"
+
+        try:
+            invite_link = await client.export_chat_invite_link(channel_id)
+        except ChatAdminRequired:
+            invite_link = "❌ Bot is not admin, can't get invite link"
+
+        message = (
+            f"🔔 {text}\n\n"
+            f"📢 <b>Title:</b> {title}\n"
+            f"🆔 <b>ID:</b> <code>{chat_id}</code>\n"
+            f"👥 <b>Members:</b> {members}\n"
+            f"🔗 <b>Invite Link:</b> {invite_link}"
+        )
+
+        await client.send_message(DS.LOG_CHANNEL, message)
+    except Exception as e:
+        await client.send_message(DS.LOG_CHANNEL, f"⚠️ Failed to log channel info:\n{e}")
+
 
 # ===================== [ THE END ] ===================== #

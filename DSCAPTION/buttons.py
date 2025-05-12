@@ -17,15 +17,15 @@ class BTN(object):
 
     START_BTN = InlineKeyboardMarkup(
         [[
-            InlineKeyboardButton("➕ Aᴅᴅ Mᴇ Tᴏ Yᴏᴜʀ Cʜᴀɴɴᴇʟ ➕", url=f"https://t.me/Public_Caption_Bot?startchannel=True") #botstart
+            InlineKeyboardButton("➕ Aᴅᴅ Mᴇ Tᴏ Yᴏᴜʀ Cʜᴀɴɴᴇʟ ➕", url=f"https://t.me/Public_Caption_Bot?startchannel&admin=post_messages+edit_messages+delete_messages+invite_users+restrict_members+pin_messages+manage_chat+promote_members+manage_video_chats+anonymous")
         ],[
-            InlineKeyboardButton("❗ Help ", callback_data="help"),
+            InlineKeyboardButton("Dᴏɴᴀᴛᴇ 🤞🏻", callback_data="donate"),
             InlineKeyboardButton("Aʙᴏᴜᴛ 🕵🏻", callback_data="about")
         ],[
-            InlineKeyboardButton("✨ Mᴀʀᴋᴅᴏᴡɴꜱ ", callback_data="markdowns"),
-            InlineKeyboardButton("Dᴏɴᴀᴛᴇ 🤞🏻", callback_data="donate")
+            InlineKeyboardButton("Mᴀʀᴋᴅᴏᴡɴꜱ ✨", callback_data="markdowns"),
+            InlineKeyboardButton("Help ❗", callback_data="help"),
         ],[
-            InlineKeyboardButton("👨🏻‍💻 Dᴇᴠᴇʟᴏᴘᴇʀ 👨🏻‍💻", url=f"https://t.me/THE_DS_OFFICIAL")
+            InlineKeyboardButton("𝐇𝐎𝐖 𝐓𝐎 𝐔𝐒𝐄 𝐂𝐎𝐌𝐌𝐀𝐍𝐃𝐒 ❓", callback_data="howtousecmd")
         ]]
     )
 
@@ -70,9 +70,27 @@ class BTN(object):
         ]]
     )
 
-    BOTLIST_BTN = InlineKeyboardMarkup(
+    HTU_BTN = InlineKeyboardMarkup(
         [[
-            InlineKeyboardButton("CLOSE 🔐", callback_data = "close")
+            InlineKeyboardButton("ꜱʜᴏᴡᴄᴀᴘ", callback_data = "showcap")
+        ],[
+            InlineKeyboardButton("ꜱᴇᴛᴄᴀᴘ", callback_data = "setcap"),
+            InlineKeyboardButton("ᴅᴇʟᴄᴀᴘ", callback_data = "delcap")
+        ],[
+            InlineKeyboardButton("ꜱᴇᴛʙᴜᴛᴛᴏɴ", callback_data = "button"),
+            InlineKeyboardButton("ᴅᴇʟʙᴜᴛᴛᴏɴ", callback_data = "delbutton")
+        ],[
+            InlineKeyboardButton("ᴠᴀʀɪᴀʙʟᴇꜱ", callback_data = "variables")
+        ],[
+            InlineKeyboardButton("⟸ Bᴀᴄᴋ", callback_data = "howtousecmd"),
+            InlineKeyboardButton("Cʟᴏꜱᴇ 🔐", callback_data = "close")
+        ]]
+    )
+    
+    BACK_BTN = InlineKeyboardMarkup(
+        [[
+            InlineKeyboardButton("⟸ Bᴀᴄᴋ", callback_data = "howtousecmd"),
+            InlineKeyboardButton("Cʟᴏꜱᴇ 🔐", callback_data = "close")
         ]]
     ) 
 
@@ -138,6 +156,83 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=BTN.HELP_BTN,
             parse_mode=enums.ParseMode.HTML
         )           
+    elif query.data == "howtousecmd":
+        await client.edit_message_media(
+            chat_id=query.message.chat.id, 
+            message_id=query.message.id, 
+            media=InputMediaPhoto(media=DS.START_PIC)
+        )
+        await query.message.edit_text(
+            text=TXT.HTU_CMD,
+            reply_markup=BTN.HTU_BTN,
+            parse_mode=enums.ParseMode.HTML
+        )
+    elif query.data == "setcap":
+        await client.edit_message_media(
+            chat_id=query.message.chat.id, 
+            message_id=query.message.id, 
+            media=InputMediaPhoto(media=DS.START_PIC)
+        )
+        await query.message.edit_text(
+            text=TXT.HTU_CMD,
+            reply_markup=BTN.BACK_BTN,
+            parse_mode=enums.ParseMode.HTML
+        )
+    elif query.data == "delcap":
+        await client.edit_message_media(
+            chat_id=query.message.chat.id, 
+            message_id=query.message.id, 
+            media=InputMediaPhoto(media=DS.START_PIC)
+        )
+        await query.message.edit_text(
+            text=TXT.HTU_CMD,
+            reply_markup=BTN.BACK_BTN,
+            parse_mode=enums.ParseMode.HTML
+        )
+    elif query.data == "showcap":
+        await client.edit_message_media(
+            chat_id=query.message.chat.id, 
+            message_id=query.message.id, 
+            media=InputMediaPhoto(media=DS.START_PIC)
+        )
+        await query.message.edit_text(
+            text=TXT.HTU_CMD,
+            reply_markup=BTN.BACK_BTN,
+            parse_mode=enums.ParseMode.HTML
+        )
+    elif query.data == "button":
+        await client.edit_message_media(
+            chat_id=query.message.chat.id, 
+            message_id=query.message.id, 
+            media=InputMediaPhoto(media=DS.START_PIC)
+        )
+        await query.message.edit_text(
+            text=TXT.HTU_CMD,
+            reply_markup=BTN.BACK_BTN,
+            parse_mode=enums.ParseMode.HTML
+        )
+    elif query.data == "delbutton":
+        await client.edit_message_media(
+            chat_id=query.message.chat.id, 
+            message_id=query.message.id, 
+            media=InputMediaPhoto(media=DS.START_PIC)
+        )
+        await query.message.edit_text(
+            text=TXT.HTU_CMD,
+            reply_markup=BTN.BACK_BTN,
+            parse_mode=enums.ParseMode.HTML
+        )
+    elif query.data == "variables":
+        await client.edit_message_media(
+            chat_id=query.message.chat.id, 
+            message_id=query.message.id, 
+            media=InputMediaPhoto(media=DS.START_PIC)
+        )
+        await query.message.edit_text(
+            text=TXT.HTU_CMD,
+            reply_markup=BTN.BACK_BTN,
+            parse_mode=enums.ParseMode.HTML
+        )
     else:
         await query.message.delete()
 

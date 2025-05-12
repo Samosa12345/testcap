@@ -94,38 +94,39 @@ async def privacy(bot, message):
 
 # ===================== [ Stats Command ] ===================== #
  
-@Client.on_message(filters.private & filters.user(DS.ADMIN)  & filters.command(["stats"]))
+# /stats command
+@Client.on_message(filters.private & filters.user(DS.ADMIN) & filters.command(["stats"]))
 async def stats_command(client, message: Message):
-    stats = get_edit_stats()  # Call the function to get stats
+    stats = await get_edit_stats()
 
-    # Get stats data
     week_count = stats['week_stats'][0]['total_edits'] if stats['week_stats'] else 0
     month_count = stats['month_stats'][0]['total_edits'] if stats['month_stats'] else 0
     year_count = stats['year_stats'][0]['total_edits'] if stats['year_stats'] else 0
     total_count = stats['total_edits'][0]['total_edits'] if stats['total_edits'] else 0
 
-    # Get top 3 channels
-    top_channels = stats['top_channels']
     top_channels_text = ""
-    for idx, channel in enumerate(top_channels, 1):
+    for idx, channel in enumerate(stats['top_channels'], 1):
         channel_id = channel['_id']
-        # Fetch channel name and invite link using Telegram API if needed
-        channel_info = await client.get_chat(channel_id)
-        top_channels_text += f"{idx}. {channel_info.title}, {channel_info.id}, {channel_info.invite_link}\n"
+        try:
+            chat = await client.get_chat(channel_id)
+            invite_link = chat.invite_link or "No public link"
+            top_channels_text += f"{idx}. {chat.title} (`{channel_id}`)\nLink: {invite_link}\n"
+        except Exception as e:
+            top_channels_text += f"{idx}. Channel ID: `{channel_id}` (unable to fetch info)\n"
 
-    # Prepare message to send
     message_text = f"""
-    Total Edited Files:
-    In this week: {week_count}
-    In this month: {month_count}
-    In this year: {year_count}
-    Total: {total_count}
+**Total Edited Files:**
+• This Week: `{week_count}`
+• This Month: `{month_count}`
+• This Year: `{year_count}`
+• Total: `{total_count}`
 
-    Top 3 Channels where I am Most Used:
-    {top_channels_text}
-    """
+**Top 3 Channels where I'm Most Used:**
+{top_channels_text or "No data"}
+"""
+
     await message.reply(message_text)
-
+    
 # ===================== [ Users Command ] ===================== #
 
 @Client.on_message(filters.private & filters.user(DS.ADMIN)  & filters.command(["users"]))

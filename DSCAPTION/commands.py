@@ -2,15 +2,15 @@
 
 # ===================== [ importing Requirements ] ===================== #
 
-import os
 from config import DS
-import asyncio, time, sys
+import asyncio, time, sys, os
 from .Force_Sub import checkSub
 from pyrogram.errors import FloodWait
 from pyrogram.types import Message
 from pyrogram import Client, filters, errors, enums
 from .database import *
 from .buttons import BTN
+from .utils import log_channel_info
 from translation import TXT
 
 # ===================== [ Start Command ] ===================== #
@@ -172,6 +172,7 @@ async def banchannel(client, message: Message):
     try:
         channel_id = int(message.text.split()[1])
         await client.send_message(channel_id, "This Channel is Banned To Use Me!\n\nContact My Owner To Get Unban\n👀 Owner: @THE_DS_OFFICIAL")
+        await log_channel_info(client, channel_id, "#Channel_Banned")
         await ban_channel(channel_id)
         await message.reply("Channel banned successfully.")
     except Exception as e:
@@ -184,6 +185,7 @@ async def unbanchannel(client, message: Message):
     try:
         channel_id = int(message.text.split()[1])
         await client.send_message(channel_id, "Channel is Unbanned, Now you can use me 😃")
+        await log_channel_info(client, channel_id, "#Channel_Unbanned")
         await unban_channel(channel_id)
         await message.reply("Channel unbanned successfully.")
     except Exception as e:

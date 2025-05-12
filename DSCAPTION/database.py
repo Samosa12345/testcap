@@ -57,8 +57,9 @@ async def updateCap(chnl_id, caption):
 
 #User Helpfull Functions 
 async def is_user_banned(user_id: int) -> bool:
-    return await banned_users.find_one({"user_id": user_id}) is not None
-
+    chk = await banned_users.find_one({"user_id": user_id})
+    return bool(chk)
+    
 async def ban_user(user_id: int):
     await banned_users.update_one({"user_id": user_id}, {"$set": {"user_id": user_id}}, upsert=True)
 
@@ -67,7 +68,8 @@ async def unban_user(user_id: int):
 
 #Channel helpfull Function 
 async def is_channel_banned(channel_id: int) -> bool:
-    return await banned_channels.find_one({"channel_id": channel_id}) is not None
+    data = await banned_channels.find_one({"channel_id": channel_id})
+    return bool(data)
     
 async def ban_channel(channel_id: int):
     await banned_channels.update_one({"channel_id": channel_id}, {"$set": {"channel_id": channel_id}}, upsert=True)

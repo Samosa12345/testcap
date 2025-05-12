@@ -94,57 +94,53 @@ async def get_channel_buttons(channel_id):
         for row in data["buttons"]
     ]
 
-# Function to record an edit
-def record_edit(channel_id, timestamp=None):
+# Record edit function
+async def record_edit(channel_id, timestamp=None):
     if not timestamp:
-        timestamp = datetime.utcnow()  # Using UTC time by default
-    
-    edits_col.update_one(
+        timestamp = datetime.utcnow()
+
+    await edits_col.update_one(
         {'channel_id': channel_id},
         {'$inc': {'edit_count': 1}, '$push': {'timestamps': timestamp}},
         upsert=True
     )
 
-# Function to get stats (weekly, monthly, yearly
+# Stats function
 async def get_edit_stats():
     now = datetime.utcnow()
-
-    # Calculate time ranges
     one_week_ago = now - timedelta(weeks=1)
     one_month_ago = now - timedelta(weeks=4)
     one_year_ago = now - timedelta(weeks=52)
 
-    # Helper to run aggregation and return result list
     async def run_aggregate(pipeline):
         results = []
         async for doc in edits_col.aggregate(pipeline):
             results.append(doc)
         return results
 
-    # Stats aggregations
     week_stats = await run_aggregate([
-        {"$match": {"timestamp": {"$gte": one_week_ago}}},
-        {"$group": {"_id": None, "total_edits": {"$sum": 1}}}
+        {"$match": {"timestamps": {"$elemMatch": {"$gte": one_week_ago}}}},
+        {"$group": {"_id": None, "total_edits": {"$sum": "$edit_count"}}}
     ])
 
     month_stats = await run_aggregate([
-        {"$match": {"timestamp": {"$gte": one_month_ago}}},
-        {"$group": {"_id": None, "total_edits": {"$sum": 1}}}
+        {"$match": {"timestamps": {"$elemMatch": {"$gte": one_month_ago}}}},
+        {"$group": {"_id": None, "total_edits": {"$sum": "$edit_count"}}}
     ])
 
     year_stats = await run_aggregate([
-        {"$match": {"timestamp": {"$gte": one_year_ago}}},
-        {"$group": {"_id": None, "total_edits": {"$sum": 1}}}
+        {"$match": {"timestamps": {"$elemMatch": {"$gte": one_year_ago}}}},
+        {"$group": {"_id": None, "total_edits": {"$sum": "$edit_count"}}}
     ])
 
     total_edits = await run_aggregate([
-        {"$group": {"_id": None, "total_edits": {"$sum": 1}}}
+        {"$group": {"_id": None, "total_edits": {"$sum": "$edit_count"}}}
     ])
 
     top_channels = await run_aggregate([
-        {"$group": {"_id": "$channel_id", "edit_count": {"$sum": 1}}},
         {"$sort": {"edit_count": -1}},
-        {"$limit": 3}
+        {"$limit": 3},
+        {"$project": {"_id": "$channel_id", "edit_count": 1}}
     ])
 
     return {
@@ -153,4 +149,4 @@ async def get_edit_stats():
         'year_stats': year_stats,
         'total_edits': total_edits,
         'top_channels': top_channels
-        }
+    }

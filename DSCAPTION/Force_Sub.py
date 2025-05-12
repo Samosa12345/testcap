@@ -16,7 +16,11 @@ async def checkSub(bot, message):
     try:
         user =await bot.get_chat_member(Config.FORCE_SUB, userid)
         if user.status == enums.ChatMemberStatus.BANNED:
-            await message.reply_text("**Sorry, You're Banned. Contact my [Developer](https://t.me/THE_DS_OFFICIAL) to get unbanned.**")
+            btn = InlineKeyboardMarkup(
+            [[
+            InlineKeyboardButton('Developer 🧑🏻‍💻', url="https://t.me/THE_DS_OFFICIAL")
+            ]])
+            await message.reply_text("**Sorry, You're Banned. Contact my [Developer](https://t.me/THE_DS_OFFICIAL) to get unbanned.**", reply_markup=btn)
             return False
         return True
     except UserNotParticipant:

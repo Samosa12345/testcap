@@ -27,15 +27,6 @@ class DS_AutoCaptionBot(Client):
         me = await self.get_me()
         temp.U_NAME = me.username
         self.uptime = DS.BOT_UPTIME
-        # self.force_channel = DS.FORCE_SUB
-        # if DS.FORCE_SUB:
-        #     try:
-        #         link = await self.export_chat_invite_link(DS.FORCE_SUB)
-        #         self.invitelink = link
-        #     except Exception as e:
-        #         print(e)
-        #         print("Make Sure Bot admin in force sub channel")
-        #         self.force_channel = None
         app = web.AppRunner(await web_server())
         await app.setup()
         bind_address = "0.0.0.0"

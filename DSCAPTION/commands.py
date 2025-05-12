@@ -19,7 +19,8 @@ from translation import TXT
 async def start_cmd(bot, message):
     await message.react(emoji="😘", big=True)
     user_id = int(message.from_user.id)
-    if not await is_user_exist(user_id):
+    chkuser = await is_user_exist(user_id)
+    if not chkuser:
         await bot.send_message(
             DS.LOG_CHANNEL,
             f"#NewUser\n\nUsername: @{message.from_user.username}\nUser ID: <code>{message.from_user.id}</code>"

@@ -12,9 +12,13 @@ class DS(object):
 
     # start_pic
     START_PIC = os.environ.get("START_PIC", "https://envs.sh/lCm.jpg") # "https://telegra.ph/file/c5952790fa8235f499749.jpg")
+
+    # caption help image
     SETCAP_PIC = os.environ.get("SETCAP_PIC", "")
     SHOWCAP_PIC = os.environ.get("SHOWCAP_PIC", "")
     BUTTON_PIC = os.environ.get("BUTTON_PIC", "") 
+
+    # upi id qr code image
     UPI_QR_PIC = os.environ.get("UPI_QR_CODE", "https://envs.sh/l9M.jpg")
 
     # markdown Image

@@ -365,6 +365,7 @@ async def handle_channel_message(bot, message: Message):
 
     # Check if channel is banned — STOP here if it is
     if await is_channel_banned(chnl_id):
+        print(f"Blocked message from banned channel: {chnl_id}")
         return
 
     # Check if it's a new channel

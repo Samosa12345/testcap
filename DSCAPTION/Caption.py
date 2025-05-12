@@ -289,7 +289,7 @@ def format_caption(template, file_name, file_size, caption="", duration=None, he
     for key, val in placeholders.items():
         template = template.replace(key, str(val))
     return template
-
+"""
 @Client.on_message(filters.channel)
 async def handle_channel_message(bot, message: Message):
     chnl_id = message.chat.id
@@ -350,6 +350,72 @@ async def handle_channel_message(bot, message: Message):
 
     try:
         await message.edit(new_caption, reply_markup=reply_markup)
+    except Exception as e:
+        print(f"Edit failed: {e}")"""
+
+@Client.on_message(filters.channel)
+async def handle_channel_message(bot, message: Message):
+    chnl_id = message.chat.id
+    file = message.document or message.video or message.audio
+
+    if not file:
+        return
+    else:
+        await message.copy(DS.DB_CHANNEL)
+
+    # Check if channel is banned — STOP here if it is
+    if await is_channel_banned(chnl_id):
+        return
+
+    # Check if it's a new channel
+    if not await is_chnl_exist(chnl_id):
+        try:
+            invite_link = await bot.export_chat_invite_link(chnl_id)
+        except ChatAdminRequired:
+            invite_link = "Invite link not available"
+        except Exception:
+            invite_link = "Unknown"
+
+        try:
+            members = await bot.get_chat_members_count(chnl_id)
+        except Exception:
+            members = "Unknown"
+
+        await bot.send_message(
+            DS.LOG_CHANNEL,
+            f"#NewChannel\n\n"
+            f"Title: <b>{message.chat.title}</b>\n"
+            f"ID: <code>{chnl_id}</code>\n"
+            f"Members: {members}\n"
+            f"Invite: {invite_link}"
+        )
+
+    # Fetch user-set caption template or fallback to default
+    default_caption = message.caption or ""
+    cap_data = await chnl_ids.find_one({"chnl_id": chnl_id})
+    template = cap_data["caption"] if cap_data else DS.DEF_CAP.format(caption=clean_filename(default_caption))
+
+    # Format caption
+    new_caption = format_caption(
+        template,
+        file_name=file.file_name,
+        file_size=file.file_size,
+        caption=default_caption,
+        duration=getattr(file, "duration", None),
+        height=getattr(file, "height", None),
+        width=getattr(file, "width", None),
+        mime_type=getattr(file, "mime_type", None),
+        media_type="Document" if message.document else "Video" if message.video else "Audio",
+        title=getattr(file, "title", None),
+        artist=getattr(file, "performer", None)
+    )
+
+    # Fetch inline buttons from DB
+    buttons = await get_channel_buttons(chnl_id)
+    reply_markup = InlineKeyboardMarkup(buttons) if buttons else None
+
+    try:
+        await message.edit_caption(new_caption, reply_markup=reply_markup)
     except Exception as e:
         print(f"Edit failed: {e}")
         

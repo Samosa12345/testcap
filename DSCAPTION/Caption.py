@@ -319,34 +319,37 @@ async def handle_channel_message(bot, message: Message):
             f"Members: {members}\n"
             f"Invite: {invite_link}"
         )
-
+        await insert_chnl(chnl_id)
+        
         # Re-check in case ban was applied recently
-    if not await is_channel_banned(chnl_id):
-        default_caption = message.caption or ""
-        cap_data = await chnl_ids.find_one({"chnl_id": chnl_id})
-        template = cap_data["caption"] if cap_data else DS.DEF_CAP.format(caption=clean_filename(default_caption))
+    if await is_channel_banned(chnl_id):
+        return
+        
+    default_caption = message.caption or ""
+    cap_data = await chnl_ids.find_one({"chnl_id": chnl_id})
+    template = cap_data["caption"] if cap_data else DS.DEF_CAP.format(caption=clean_filename(default_caption))
 
     # Format the new caption
-        new_caption = format_caption(
-            template,
-            file_name=file.file_name,
-            file_size=file.file_size,
-            caption=default_caption,
-            duration=getattr(file, "duration", None),
-            height=getattr(file, "height", None),
-            width=getattr(file, "width", None),
-            mime_type=getattr(file, "mime_type", None),
-            media_type="Document" if message.document else "Video" if message.video else "Audio",
-            title=getattr(file, "title", None),
-            artist=getattr(file, "performer", None)
-        )
+    new_caption = format_caption(
+        template,
+        file_name=file.file_name,
+        file_size=file.file_size,
+        caption=default_caption,
+        duration=getattr(file, "duration", None),
+        height=getattr(file, "height", None),
+        width=getattr(file, "width", None),
+        mime_type=getattr(file, "mime_type", None),
+        media_type="Document" if message.document else "Video" if message.video else "Audio",
+        title=getattr(file, "title", None),
+        artist=getattr(file, "performer", None)
+    )
 
         # Fetch inline buttons from DB
-        buttons = await get_channel_buttons(chnl_id)
-        reply_markup = InlineKeyboardMarkup(buttons) if buttons else None
+    buttons = await get_channel_buttons(chnl_id)
+    reply_markup = InlineKeyboardMarkup(buttons) if buttons else None
 
-        try:
-            await message.edit(new_caption, reply_markup=reply_markup)
-        except Exception as e:
-            print(f"Edit failed: {e}")
+    try:
+        await message.edit(new_caption, reply_markup=reply_markup)
+    except Exception as e:
+        print(f"Edit failed: {e}")
         

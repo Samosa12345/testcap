@@ -104,27 +104,29 @@ async def stats_command(client, message: Message):
     year_count = stats['year_stats'][0]['total_edits'] if stats['year_stats'] else 0
     total_count = stats['total_edits'][0]['total_edits'] if stats['total_edits'] else 0
 
-    top_channels_text = ""
-    for idx, channel in enumerate(stats['top_channels'], 1):
-        channel_id = channel['_id']
-        try:
-            chat = await client.get_chat(channel_id)
-            invite_link = chat.invite_link or "No public link"
-            top_channels_text += f"{idx}. {chat.title} (`{channel_id}`)\nLink: {invite_link}\n"
-        except Exception as e:
-            top_channels_text += f"{idx}. Channel ID: `{channel_id}` (unable to fetch info)\n"
+    top_channels = stats['top_channels']
+    top_channels_text = "No data"
+    if top_channels:
+        top_channels_text = ""
+        for idx, channel in enumerate(top_channels, 1):
+            try:
+                chat = await client.get_chat(channel['channel_id'])
+                name = chat.title or "Unknown"
+                invite = chat.invite_link or "N/A"
+            except Exception:
+                name = "Unknown"
+                invite = "N/A"
 
-    message_text = f"""
-**Total Edited Files:**
-• This Week: `{week_count}`
-• This Month: `{month_count}`
-• This Year: `{year_count}`
-• Total: `{total_count}`
+            top_channels_text += f"{idx}. {name} (`{channel['channel_id']}`) - {channel['edit_count']} edits\n"
 
-**Top 3 Channels where I'm Most Used:**
-{top_channels_text or "No data"}
-"""
-
+    message_text = (
+        f"**Total Edited Files:**\n"
+        f"• This Week: {week_count}\n"
+        f"• This Month: {month_count}\n"
+        f"• This Year: {year_count}\n"
+        f"• Total: {total_count}\n\n"
+        f"**Top 3 Channels where I'm Most Used:**\n{top_channels_text}"
+    )
     await message.reply(message_text)
     
 # ===================== [ Users Command ] ===================== #
@@ -171,9 +173,9 @@ async def banchannel(client, message: Message):
         channel_id = int(message.text.split()[1])
         await client.send_message(channel_id, "This Channel is Banned To Use Me!\n\nContact My Owner To Get Unban\n👀 Owner: @THE_DS_OFFICIAL")
         await ban_channel(channel_id)
-        await message.reply("Channel banned.")
-    except:
-        await message.reply("Usage: /banchannel <channel_id>")
+        await message.reply("Channel banned successfully.")
+    except Exception as e:
+        await message.reply("Usage: /banchannel <channel_id> \n\nError: {e}")
 
 # ===================== [ Channel Unban Command ] ===================== #
 
@@ -183,9 +185,9 @@ async def unbanchannel(client, message: Message):
         channel_id = int(message.text.split()[1])
         await client.send_message(channel_id, "Channel is Unbanned, Now you can use me 😃")
         await unban_channel(channel_id)
-        await message.reply("Channel unbanned.")
-    except:
-        await message.reply("Usage: /unbanchannel <channel_id>")
+        await message.reply("Channel unbanned successfully.")
+    except Exception as e:
+        await message.reply("Usage: /unbanchannel <channel_id> \n\nError: {e}")
         
 # ===================== [ Broadcast Command ] ===================== #
 

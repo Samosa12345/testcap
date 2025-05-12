@@ -1,4 +1,4 @@
-# (c) @Bisal & (c) @Sanchit0102
+# (c) @Sanchit0102
 
 # ===================== [ importing Requirements ] ===================== #
 

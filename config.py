@@ -26,10 +26,9 @@ class DS(object):
     # force subs channel ( required.. 😥)
     FORCE_SUB = int(os.environ.get("FORCE_SUB", "-1002263150627"))
     LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL", "-1002263150627"))  # Replace with your log channel ID
-    DB_CHANNEL = int(os.environ.get("DB_CHANNEL", "-1002263150627"))  # Replace with your log channel ID
     
     # database config ( required.. 😥)
-    DB_NAME = os.environ.get("DB_NAME", "testpubcapbot")     
+    DB_NAME = os.environ.get("DB_NAME", "pubcapbot")     
     DB_URL = os.environ.get("DB_URL", "mongodb+srv://trumbot:trumbot@cluster0.cfkaeno.mongodb.net/?retryWrites=true&w=majority")
 
     # default caption 

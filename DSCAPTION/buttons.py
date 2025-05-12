@@ -115,7 +115,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await client.edit_message_media(
             chat_id=query.message.chat.id, 
             message_id=query.message.id, 
-            media=InputMediaPhoto(media=DS.UPI_QR_CODE)
+            media=InputMediaPhoto(media=DS.UPI_QR_PIC)
         )
         await query.message.edit_text(
             text=TXT.DONATE,
@@ -163,7 +163,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             media=InputMediaPhoto(media=DS.START_PIC)
         )
         await query.message.edit_text(
-            text=TXT.HTU_CMD,
+            text=TXT.HTU_TXT,
             reply_markup=BTN.HTU_BTN,
             parse_mode=enums.ParseMode.HTML
         )
@@ -171,10 +171,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await client.edit_message_media(
             chat_id=query.message.chat.id, 
             message_id=query.message.id, 
-            media=InputMediaPhoto(media=DS.START_PIC)
+            media=InputMediaPhoto(media=DS.SETCAP_PIC)
         )
         await query.message.edit_text(
-            text=TXT.HTU_CMD,
+            text=TXT.SETCAP,
             reply_markup=BTN.BACK_BTN,
             parse_mode=enums.ParseMode.HTML
         )
@@ -185,7 +185,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             media=InputMediaPhoto(media=DS.START_PIC)
         )
         await query.message.edit_text(
-            text=TXT.HTU_CMD,
+            text=TXT.DELCAP,
             reply_markup=BTN.BACK_BTN,
             parse_mode=enums.ParseMode.HTML
         )
@@ -193,10 +193,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await client.edit_message_media(
             chat_id=query.message.chat.id, 
             message_id=query.message.id, 
-            media=InputMediaPhoto(media=DS.START_PIC)
+            media=InputMediaPhoto(media=DS.SHOWCAP_PIC)
         )
         await query.message.edit_text(
-            text=TXT.HTU_CMD,
+            text=TXT.SHOWCAP,
             reply_markup=BTN.BACK_BTN,
             parse_mode=enums.ParseMode.HTML
         )
@@ -204,10 +204,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await client.edit_message_media(
             chat_id=query.message.chat.id, 
             message_id=query.message.id, 
-            media=InputMediaPhoto(media=DS.START_PIC)
+            media=InputMediaPhoto(media=DS.BUTTON_PIC)
         )
         await query.message.edit_text(
-            text=TXT.HTU_CMD,
+            text=TXT.SETBUTTON,
             reply_markup=BTN.BACK_BTN,
             parse_mode=enums.ParseMode.HTML
         )
@@ -218,7 +218,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             media=InputMediaPhoto(media=DS.START_PIC)
         )
         await query.message.edit_text(
-            text=TXT.HTU_CMD,
+            text=TXT.DELBUTTON,
             reply_markup=BTN.BACK_BTN,
             parse_mode=enums.ParseMode.HTML
         )
@@ -229,7 +229,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             media=InputMediaPhoto(media=DS.START_PIC)
         )
         await query.message.edit_text(
-            text=TXT.HTU_CMD,
+            text=TXT.VAR,
             reply_markup=BTN.BACK_BTN,
             parse_mode=enums.ParseMode.HTML
         )

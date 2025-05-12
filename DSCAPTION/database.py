@@ -10,7 +10,6 @@ chnl_ids = db.chnl_ids
 users = db.users
 banned_users = db.banned_users
 banned_channels = db.banned_channels
-active_channels = db.active_channels
 buttons_col = db["channel_buttons"]
 chnl_ids = db["channel_captions"]
 edits_col = db['edits_col']
@@ -20,6 +19,13 @@ async def insert(user_id):
     user_det = {"_id": user_id}
     try:
         await users.insert_one(user_det)
+    except:
+        pass
+
+async def insert_chnl(chnl_id):
+    chnl = {"_id": chnl_id}
+    try:
+        await chnl_ids.insert_one(chnl)
     except:
         pass
         

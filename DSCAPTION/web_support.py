@@ -1,4 +1,8 @@
+# ===================== [ importing Requirements ] ===================== #
+
 from aiohttp import web
+
+# ===================== [ Web Server Function ] ===================== #
 
 DS_AutoCaptionBot = web.RouteTableDef()
 
@@ -10,3 +14,5 @@ async def web_server():
     web_app = web.Application(client_max_size=30000000)
     web_app.add_routes(DS_AutoCaptionBot)
     return web_app
+
+# ===================== [ THE END ] ===================== #

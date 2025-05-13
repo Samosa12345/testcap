@@ -1,7 +1,11 @@
 # (c) @Bisal & (c) @Sanchit0102
 
+# ===================== [ importing Requirements ] ===================== #
+
 import re, os, time
 id_pattern = re.compile(r'^.\d+$') 
+
+# ===================== [ Config Variable Class ] ===================== #
 
 class DS(object):
     
@@ -44,4 +48,7 @@ class DS(object):
 
     # admin id  ( required.. 😥)
     ADMIN = [int(admin) if id_pattern.search(admin) else admin for admin in os.environ.get('ADMIN', '1562935405').split()]
-    
+
+
+# ===================== [ THE END ] ===================== #
+

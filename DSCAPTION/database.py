@@ -1,8 +1,13 @@
-# (c) @Bisal
+# (c) @Bisal & (c) @Sanchit0102
+
+# ===================== [ importing Requirements ] ===================== #
+
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from datetime import datetime, timedelta
 import motor.motor_asyncio
 from config import DS
+
+# ===================== [ MongoDB Client Creation ] ===================== #
 
 client = motor.motor_asyncio.AsyncIOMotorClient(DS.DB_URL)
 db = client[DS.DB_NAME]
@@ -14,7 +19,8 @@ buttons_col = db["channel_buttons"]
 chnl_ids = db["channel_captions"]
 edits_col = db['edits_col']
 
-#insert user data
+# ===================== [ Insert User & Channel id Functions ] ===================== #
+
 async def insert(user_id):
     user_det = {"_id": user_id}
     try:
@@ -28,7 +34,9 @@ async def insert_chnl(chnl_id):
         await chnl_ids.insert_one(chnl)
     except:
         pass
-        
+
+# ===================== [ Check For Existance ] ===================== #
+
 async def is_user_exist(user_id):
     user = await users.find_one({'_id': user_id})
     return bool(user)
@@ -36,7 +44,9 @@ async def is_user_exist(user_id):
 async def is_chnl_exist(chnl_id):
     chnl = await chnl_ids.find_one({'_id': chnl_id})
     return bool(chnl)
-    
+
+# ===================== [ Get User Data ] ===================== #
+
 async def total_user():
     user = await users.count_documents({})
     return user
@@ -47,7 +57,9 @@ async def getid():
 
 async def delete(id):
     await users.delete_one(id)
-                     
+
+# ===================== [ Update & Add Caption ] ===================== #
+
 async def addCap(chnl_id, caption):
     dets = {"chnl_id": chnl_id, "caption": caption}
     await chnl_ids.insert_one(dets)
@@ -55,7 +67,9 @@ async def addCap(chnl_id, caption):
 async def updateCap(chnl_id, caption):
     await chnl_ids.update_one({"chnl_id": chnl_id}, {"$set": {"caption": caption}})
 
-#User Helpfull Functions 
+
+# ===================== [ User & Channel Ban Data ] ===================== #
+
 async def is_user_banned(user_id: int) -> bool:
     chk = await banned_users.find_one({"user_id": user_id})
     return bool(chk)
@@ -66,7 +80,6 @@ async def ban_user(user_id: int):
 async def unban_user(user_id: int):
     await banned_users.delete_one({"user_id": user_id})
 
-#Channel helpfull Function 
 async def is_channel_banned(channel_id: int) -> bool:
     data = await banned_channels.find_one({"channel_id": channel_id})
     return bool(data)
@@ -77,7 +90,9 @@ async def ban_channel(channel_id: int):
 async def unban_channel(channel_id: int):
     await banned_channels.delete_one({"channel_id": channel_id})
 
-# Save buttons to DB
+
+# ===================== [ Inline Button Data of channel ] ===================== #
+
 async def set_channel_buttons(channel_id, buttons_list):
     # Manually convert to dicts
     serialized = [
@@ -102,6 +117,8 @@ async def get_channel_buttons(channel_id):
         for row in data["buttons"]
     ]
 
+# ===================== [ Stats Command Data  ] ===================== #
+
 # Record edit function
 async def record_edit(channel_id, timestamp=None):
     if not timestamp:
@@ -113,7 +130,6 @@ async def record_edit(channel_id, timestamp=None):
         upsert=True
     )
 
-# Stats function
 async def get_edit_stats():
     now = datetime.utcnow()
     one_week_ago = now - timedelta(weeks=1)
@@ -162,3 +178,6 @@ async def get_edit_stats():
         'total_edits': total_edits,
         'top_channels': top_channels
     }
+
+
+# ===================== [ THE END ] ===================== #

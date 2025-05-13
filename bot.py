@@ -35,6 +35,7 @@ class DS_AutoCaptionBot(Client):
         for id in DS.ADMIN:
             try:
                 await self.send_message(id, f"**__{me.first_name} Started.....✨️__**")
+                await self.send_message(DS.LOG_CHANNEL, f"**__{me.first_name} Started.....✨️__**")
             except:
                 pass
         

@@ -30,7 +30,7 @@ async def start_cmd(bot, message):
     if not is_joined: return
     await message.reply_photo(
         photo=DS.START_PIC,
-        caption=TXT.START,  #f"<b>Hello, {message.from_user.mention} 👋🏻\n\nI'm an auto-caption bot. I automatically edit captions for videos, audio files, and documents posted on channels.\n\nuse <code>/set_caption</code> to set caption\nUse<code>/delcaption</code> To delete caption and set caption to default.\n\nNote:All commands works on channels only</b>",
+        caption=TXT.START,
         reply_markup=BTN.START_BTN 
     )
 
@@ -58,7 +58,6 @@ async def about(bot, message):
         caption=TXT.ABOUT,
         parse_mode=enums.ParseMode.HTML,
         reply_markup=BTN.ABOUT_BTN
-      #  disable_web_page_preview=True 
     )
 
 
@@ -83,18 +82,15 @@ async def donate(bot, message):
 async def privacy(bot, message):
     is_joined = await checkSub(bot, message)
     if not is_joined: return
-    # await message.reply_photo(
     await message.reply_text(
-        # photo=DS.START_IMG,
         text=TXT.PRIVACY,
-        # parse_mode=enums.ParseMode.HTML,
         reply_markup=BTN.PRIVACY_BTN
     )
-
+    
 
 # ===================== [ Stats Command ] ===================== #
  
-# /stats command
+
 @Client.on_message(filters.private & filters.user(DS.ADMIN) & filters.command(["stats"]))
 async def stats_command(client, message: Message):
     stats = await get_edit_stats()

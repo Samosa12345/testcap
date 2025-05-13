@@ -182,7 +182,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await client.edit_message_media(
             chat_id=query.message.chat.id, 
             message_id=query.message.id, 
-            media=InputMediaPhoto(media=DS.START_PIC)
+            media=InputMediaPhoto(media=DS.DELCAP_PIC)
         )
         await query.message.edit_text(
             text=TXT.DELCAP,
@@ -204,7 +204,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await client.edit_message_media(
             chat_id=query.message.chat.id, 
             message_id=query.message.id, 
-            media=InputMediaPhoto(media=DS.BUTTON_PIC)
+            media=InputMediaPhoto(media=DS.SETBUTTON_PIC)
         )
         await query.message.edit_text(
             text=TXT.SETBUTTON,
@@ -215,7 +215,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await client.edit_message_media(
             chat_id=query.message.chat.id, 
             message_id=query.message.id, 
-            media=InputMediaPhoto(media=DS.START_PIC)
+            media=InputMediaPhoto(media=DS.DELBUTTON_PIC)
         )
         await query.message.edit_text(
             text=TXT.DELBUTTON,

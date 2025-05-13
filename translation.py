@@ -56,7 +56,7 @@ Eg:- <code>/setcap
 ➣ Hᴏsᴛᴇᴅ ᴏɴ : Aɴʏᴡʜᴇʀᴇ 
 ➣ Lᴀɴɢᴜᴀɢᴇ : Pʏᴛʜᴏɴ3
 ➣ Lɪʙʀᴀʀʏ : Pʏʀᴏɢʀᴀᴍ
-➣ Cʀᴇᴅɪᴛꜱ : @THE_DS_OFFICIAL</blockquote> 
+➣ ᴠᴇʀꜱɪᴏɴ : ᴠ𝟶.𝟹.𝟶</blockquote> 
 ⍟────[ @Public_Caption_Bot ]────⍟</b>"""
 
 

@@ -11,12 +11,14 @@ class DS(object):
     BOT_TOKEN = os.environ.get("BOT_TOKEN", "7016777070:AAFlFW1ELdwUP36MV0zCyy43Dlv9iHSz5HI")
 
     # start_pic
-    START_PIC = os.environ.get("START_PIC", "https://envs.sh/lCm.jpg") # "https://telegra.ph/file/c5952790fa8235f499749.jpg")
-
+    START_PIC = os.environ.get("START_PIC", "https://envs.sh/lCm.jpg") 
+    
     # caption help image
-    SETCAP_PIC = os.environ.get("SETCAP_PIC", "")
-    SHOWCAP_PIC = os.environ.get("SHOWCAP_PIC", "")
-    BUTTON_PIC = os.environ.get("BUTTON_PIC", "") 
+    SETCAP_PIC = os.environ.get("SETCAP_PIC", "https://envs.sh/oQJ.jpg")
+    DELCAP_PIC = os.environ.get("DELCAP_PIC", "https://envs.sh/oQk.jpg")
+    SHOWCAP_PIC = os.environ.get("SHOWCAP_PIC", "https://envs.sh/oQ8.jpg")
+    SETBUTTON_PIC = (os.environ.get("SETBUTTON_PIC", "https://envs.sh/oQY.jpg https://envs.sh/oQ4.jpg")).split() 
+    DELBUTTON_PIC = os.environ.get("DELBUTTON_PIC", "https://envs.sh/oQl.jpg")
 
     # upi id qr code image
     UPI_QR_PIC = os.environ.get("UPI_QR_CODE", "https://envs.sh/l9M.jpg")

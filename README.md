@@ -1,4 +1,4 @@
-<img src="https://telegra.ph/file/21a8e96b45cd6ac4d3da6.jpg" alt="logo" target="/blank">
+<img src="https://telegra.ph/file/c5952790fa8235f499749.jpg" alt="logo" target="/blank">
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 <h1 align= center>𝐓𝐡𝐢𝐬 𝐢𝐬 𝐚 𝐓𝐞𝐥𝐞𝐠𝐫𝐚𝐦 𝐀𝐮𝐭𝐨 𝐂𝐚𝐩𝐭𝐢𝐨𝐧 𝐁𝐨𝐭 𝐌𝐚𝐝𝐞 𝐖𝐢𝐭𝐡 𝐏𝐲𝐫𝐨𝐠𝐫𝐚𝐦</h1>
@@ -62,8 +62,8 @@ broadcast - sᴇɴᴅ ᴍᴀssᴀɢᴇ ᴛᴏ ᴀʟʟ ᴜsᴇʀs (ᴀᴅᴍɪɴ 
 ```
 
 ## Support
-* [![Developer](https://img.shields.io/static/v1?label=Support&message=Group&color=critical)](https://t.me/THE_DS_OFFICIAL)
+* [![Developer](https://img.shields.io/static/v1?label=Dev&message=loper&color=critical)](https://t.me/THE_DS_OFFICIAL)
 
 ## Credits 
-* [![Biisal](https://img.shields.io/static/v1?label=Rkn&message=Developer&color=critical)](https://t.me/Biisal)
-* [![Sanchit](https://img.shields.io/static/v1?label=Support&message=Group&color=critical)](https://t.me/THE_DS_OFFICIAL)
+* [![Biisal](https://img.shields.io/static/v1?label=Bii&message=sal&color=critical)](https://t.me/Biisal)
+* [![Sanchit](https://img.shields.io/static/v1?label=San&message=chit&color=critical)](https://t.me/THE_DS_OFFICIAL)

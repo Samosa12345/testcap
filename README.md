@@ -4,7 +4,7 @@
 <h1 align= center>𝐓𝐡𝐢𝐬 𝐢𝐬 𝐚 𝐓𝐞𝐥𝐞𝐠𝐫𝐚𝐦 𝐀𝐮𝐭𝐨 𝐂𝐚𝐩𝐭𝐢𝐨𝐧 𝐁𝐨𝐭 𝐌𝐚𝐝𝐞 𝐖𝐢𝐭𝐡 𝐏𝐲𝐫𝐨𝐠𝐫𝐚𝐦</h1>
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
-<p align="center">❤️ Developed By @Sanchit0102 ❤️</p>
+<p align="center">❤️** Developed By @Sanchit0102 **❤️</p>
 
 <p align='center'><b><li>This bot can edit the captions of the videos, audios, or documents when they are uploaded to the channel</b></p>
 <br>
@@ -62,8 +62,8 @@ broadcast - sᴇɴᴅ ᴍᴀssᴀɢᴇ ᴛᴏ ᴀʟʟ ᴜsᴇʀs (ᴀᴅᴍɪɴ 
 ```
 
 ## Support
-* [![Developer](https://img.shields.io/static/v1?label=Contact&message=Devloper&color=critical)](https://t.me/THE_DS_OFFICIAL)
+* [![Developer](https://img.shields.io/static/v1?label=Contact&message=Developer&color=critical)](https://t.me/THE_DS_OFFICIAL)
 
 ## Credits 
-* [![Biisal](https://img.shields.io/static/v1?label=Biisal&message=For_Base_Repo&color=critical)](https://t.me/Biisal)
-* [![Sanchit](https://img.shields.io/static/v1?label=Sanchit&message=4Everything&color=critical)](https://t.me/THE_DS_OFFICIAL)
+* [![Biisal](https://img.shields.io/static/v1?label=Biisal&message=For-Base-Repo&color=critical)](https://t.me/Biisal)
+* [![Sanchit](https://img.shields.io/static/v1?label=Sanchit&message=4-Everything&color=critical)](https://t.me/THE_DS_OFFICIAL)

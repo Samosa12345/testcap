@@ -18,10 +18,10 @@ class DS(object):
     START_PIC = os.environ.get("START_PIC", "https://envs.sh/lCm.jpg") 
     
     # caption help image
-    SETCAP_PIC = os.environ.get("SETCAP_PIC", "https://envs.sh/oQJ.jpg")
+    SETCAP_PIC = os.environ.get("SETCAP_PIC", "https://envs.sh/oeO.jpg")
     DELCAP_PIC = os.environ.get("DELCAP_PIC", "https://envs.sh/oQk.jpg")
-    SHOWCAP_PIC = os.environ.get("SHOWCAP_PIC", "https://envs.sh/oQ8.jpg")
-    SETBUTTON_PIC = (os.environ.get("SETBUTTON_PIC", "https://envs.sh/oQY.jpg https://envs.sh/oQ4.jpg")).split() 
+    SHOWCAP_PIC = os.environ.get("SHOWCAP_PIC", "https://envs.sh/oea.jpg")
+    SETBUTTON_PIC = os.environ.get("SETBUTTON_PIC", "https://envs.sh/oeU.jpg")
     DELBUTTON_PIC = os.environ.get("DELBUTTON_PIC", "https://envs.sh/oQl.jpg")
 
     # upi id qr code image

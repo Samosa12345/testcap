@@ -223,15 +223,12 @@ async def cb_handler(client: Client, query: CallbackQuery):
             parse_mode=enums.ParseMode.HTML
         )
     elif query.data == "variables":
-        await client.edit_message_media(
-            chat_id=query.message.chat.id, 
-            message_id=query.message.id, 
-            media=InputMediaPhoto(media=DS.START_PIC)
-        )
-        await query.message.edit_text(
+        await client.send_message(
+            chat_id=query.message.chat.id,
             text=TXT.VAR,
-            reply_markup=BTN.BACK_BTN,
-            parse_mode=enums.ParseMode.HTML
+            parse_mode=enums.ParseMode.HTML,
+            reply_markup=PRIVACY_BTN,
+            disable_web_page_preview=True
         )
     else:
         await query.message.delete()

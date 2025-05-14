@@ -82,8 +82,14 @@ class BTN(object):
         ],[
             InlineKeyboardButton("ᴠᴀʀɪᴀʙʟᴇꜱ", callback_data = "variables")
         ],[
-            InlineKeyboardButton("⟸ Bᴀᴄᴋ", callback_data = "howtousecmd"),
+            InlineKeyboardButton("⟸ Bᴀᴄᴋ", callback_data = "start"),
             InlineKeyboardButton("Cʟᴏꜱᴇ 🔐", callback_data = "close")
+        ]]
+    )
+
+    CLOSE_BTN = InlineKeyboardMarkup(
+        [[
+            InlineKeyboardButton("ᴄʟᴏꜱᴇ 🔐", callback_data = "close")
         ]]
     )
     
@@ -227,7 +233,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             chat_id=query.message.chat.id,
             text=TXT.VAR,
             parse_mode=enums.ParseMode.HTML,
-            reply_markup=BTN.PRIVACY_BTN,
+            reply_markup=BTN.CLOSE_BTN,
             disable_web_page_preview=True
         )
     else:

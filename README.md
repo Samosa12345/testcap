@@ -36,7 +36,7 @@
 * `FORCE_SUB` - Your Force Sub Channel id
 * `LOG_CHANNEL` - Your log Channel id
 * `ADMIN` - Admin id's of your bot
-* `DEF_CAP` - Set Your Custom Caption (Without Using Any Commands) Exam.. `{filename}`
+* `DEF_CAP` - Set Your Custom Caption (Without Using Any Commands)
 
 ## Botfather Commands
 ```

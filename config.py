@@ -20,7 +20,7 @@ class DS(object):
     # caption help image
     SETCAP_PIC = os.environ.get("SETCAP_PIC", "https://envs.sh/oeO.jpg")
     DELCAP_PIC = os.environ.get("DELCAP_PIC", "https://envs.sh/oQk.jpg")
-    SHOWCAP_PIC = os.environ.get("SHOWCAP_PIC", "https://envs.sh/oea.jpg")
+    SHOWCAP_PIC = os.environ.get("SHOWCAP_PIC", "https://envs.sh/oiD.jpg")
     SETBUTTON_PIC = os.environ.get("SETBUTTON_PIC", "https://envs.sh/oeU.jpg")
     DELBUTTON_PIC = os.environ.get("DELBUTTON_PIC", "https://envs.sh/oQl.jpg")
 

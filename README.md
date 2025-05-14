@@ -4,7 +4,7 @@
 <h1 align= center>𝐓𝐡𝐢𝐬 𝐢𝐬 𝐚 𝐓𝐞𝐥𝐞𝐠𝐫𝐚𝐦 𝐀𝐮𝐭𝐨 𝐂𝐚𝐩𝐭𝐢𝐨𝐧 𝐁𝐨𝐭 𝐌𝐚𝐝𝐞 𝐖𝐢𝐭𝐡 𝐏𝐲𝐫𝐨𝐠𝐫𝐚𝐦</h1>
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
-<p align="center">❤️ **Developed By @Sanchit0102** ❤️</p>
+<p align="center">❤️ <b>Developed By @Sanchit0102</b> ❤️</p>
 
 <p align='center'><b><li>This bot can edit the captions of the videos, audios, or documents when they are uploaded to the channel</b></p>
 <br>

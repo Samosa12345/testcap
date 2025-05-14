@@ -12,7 +12,7 @@ class DS(object):
     # Bot config  ( required.. 😥)
     API_ID = os.environ.get("API_ID", "25833520")
     API_HASH = os.environ.get("API_HASH", "7d012a6cbfabc2d0436d7a09d8362af7")
-    BOT_TOKEN = os.environ.get("BOT_TOKEN", "7016777070:AAFlFW1ELdwUP36MV0zCyy43Dlv9iHSz5HI")
+    BOT_TOKEN = os.environ.get("BOT_TOKEN", "7312480511:AAF2V4w27h5IVZM9VbC-PAouV_UpSBCQKmA")
 
     # start_pic
     START_PIC = os.environ.get("START_PIC", "https://envs.sh/lCm.jpg") 
@@ -35,11 +35,11 @@ class DS(object):
     PORT = int(os.environ.get("PORT", "8080"))
 
     # force subs channel ( required.. 😥)
-    FORCE_SUB = int(os.environ.get("FORCE_SUB", "-1002263150627"))
-    LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL", "-1002263150627"))  # Replace with your log channel ID
+    FORCE_SUB = int(os.environ.get("FORCE_SUB", "-1002371763393"))
+    LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL", "-1002271486767"))  # Replace with your log channel ID
     
     # database config ( required.. 😥)
-    DB_NAME = os.environ.get("DB_NAME", "pubcapbot")     
+    DB_NAME = os.environ.get("DB_NAME", "advpubcapbot")     
     DB_URL = os.environ.get("DB_URL", "mongodb+srv://trumbot:trumbot@cluster0.cfkaeno.mongodb.net/?retryWrites=true&w=majority")
 
     # default caption 

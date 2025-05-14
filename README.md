@@ -62,8 +62,8 @@ broadcast - sᴇɴᴅ ᴍᴀssᴀɢᴇ ᴛᴏ ᴀʟʟ ᴜsᴇʀs (ᴀᴅᴍɪɴ 
 ```
 
 ## Support
-* [![Developer](https://img.shields.io/static/v1?label=Dev&message=loper&color=critical)](https://t.me/THE_DS_OFFICIAL)
+* [![Developer](https://img.shields.io/static/v1?label=Contact&message=Devloper&color=critical)](https://t.me/THE_DS_OFFICIAL)
 
 ## Credits 
-* [![Biisal](https://img.shields.io/static/v1?label=Bii&message=sal&color=critical)](https://t.me/Biisal)
-* [![Sanchit](https://img.shields.io/static/v1?label=San&message=chit&color=critical)](https://t.me/THE_DS_OFFICIAL)
+* [![Biisal](https://img.shields.io/static/v1?label=Biisal&message=For_Base_Repo&color=critical)](https://t.me/Biisal)
+* [![Sanchit](https://img.shields.io/static/v1?label=Sanchit&message=4Everything&color=critical)](https://t.me/THE_DS_OFFICIAL)

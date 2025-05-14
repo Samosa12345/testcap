@@ -13,7 +13,7 @@ class TXT(object):
 ɪ ᴀᴍ ᴛʜᴇ ᴍᴏꜱᴛ ᴘᴏᴡᴇʀꜰᴜʟ ᴀᴜᴛᴏ ᴄᴀᴘᴛɪᴏɴ ʙᴏᴛ ᴡɪᴛʜ Aᴅᴠᴀɴᴄᴇ ꜰᴇᴀᴛᴜʀᴇꜱ !
 I ᴀᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ ᴇᴅɪᴛ ᴄᴀᴘᴛɪᴏɴꜱ ғᴏʀ ᴠɪᴅᴇᴏꜱ, ᴀᴜᴅɪᴏ ғɪʟᴇꜱ, ᴀɴᴅ ᴅᴏᴄᴜᴍᴇɴᴛꜱ ᴘᴏꜱᴛᴇᴅ ᴏɴ ᴄʜᴀɴɴᴇʟꜱ.</b>
 
-<blockquote>𝐍𝐎𝐓𝐄: 𝐏𝐥𝐞𝐚𝐬𝐞 𝐂𝐥𝐢𝐜𝐤 𝐨𝐧 '𝐇𝐎𝐖 𝐓𝐎 𝐔𝐒𝐄 𝐂𝐎𝐌𝐌𝐀𝐍𝐃𝐒' & '𝐇𝐄𝐋𝐏' 𝐁𝐮𝐭𝐭𝐨𝐧 𝐭𝐨 𝐋𝐞𝐚𝐫𝐧 𝐇𝐨𝐰 𝐭𝐨 𝐔𝐬𝐞 𝐓𝐡𝐢𝐬 𝐁𝐨𝐭</blockquote>"""
+<blockquote>⚠️ 𝐍𝐎𝐓𝐄: 𝐏𝐥𝐞𝐚𝐬𝐞 𝐂𝐥𝐢𝐜𝐤 𝐨𝐧 '𝐇𝐎𝐖 𝐓𝐎 𝐔𝐒𝐄 𝐂𝐎𝐌𝐌𝐀𝐍𝐃𝐒' & '𝐇𝐄𝐋𝐏' 𝐁𝐮𝐭𝐭𝐨𝐧 𝐭𝐨 𝐋𝐞𝐚𝐫𝐧 𝐇𝐨𝐰 𝐭𝐨 𝐔𝐬𝐞 𝐓𝐡𝐢𝐬 𝐁𝐨𝐭 ⚠️</blockquote>"""
 
 # ===================== [ HELP TEXT ] ===================== # 
 
@@ -25,12 +25,12 @@ I ᴀᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ ᴇᴅɪᴛ ᴄᴀᴘᴛɪᴏɴꜱ ғᴏʀ
 • Kᴇᴇᴘ ғɪʟᴇ ᴡɪᴛʜᴏᴜᴛ ғᴏʀᴡᴀʀᴅ ᴛᴀɢ.
 • Cʜᴇᴄᴋ Mᴀʀᴋᴅᴏᴡɴꜱ Tᴏ Kɴᴏᴡ Hᴏᴡ Tᴏ Uꜱᴇ Tʜᴇᴍ</blockquote>
 
-➣ /setcap or /setcaption- ᴛᴏ Sᴇᴛ Nᴇᴡ Cᴀᴘᴛɪᴏɴ Iɴ ʏᴏᴜʀ Cʜᴀɴɴᴇʟ
-➣ /delcap or /delcaption - ᴛᴏ Dᴇʟᴇᴛᴇ Yᴏᴜʀ Cᴀᴘᴛɪᴏɴ
-➣ /preview or /showcap - ᴛᴏ ꜱᴇᴇ ʏᴏᴜʀ ꜱᴀᴠᴇᴅ ᴄᴜꜱᴛᴏᴍ ᴄᴀᴘᴛɪᴏɴ ᴛᴇᴍᴘʟᴀᴛᴇ
-➣ /button or /setbutton - ᴛᴏ ꜱᴇᴛ ɪɴʟɪɴᴇ ʙᴜᴛᴛᴏɴ ғᴏʀ ɪɴᴄᴏᴍɪɴɢ ғɪʟᴇꜱ ɪɴ ʏᴏᴜʀ ᴄʜᴀɴɴᴇʟ
-➣ /delbutton - ᴛᴏ ᴅɪꜱᴀʙʟᴇ/ᴅᴇʟᴇᴛᴇ ɪɴʟɪɴᴇ ʙᴜᴛᴛᴏɴ ɪɴ ʏᴏᴜʀ ᴄʜᴀɴɴᴇʟ
-➣ /variables - ᴛᴏ ꜱᴇᴇ/ᴄʜᴇᴄᴋ ᴀʟʟ ᴠᴀʟɪᴅ ᴠᴀʀɪᴀʙʟᴇꜱ
+➣ <code>/setcap</code> or <code>/setcaption</code> - ᴛᴏ Sᴇᴛ Nᴇᴡ Cᴀᴘᴛɪᴏɴ Iɴ ʏᴏᴜʀ Cʜᴀɴɴᴇʟ
+➣ <code>/delcap</code> or <code>/delcaption</code> - ᴛᴏ Dᴇʟᴇᴛᴇ Yᴏᴜʀ Cᴀᴘᴛɪᴏɴ
+➣ <code>/preview</code> or <code>/showcap</code> - ᴛᴏ ꜱᴇᴇ ʏᴏᴜʀ ꜱᴀᴠᴇᴅ ᴄᴜꜱᴛᴏᴍ ᴄᴀᴘᴛɪᴏɴ ᴛᴇᴍᴘʟᴀᴛᴇ
+➣ <code>/button</code> or <code>/setbutton</code> - ᴛᴏ ꜱᴇᴛ ɪɴʟɪɴᴇ ʙᴜᴛᴛᴏɴ ғᴏʀ ɪɴᴄᴏᴍɪɴɢ ғɪʟᴇꜱ ɪɴ ʏᴏᴜʀ ᴄʜᴀɴɴᴇʟ
+➣ <code>/delbutton</code> - ᴛᴏ ᴅɪꜱᴀʙʟᴇ/ᴅᴇʟᴇᴛᴇ ɪɴʟɪɴᴇ ʙᴜᴛᴛᴏɴ ɪɴ ʏᴏᴜʀ ᴄʜᴀɴɴᴇʟ
+➣ <code>/variables</code> - ᴛᴏ ꜱᴇᴇ/ᴄʜᴇᴄᴋ ᴀʟʟ ᴠᴀʟɪᴅ ᴠᴀʀɪᴀʙʟᴇꜱ
 
 𝑭𝒐𝒓𝒎𝒂𝒕:
 
@@ -67,39 +67,27 @@ Eg:- <code>/setcap
 ║
 ║   <b>➢ ʙᴏʟᴅ ᴛᴇxᴛ</b>
 ║
-║   ☞  <code>**{filename}**</code>   
-║   ☞  <code><b>{filename}</b></code>   
+║   ☞  <code>**{filename}**</code>      
 ║
 ║   <b>➢ ɪᴛᴀʟɪᴄ ᴛᴇxᴛ</b>
 ║
 ║   ☞ <code>__{filename}__</code>   
-║   ☞ <code><i>{filename}</i></code>  
-║   ☞ <code><em>{filename}</em></code>
-║    
+║
 ║   <b>➢ ɪɴʟɪɴᴇ ᴍᴏɴᴏ ᴛᴇxᴛ</b>
 ║
-║   ☞ <code>`{filename}`</code> 
-║   ☞ <code><code>{filename}</code></code>
-║ 
-║   <b>➢ ᴍᴜʟᴛɪʟɪɴᴇ ᴄᴏᴅᴇ ʙʟᴏᴄᴋ</b>
-║
-║   ☞ <code><pre>{filename}</pre></code>
+║   ☞ <code>`{filename}`</code>  
 ║
 ║   <b>➢ ʙʟᴏᴄᴋ ǫᴜᴏᴛᴇ ᴛᴇxᴛ</b>
 ║
-║   ☞ <code> > {filename}</code>   
-║   ☞ <code><blockquote>{filename}</blockquote></code>   
+║   ☞ <code> > {filename}</code>      
 ║
 ║   <b>➢ sᴛʀɪᴋᴇ ᴛʜʀᴏᴜɢʜ ᴛᴇxᴛ</b>
 ║
 ║   ☞ <code>~~{filename}~~</code>   
-║   ☞ <code><s>{filename}</s></code>  
-║   ☞ <code><del>{filename}</del></code>
 ║ 
 ║   <b>➢ sᴘᴏɪʟᴇʀ ᴛᴇxᴛ</b>
 ║
 ║   ☞ <code>||{filename}||</code>   
-║   ☞ <code><spoiler>{filename}</spoiler></code>
 ║
 ║   <b>➢ ᴜɴᴅᴇʀʟɪɴᴇ ᴛᴇxᴛ</b>
 ║
@@ -108,7 +96,7 @@ Eg:- <code>/setcap
 ║   <b>➢ ʜʏᴘᴇʀʟɪɴᴋ ᴛᴇxᴛ</b>
 ║
 ║   ☞ <code>[{filename}](https://t.me/Public_Caption_Bot)</code>
-║   ☞ <code><a href="https://t.me/Public_Caption_Bot">{filename}</a></code>
+║
 ╚══════════════════➣""" 
     
 
@@ -163,7 +151,7 @@ If you have any questions or suggestions about our Privacy Policy, Then Contact 
 • <code>{language}</code> : ʟᴀɴɢᴜᴀɢᴇs ғʀᴏᴍ ғɪʟᴇ ɴᴀᴍᴇ.
 • <code>{year}</code> : ʏᴇᴀʀ ғʀᴏᴍ ғɪʟᴇ ɴᴀᴍᴇ.
 • <code>{quality}</code> : ǫᴜᴀʟɪᴛʏ ғʀᴏᴍ ғɪʟᴇ ɴᴀᴍᴇ.
-• <code>{ottprint}</code> : OTT ᴡɪᴛʜ ᴘʀɪɴᴛ (ᴇɢ. Zᴇᴇ𝟻 - WEBRɪᴘ).
+• <code>{ottprint}</code> : OTT ᴡɪᴛʜ ᴘʀɪɴᴛ.
 • <code>{season}</code> : ꜱᴇᴀꜱᴏɴ ғʀᴏᴍ ғɪʟᴇ ɴᴀᴍᴇ.
 • <code>{episode}</code> : ᴇᴘɪꜱᴏᴅᴇ ғʀᴏᴍ ғɪʟᴇ ɴᴀᴍᴇ.
 • <code>{duration}</code> : ᴅᴜʀᴀᴛɪᴏɴ ғʀᴏᴍ ᴠɪᴅᴇᴏ ɪɴ Hᴏᴜʀ | Mɪɴ | Sᴇᴄ.
@@ -209,10 +197,11 @@ If you have any questions or suggestions about our Privacy Policy, Then Contact 
 
     SETCAP = """<blockquote>𝐒𝐞𝐭𝐜𝐚𝐩𝐭𝐢𝐨𝐧 𝐂𝐨𝐦𝐦𝐚𝐧𝐝 🔥</blockquote>
     
-<b>• ʙʏ ᴜꜱɪɴɢ ᴛʜᴇ <code>/setcap</code> ᴏʀ <ᴄᴏᴅᴇ>/setcaption</code> ᴄᴏᴍᴍᴀɴᴅ ɪɴ ᴀ 'ᴄʜᴀɴɴᴇʟ', ʏᴏᴜ ᴄᴀɴ ꜱᴇᴛ ᴀ ᴄᴜꜱᴛᴏᴍ ᴄᴀᴘᴛɪᴏɴ ᴛᴇᴍᴘʟᴀᴛᴇ ғᴏʀ ʏᴏᴜʀ ᴄʜᴀɴɴᴇʟ.
+<b>• ʙʏ ᴜꜱɪɴɢ ᴛʜᴇ <code>/setcap</code> ᴏʀ <code>/setcaption</code> ᴄᴏᴍᴍᴀɴᴅ ɪɴ ᴀ 'ᴄʜᴀɴɴᴇʟ', ʏᴏᴜ ᴄᴀɴ ꜱᴇᴛ ᴀ ᴄᴜꜱᴛᴏᴍ ᴄᴀᴘᴛɪᴏɴ ᴛᴇᴍᴘʟᴀᴛᴇ ғᴏʀ ʏᴏᴜʀ ᴄʜᴀɴɴᴇʟ.
 
-➢ Yᴏᴜ ᴄᴀɴ ᴜꜱᴇ HTML ᴍᴀʀᴋᴅᴏᴡɴ ɪɴ ʏᴏᴜʀ ᴛᴇᴍᴘʟᴀᴛᴇ. (Gɪᴠᴇ ᴛʜᴇ /start ᴄᴏᴍᴍᴀɴᴅ ᴀɴᴅ ᴄʟɪᴄᴋ ᴛʜᴇ "Mᴀʀᴋᴅᴏᴡɴ" ʙᴜᴛᴛᴏɴ ᴛᴏ ꜱᴇᴇ ᴀʟʟ ꜱᴜᴘᴘᴏʀᴛᴇᴅ ᴍᴀʀᴋᴅᴏᴡɴꜱ.)
-➢ Cʜᴇᴄᴋ ᴀʟʟ ᴀᴠᴀɪʟᴀʙʟᴇ ᴠᴀʀɪᴀʙʟᴇꜱ/ᴘʟᴀᴄᴇʜᴏʟᴅᴇʀꜱ, ᴄʜᴏᴏꜱᴇ ᴛʜᴇ ᴏɴᴇꜱ ʏᴏᴜ ɴᴇᴇᴅ, ᴀɴᴅ ꜱᴇɴᴅ ʏᴏᴜʀ ᴛᴇᴍᴘʟᴀᴛᴇ ɪɴ ᴛʜᴇ ᴄʜᴀɴɴᴇʟ ᴜꜱɪɴɢ ᴛʜᴇ <code>/setcap</code> ᴄᴏᴍᴍᴀɴᴅ.
+<blockquote>➢ Yᴏᴜ ᴄᴀɴ ᴜꜱᴇ HTML ᴍᴀʀᴋᴅᴏᴡɴ ɪɴ ʏᴏᴜʀ ᴛᴇᴍᴘʟᴀᴛᴇ. (ɢɪᴠᴇ ᴛʜᴇ /start ᴄᴏᴍᴍᴀɴᴅ ᴀɴᴅ ᴄʟɪᴄᴋ ᴛʜᴇ "Mᴀʀᴋᴅᴏᴡɴ" ʙᴜᴛᴛᴏɴ ᴛᴏ ꜱᴇᴇ ᴀʟʟ ꜱᴜᴘᴘᴏʀᴛᴇᴅ ᴍᴀʀᴋᴅᴏᴡɴꜱ.)
+
+➢ Cʜᴇᴄᴋ ᴀʟʟ ᴀᴠᴀɪʟᴀʙʟᴇ ᴠᴀʀɪᴀʙʟᴇꜱ/ᴘʟᴀᴄᴇʜᴏʟᴅᴇʀꜱ, ᴄʜᴏᴏꜱᴇ ᴛʜᴇ ᴏɴᴇꜱ ʏᴏᴜ ɴᴇᴇᴅ, ᴀɴᴅ ꜱᴇɴᴅ ʏᴏᴜʀ ᴛᴇᴍᴘʟᴀᴛᴇ ɪɴ ᴛʜᴇ ᴄʜᴀɴɴᴇʟ ᴜꜱɪɴɢ ᴛʜᴇ <code>/setcap</code> ᴄᴏᴍᴍᴀɴᴅ.</blockquote>
 
 Example:
 <code>/setcap
@@ -233,7 +222,7 @@ Join ➥ 「 @Bots_Office 」</b></code>
 
     DELCAP = """<blockquote>𝐃𝐞𝐥𝐜𝐚𝐩𝐭𝐢𝐨𝐧 𝐂𝐨𝐦𝐦𝐚𝐧𝐝 🔥</blockquote>
     
-<b>• ʙʏ ᴜꜱɪɴɢ ᴛʜᴇ <code>/delcap</code> ᴏʀ <ᴄᴏᴅᴇ>/delcaption</code> ᴄᴏᴍᴍᴀɴᴅ ɪɴ ᴀ 'ᴄʜᴀɴɴᴇʟ', ʏᴏᴜ ᴄᴀɴ ᴅᴇʟᴇᴛᴇ ʏᴏᴜʀ ꜱᴀᴠᴇᴅ ᴄᴜꜱᴛᴏᴍ ᴄᴀᴘᴛɪᴏɴ ᴛᴇᴍᴘʟᴀᴛᴇ ᴀɴᴅ ʙᴏᴛ ᴡɪʟʟ ɴᴏᴛ ᴄʜᴀɴɢᴇ ᴄᴀᴘᴛɪᴏɴ ᴏғ ɴᴇᴡ ғɪʟᴇꜱ.
+<b>• ʙʏ ᴜꜱɪɴɢ ᴛʜᴇ <code>/delcap</code> ᴏʀ <code>/delcaption</code> ᴄᴏᴍᴍᴀɴᴅ ɪɴ ᴀ 'ᴄʜᴀɴɴᴇʟ', ʏᴏᴜ ᴄᴀɴ ᴅᴇʟᴇᴛᴇ ʏᴏᴜʀ ꜱᴀᴠᴇᴅ ᴄᴜꜱᴛᴏᴍ ᴄᴀᴘᴛɪᴏɴ ᴛᴇᴍᴘʟᴀᴛᴇ ᴀɴᴅ ʙᴏᴛ ᴡɪʟʟ ɴᴏᴛ ᴄʜᴀɴɢᴇ ᴄᴀᴘᴛɪᴏɴ ᴏғ ɴᴇᴡ ғɪʟᴇꜱ.
 
 ⚠️ ꜱᴇᴇ ᴛʜᴇ ɪᴍᴀɢᴇ ᴀʙᴏᴠᴇ ғᴏʀ ᴀ ʙᴇᴛᴛᴇʀ ᴜɴᴅᴇʀꜱᴛᴀɴᴅɪɴɢ ⚠️</b>
 """    
@@ -243,6 +232,7 @@ Join ➥ 「 @Bots_Office 」</b></code>
     SETBUTTON = """<blockquote>𝐒𝐞𝐭𝐛𝐮𝐭𝐭𝐨𝐧 𝐂𝐨𝐦𝐦𝐚𝐧𝐝 🔥</blockquote>
 
 <b>• ʙʏ ᴜꜱɪɴɢ ᴛʜᴇ <code>/setbutton</code> ᴄᴏᴍᴍᴀɴᴅ ʙʏ ʀᴇᴘʟʏ ᴛᴏ ᴍᴇᴅɪᴀ ɪɴ ᴀ 'ᴄʜᴀɴɴᴇʟ', ʏᴏᴜ ᴄᴀɴ ꜱᴇᴛ ᴀ ᴄᴜꜱᴛᴏᴍ ɪɴʟɪɴᴇ ʙᴜᴛᴛᴏɴꜱ ᴛᴇᴍᴘʟᴀᴛᴇ ғᴏʀ ʏᴏᴜʀ ᴄʜᴀɴɴᴇʟ.
+
 ➢ ʏᴏᴜ ᴄᴀɴ ꜱᴇᴛ ʏᴏᴜʀ ʙᴜᴛᴛᴏɴ ɪɴ ᴏɴᴇ ʀᴏᴡ ᴏʀ ᴍᴜʟᴛɪᴘʟᴇ ʀᴏᴡ
 ➢ Dᴏɴ'ᴛ ʟᴇᴀᴠᴇ ᴀɴʏ ᴇxᴛʀᴀ ᴡʜɪᴛᴇꜱᴘᴀᴄᴇ ⚠️ 
 ➢ ʙʏ ᴜꜱɪɴɢ '<code>|</code>' ᴛʜɪꜱ ᴋᴇʏᴡᴏʀᴅ ʏᴏᴜ ᴄᴀɴ ᴀᴅᴅ ᴍᴜʟᴛɪᴘʟᴇ ʙᴜᴛᴛᴏɴꜱ 

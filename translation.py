@@ -142,7 +142,7 @@ If you have any questions or suggestions about our Privacy Policy, Then Contact 
     
 # ===================== [ BOT VARIABLES ] ===================== #
 
-    VAR = """<b>💥 ᴄᴀᴘᴛɪᴏɴ ʙᴏᴛ ᴠᴀʀɪᴀʙʟᴇꜱ: 💥</b>
+    VAR = """<b>💥 <u>ᴄᴀᴘᴛɪᴏɴ ʙᴏᴛ ᴠᴀʀɪᴀʙʟᴇꜱ:</u> 💥</b>
     
 <b>⋗ Vɪᴅᴇᴏ/Dᴏᴄᴜᴍᴇɴᴛ Fɪʟʟɪɴɢs:</b>
 • <code>{filename}</code> : ғɪʟᴇ ɴᴀᴍᴇ.
@@ -174,7 +174,7 @@ If you have any questions or suggestions about our Privacy Policy, Then Contact 
 • <code>{title}</code> : ᴀᴜᴅɪᴏ ᴛɪᴛʟᴇ ɴᴀᴍᴇ.
 • <code>{artist}</code> : ᴀᴜᴅɪᴏ ᴀʀᴛɪꜱᴛ ɴᴀᴍᴇ.
 
-⚠️ <b>ɴᴏᴛᴇ: ᴅᴏɴᴛ ᴜsᴇ ᴀɴʏ ᴏᴛʜᴇʀ ᴠᴀʀɪᴀʙʟᴇ</b> ⚠️
+⚠️ <b><u>ɴᴏᴛᴇ: ᴅᴏɴᴛ ᴜsᴇ ᴀɴʏ ᴏᴛʜᴇʀ ᴠᴀʀɪᴀʙʟᴇ</u></b> ⚠️
 """
 
 # ===================== [ HOW TO USE CMD ] ===================== #
@@ -233,10 +233,10 @@ Join ➥ 「 @Bots_Office 」</b></code>
 
 <b>• ʙʏ ᴜꜱɪɴɢ ᴛʜᴇ <code>/setbutton</code> ᴄᴏᴍᴍᴀɴᴅ ʙʏ ʀᴇᴘʟʏ ᴛᴏ ᴍᴇᴅɪᴀ ɪɴ ᴀ 'ᴄʜᴀɴɴᴇʟ', ʏᴏᴜ ᴄᴀɴ ꜱᴇᴛ ᴀ ᴄᴜꜱᴛᴏᴍ ɪɴʟɪɴᴇ ʙᴜᴛᴛᴏɴꜱ ᴛᴇᴍᴘʟᴀᴛᴇ ғᴏʀ ʏᴏᴜʀ ᴄʜᴀɴɴᴇʟ.
 
-➢ ʏᴏᴜ ᴄᴀɴ ꜱᴇᴛ ʏᴏᴜʀ ʙᴜᴛᴛᴏɴ ɪɴ ᴏɴᴇ ʀᴏᴡ ᴏʀ ᴍᴜʟᴛɪᴘʟᴇ ʀᴏᴡ
+<blockquote>➢ ʏᴏᴜ ᴄᴀɴ ꜱᴇᴛ ʏᴏᴜʀ ʙᴜᴛᴛᴏɴ ɪɴ ᴏɴᴇ ʀᴏᴡ ᴏʀ ᴍᴜʟᴛɪᴘʟᴇ ʀᴏᴡ
 ➢ Dᴏɴ'ᴛ ʟᴇᴀᴠᴇ ᴀɴʏ ᴇxᴛʀᴀ ᴡʜɪᴛᴇꜱᴘᴀᴄᴇ ⚠️ 
 ➢ ʙʏ ᴜꜱɪɴɢ '<code>|</code>' ᴛʜɪꜱ ᴋᴇʏᴡᴏʀᴅ ʏᴏᴜ ᴄᴀɴ ᴀᴅᴅ ᴍᴜʟᴛɪᴘʟᴇ ʙᴜᴛᴛᴏɴꜱ 
-➢ Sʏɴᴛᴀx ɪꜱ /setbutton ʙᴜᴛᴛᴏɴ_ᴛᴇxᴛ = ʙᴜᴛᴛᴏɴ_ᴜʀʟ
+➢ Sʏɴᴛᴀx ɪꜱ /setbutton ʙᴜᴛᴛᴏɴ_ᴛᴇxᴛ = ʙᴜᴛᴛᴏɴ_ᴜʀʟ</blockquote>
 
 ☞ Example𝟷 : (Fᴏʀ 𝟸 ʙᴜᴛᴛᴏɴ ɪɴ 𝟷 ʀᴏᴡ)
 <code>/setbutton Watch Now = https://example.com | Visit Site = https://anotherexample.com</code>

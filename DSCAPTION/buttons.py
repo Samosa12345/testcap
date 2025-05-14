@@ -227,7 +227,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             chat_id=query.message.chat.id,
             text=TXT.VAR,
             parse_mode=enums.ParseMode.HTML,
-            reply_markup=PRIVACY_BTN,
+            reply_markup=BTN.PRIVACY_BTN,
             disable_web_page_preview=True
         )
     else:

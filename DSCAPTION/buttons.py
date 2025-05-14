@@ -11,7 +11,7 @@ from config import DS
 
 class temp(object):
     U_NAME = None
-
+    B_LINK = None
 
 class BTN(object):
 

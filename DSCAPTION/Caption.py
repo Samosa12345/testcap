@@ -128,6 +128,7 @@ async def handle_channel_message(bot, message: Message):
             f"Members: {members}\n"
             f"Invite: {invite_link}"
         )
+        await insert_chnl(chnl_id)
 
     default_caption = message.caption or ""
     cap_data = await chnl_ids.find_one({"chnl_id": chnl_id})

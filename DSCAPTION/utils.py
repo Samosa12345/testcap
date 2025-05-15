@@ -212,13 +212,13 @@ async def parse_buttons(raw_text):
 
 # ===================== [ MAKE TEMPLATE OF CAPTION FUNCTION ] ===================== #
 
-def format_caption(template, file_name, file_size, caption="", duration=None, height=None, width=None, mime_type=None, media_type=None, title=None, artist=None):
-    info = extract_metadata(file_name, caption)
+def format_caption(template, filename, filesize, caption="", duration=None, height=None, width=None, mimetype=None, mediatype=None, title=None, artist=None):
+    info = extract_metadata(filename, caption)
     resolution = f"{width}x{height}" if width and height else "N/A"
     
     placeholders = {
-        "{filename}": clean_filename(file_name),
-        "{filesize}": get_size(file_size),
+        "{filename}": clean_filename(filename),
+        "{filesize}": get_size(filesize),
         "{caption}": caption or "",
         "{language}": info["language"],
         "{year}": info["year"],
@@ -231,8 +231,8 @@ def format_caption(template, file_name, file_size, caption="", duration=None, he
         "{width}": str(width or "N/A"),
         "{resolution}": resolution,
         "{ext}": info["extension"],
-        "{mimetype}": mime_type or "N/A",
-        "{mediatype}": media_type or "N/A",
+        "{mimetype}": mimetype or "N/A",
+        "{mediatype}": mediatype or "N/A",
         "{title}": title or "N/A",
         "{artist}": artist or "N/A",
         "{wish}": get_wish()

@@ -94,6 +94,56 @@ async def del_buttons(bot, message):
     await message.reply("Buttons deleted for this channel.")
 
 
+# ===================== [ Remove Word Command ] ===================== #
+
+
+@Client.on_message(filters.command("remword") & filters.private)
+async def add_remword(client, message: Message):
+    if not message.reply_to_message and len(message.command) < 2:
+        return await message.reply("Usage: /remword word1 | word2 | sentence")
+    words = message.text.split(" ", 1)[1].split("|")
+    count = 0
+    for word in words:
+        word = word.strip()
+        if word:
+            await add_removal_word(message.chat.id, word)
+            count += 1
+    await message.reply(f"Added {count} remove words.")
+
+
+# ===================== [ List Of Removed Word Command ] ===================== #
+
+
+@Client.on_message(filters.command("listwords") & filters.private)
+async def list_remwords(client, message: Message):
+    words = await get_removal_words(message.chat.id)
+    if not words:
+        return await message.reply("No words saved.")
+    await message.reply("Saved Remove Words:\n" + "\n".join(f"- {w}" for w in words))
+
+
+# ===================== [ Wordremove Command ] ===================== #
+
+
+@Client.on_message(filters.command("delword") & filters.private)
+async def delete_remword(client, message: Message):
+    if len(message.command) < 2:
+        return await message.reply("Usage: /delword word")
+    word = message.text.split(" ", 1)[1].strip()
+    if await delete_removal_word(message.chat.id, word):
+        await message.reply(f"Removed: {word}")
+    else:
+        await message.reply("Word not found.")
+
+
+# ===================== [ Clearword Command ] ===================== #
+
+
+@Client.on_message(filters.command("clearwords") & filters.private)
+async def clear_words(client, message: Message):
+    await clear_all_removal_words(message.chat.id)
+    await message.reply("All words cleared.")
+
 # ===================== [ Edit Caption In Channel & Other Function ] ===================== #
 
 
@@ -131,6 +181,7 @@ async def handle_channel_message(bot, message: Message):
         await insert_chnl(chnl_id)
 
     default_caption = message.caption or ""
+    cleaned_caption = await clean_caption(chnl_id, default_caption or file.file_name)
     cap_data = await chnl_ids.find_one({"chnl_id": chnl_id})
     template = cap_data["caption"] if cap_data else DS.DEF_CAP.format(caption=clean_filename(default_caption))
 
@@ -138,7 +189,7 @@ async def handle_channel_message(bot, message: Message):
         template,
         filename=file.file_name,
         filesize=file.file_size,
-        caption=default_caption,
+        caption=cleaned_caption,
         duration=getattr(file, "duration", None),
         height=getattr(file, "height", None),
         width=getattr(file, "width", None),

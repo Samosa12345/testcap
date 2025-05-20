@@ -18,6 +18,7 @@ banned_channels = db.banned_channels
 buttons_col = db["channel_buttons"]
 chnl_ids = db["channel_captions"]
 edits_col = db['edits_col']
+remword_col = db["remwords"]
 
 # ===================== [ Insert User & Channel id Functions ] ===================== #
 
@@ -116,6 +117,28 @@ async def get_channel_buttons(channel_id):
         [InlineKeyboardButton(text=btn["text"], url=btn["url"]) for btn in row]
         for row in data["buttons"]
     ]
+
+# ===================== [ Remove Word Command Data  ] ===================== #
+
+
+async def add_removal_word(chat_id, word):
+    await remword_col.update_one(
+        {"chat_id": chat_id}, {"$addToSet": {"words": word}}, upsert=True
+    )
+
+async def get_removal_words(chat_id):
+    data = await remword_col.find_one({"chat_id": chat_id})
+    return data.get("words", []) if data else []
+
+async def delete_removal_word(chat_id, word):
+    result = await remword_col.update_one(
+        {"chat_id": chat_id}, {"$pull": {"words": word}}
+    )
+    return result.modified_count > 0
+
+async def clear_all_removal_words(chat_id):
+    await remword_col.update_one({"chat_id": chat_id}, {"$set": {"words": []}})
+
 
 # ===================== [ Stats Command Data  ] ===================== #
 

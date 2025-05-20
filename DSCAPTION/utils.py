@@ -82,6 +82,17 @@ def clean_filename(name):
     clean = (re.sub(r'@\w+\s*', '', name_without_ext).replace("_", " ").replace(".", " ").replace("[", "").replace("]", "")).strip()  
     return f"{clean}{os.path.splitext(name)[1]}"
 
+# ===================== [ CLEAN CAPTION FUNCTION ] ===================== #
+
+async def clean_caption(chat_id, text):
+    words = await get_removal_words(chat_id)
+    for w in words:
+        text = text.replace(w, "")
+    text = re.sub(r'http\S+', '', text)  # remove links
+    text = re.sub(r'@\w+', '', text)     # remove mentions
+    text = text.replace("_", " ").replace(".", " ").replace("[", "").replace("]", "")
+    return text.strip()
+
 # ===================== [ FORMAT FILE DURATION ] ===================== #
 
 def format_duration(seconds):
